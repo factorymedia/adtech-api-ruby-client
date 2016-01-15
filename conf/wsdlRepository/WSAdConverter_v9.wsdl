@@ -1,0 +1,1285 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://AdConverter_v9.helios.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://AdConverter.helios.adtech.de/" name="WSAdConverter_v9Service" targetNamespace="http://AdConverter_v9.helios.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/" version="1.0">
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://BannerManagement.helios.adtech.de/" version="1.0">
+<xs:complexType name="Banner">
+<xs:sequence>
+<xs:element name="activeFilename" nillable="true" type="xs:string"></xs:element>
+<xs:element name="adType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="advertiserId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="altText" nillable="true" type="xs:string"></xs:element>
+<xs:element name="archiveDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="archiveStatus" nillable="true" type="xs:int"></xs:element>
+<xs:element name="artTypeId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="assetTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="bannerNumber" nillable="true" type="xs:long"></xs:element>
+<xs:element name="bitrate" nillable="true" type="xs:int"></xs:element>
+<xs:element name="campaignId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="changed" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="classId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="cloneOf" nillable="true" type="xs:long"></xs:element>
+<xs:element name="codecContainer" nillable="true" type="xs:string"></xs:element>
+<xs:element name="createdAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="createdBy" nillable="true" type="xs:long"></xs:element>
+<xs:element name="customBannerDataId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="customSizeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="data" nillable="true" type="xs:base64Binary"></xs:element>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="displayRegionId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="downloadUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="fileType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="framerate" nillable="true" type="xs:long"></xs:element>
+<xs:element name="frequencyCategory" nillable="true" type="xs:int"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="isTemplate" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="jcrTempIdentifier" nillable="true" type="xs:string"></xs:element>
+<xs:element name="landingPageTarget" nillable="true" type="xs:int"></xs:element>
+<xs:element name="lastModifiedAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastModifiedBy" nillable="true" type="xs:long"></xs:element>
+<xs:element name="linkUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainFileName" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="maturityLevelId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mediaTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="mimeTypeForJCR" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mimeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="originalBitrate" nillable="true" type="xs:int"></xs:element>
+<xs:element name="originalData" nillable="true" type="xs:base64Binary"></xs:element>
+<xs:element name="originalHeight" nillable="true" type="xs:int"></xs:element>
+<xs:element name="originalVideoLength" nillable="true" type="xs:int"></xs:element>
+<xs:element name="originalWidth" nillable="true" type="xs:int"></xs:element>
+<xs:element name="pos" nillable="true" type="xs:long"></xs:element>
+<xs:element name="redirectUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="refreshInterval" nillable="true" type="xs:int"></xs:element>
+<xs:element name="replicatedAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="reportingImageUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="researchTypeId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="secure" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="sequenceNo" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeCategoryId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeInByte" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="statusId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="styleTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="templateGroupId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="thirdPartyTag" nillable="true" type="xs:boolean"></xs:element>
+<xs:element maxOccurs="unbounded" name="timeRangeIdList" nillable="true" type="xs:long"></xs:element>
+<xs:element name="typeDescription" nillable="true" type="xs:string"></xs:element>
+<xs:element name="useCampaignAltText" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="useCampaignDefaultLink" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="vendorId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="versionNo" nillable="true" type="xs:int"></xs:element>
+<xs:element name="videoCodec" nillable="true" type="xs:string"></xs:element>
+<xs:element name="videoLength" nillable="true" type="xs:int"></xs:element>
+<xs:element name="videoTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="weight" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="BannerData">
+<xs:sequence>
+<xs:element name="activeFilename" nillable="true" type="xs:string"></xs:element>
+<xs:element name="adType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="advertiserId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="altText" nillable="true" type="xs:string"></xs:element>
+<xs:element name="archiveDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="archiveStatus" nillable="true" type="xs:int"></xs:element>
+<xs:element name="artTypeId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="assetTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="bannerNumber" nillable="true" type="xs:long"></xs:element>
+<xs:element name="binaryBannerId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="bitrate" nillable="true" type="xs:int"></xs:element>
+<xs:element name="campaignId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="changed" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="classId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="cloneOf" nillable="true" type="xs:long"></xs:element>
+<xs:element name="codecContainer" nillable="true" type="xs:string"></xs:element>
+<xs:element name="createdAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="createdBy" nillable="true" type="xs:long"></xs:element>
+<xs:element name="customBannerDataId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="customSizeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="displayRegionId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="fileType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="framerate" nillable="true" type="xs:long"></xs:element>
+<xs:element name="frequencyCategory" nillable="true" type="xs:int"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="isTemplate" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="landingPageTarget" nillable="true" type="xs:byte"></xs:element>
+<xs:element name="lastModifiedAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastModifiedBy" nillable="true" type="xs:long"></xs:element>
+<xs:element name="linkUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainFileName" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="maturityLevelId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mediaTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="mimeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="originalBitrate" nillable="true" type="xs:int"></xs:element>
+<xs:element name="originalHeight" nillable="true" type="xs:int"></xs:element>
+<xs:element name="originalVideoLength" nillable="true" type="xs:int"></xs:element>
+<xs:element name="originalWidth" nillable="true" type="xs:int"></xs:element>
+<xs:element name="pos" nillable="true" type="xs:long"></xs:element>
+<xs:element name="redirectUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="refreshInterval" nillable="true" type="xs:int"></xs:element>
+<xs:element name="replicatedAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="reportingImageUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="researchTypeId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="secure" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="sequenceNo" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeCategoryId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeInByte" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="statusId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="styleTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="templateGroupId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="thirdPartyTag" nillable="true" type="xs:boolean"></xs:element>
+<xs:element maxOccurs="unbounded" name="timeRangeIdList" nillable="true" type="xs:long"></xs:element>
+<xs:element name="typeDescription" nillable="true" type="xs:string"></xs:element>
+<xs:element name="useCampaignAltText" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="useCampaignDefaultLink" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="vendorId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="versionNo" nillable="true" type="xs:int"></xs:element>
+<xs:element name="videoCodec" nillable="true" type="xs:string"></xs:element>
+<xs:element name="videoLength" nillable="true" type="xs:int"></xs:element>
+<xs:element name="videoTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="weight" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="BinaryBanner">
+<xs:sequence>
+<xs:element name="advertiserId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="altText" nillable="true" type="xs:string"></xs:element>
+<xs:element name="bannerNumber" nillable="true" type="xs:long"></xs:element>
+<xs:element name="campaignId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="changed" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="classId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="cloneOf" nillable="true" type="xs:long"></xs:element>
+<xs:element name="createdAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="customSizeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="data" nillable="true" type="xs:base64Binary"></xs:element>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="fileType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="isTemplate" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="linkUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainFileName" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="originalData" nillable="true" type="xs:base64Binary"></xs:element>
+<xs:element name="pos" nillable="true" type="xs:long"></xs:element>
+<xs:element name="redirectUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="replicatedAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="reportingImageUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="sequenceNo" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeInByte" nillable="true" type="xs:int"></xs:element>
+<xs:element name="sizeTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="statusId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="styleTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="templateGroupId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="thirdPartyTag" nillable="true" type="xs:boolean"></xs:element>
+<xs:element maxOccurs="unbounded" name="timeRangeIdList" nillable="true" type="xs:long"></xs:element>
+<xs:element name="typeDescription" nillable="true" type="xs:string"></xs:element>
+<xs:element name="useCampaignAltText" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="useCampaignDefaultLink" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="vendorId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="versionNo" nillable="true" type="xs:int"></xs:element>
+<xs:element name="weight" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://AdConverter_v9.helios.adtech.de/" xmlns:ns2="http://AdConverter.helios.adtech.de/" xmlns:ns1="http://BannerManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://AdConverter_v9.helios.adtech.de/">
+<xs:import namespace="http://BannerManagement.helios.adtech.de/"></xs:import>
+<xs:import namespace="http://AdConverter.helios.adtech.de/"></xs:import>
+<xs:element name="createFlashWithFallbackImage" type="tns:createFlashWithFallbackImage"></xs:element>
+<xs:element name="createFlashWithFallbackImage1" type="tns:createFlashWithFallbackImage1"></xs:element>
+<xs:element name="createFlashWithFallbackImage1Response" type="tns:createFlashWithFallbackImage1Response"></xs:element>
+<xs:element name="createFlashWithFallbackImageByLogin" type="tns:createFlashWithFallbackImageByLogin"></xs:element>
+<xs:element name="createFlashWithFallbackImageByLogin1" type="tns:createFlashWithFallbackImageByLogin1"></xs:element>
+<xs:element name="createFlashWithFallbackImageByLogin1Response" type="tns:createFlashWithFallbackImageByLogin1Response"></xs:element>
+<xs:element name="createFlashWithFallbackImageByLoginResponse" type="tns:createFlashWithFallbackImageByLoginResponse"></xs:element>
+<xs:element name="createFlashWithFallbackImageResponse" type="tns:createFlashWithFallbackImageResponse"></xs:element>
+<xs:element name="createSimpleFlashBanner" type="tns:createSimpleFlashBanner"></xs:element>
+<xs:element name="createSimpleFlashBannerByLogin" type="tns:createSimpleFlashBannerByLogin"></xs:element>
+<xs:element name="createSimpleFlashBannerByLoginResponse" type="tns:createSimpleFlashBannerByLoginResponse"></xs:element>
+<xs:element name="createSimpleFlashBannerResponse" type="tns:createSimpleFlashBannerResponse"></xs:element>
+<xs:element name="createTextualBanner" type="tns:createTextualBanner"></xs:element>
+<xs:element name="createTextualBannerByLogin" type="tns:createTextualBannerByLogin"></xs:element>
+<xs:element name="createTextualBannerByLoginResponse" type="tns:createTextualBannerByLoginResponse"></xs:element>
+<xs:element name="createTextualBannerResponse" type="tns:createTextualBannerResponse"></xs:element>
+<xs:element name="createThirdPartyBanner" type="tns:createThirdPartyBanner"></xs:element>
+<xs:element name="createThirdPartyBannerByLogin" type="tns:createThirdPartyBannerByLogin"></xs:element>
+<xs:element name="createThirdPartyBannerByLoginResponse" type="tns:createThirdPartyBannerByLoginResponse"></xs:element>
+<xs:element name="createThirdPartyBannerResponse" type="tns:createThirdPartyBannerResponse"></xs:element>
+<xs:element name="createThirdPartyBannerWithTagValidation" type="tns:createThirdPartyBannerWithTagValidation"></xs:element>
+<xs:element name="createThirdPartyBannerWithTagValidationResponse" type="tns:createThirdPartyBannerWithTagValidationResponse"></xs:element>
+<xs:element name="getBI" type="tns:getBI"></xs:element>
+<xs:element name="getBIResponse" type="tns:getBIResponse"></xs:element>
+<xs:element name="makeBannerFromXMLTemplate" type="tns:makeBannerFromXMLTemplate"></xs:element>
+<xs:element name="makeBannerFromXMLTemplateByLogin" type="tns:makeBannerFromXMLTemplateByLogin"></xs:element>
+<xs:element name="makeBannerFromXMLTemplateByLoginResponse" type="tns:makeBannerFromXMLTemplateByLoginResponse"></xs:element>
+<xs:element name="makeBannerFromXMLTemplateResponse" type="tns:makeBannerFromXMLTemplateResponse"></xs:element>
+<xs:element name="makeHTMLBannerFromImageBanner" type="tns:makeHTMLBannerFromImageBanner"></xs:element>
+<xs:element name="makeHTMLBannerFromImageBannerByLogin" type="tns:makeHTMLBannerFromImageBannerByLogin"></xs:element>
+<xs:element name="makeHTMLBannerFromImageBannerByLoginResponse" type="tns:makeHTMLBannerFromImageBannerByLoginResponse"></xs:element>
+<xs:element name="makeHTMLBannerFromImageBannerResponse" type="tns:makeHTMLBannerFromImageBannerResponse"></xs:element>
+<xs:element name="makeLAYERBannerFromHtmlBanner" type="tns:makeLAYERBannerFromHtmlBanner"></xs:element>
+<xs:element name="makeLAYERBannerFromHtmlBannerByLogin" type="tns:makeLAYERBannerFromHtmlBannerByLogin"></xs:element>
+<xs:element name="makeLAYERBannerFromHtmlBannerByLoginResponse" type="tns:makeLAYERBannerFromHtmlBannerByLoginResponse"></xs:element>
+<xs:element name="makeLAYERBannerFromHtmlBannerResponse" type="tns:makeLAYERBannerFromHtmlBannerResponse"></xs:element>
+<xs:element name="makePOPUPBannerFromHtmlBanner" type="tns:makePOPUPBannerFromHtmlBanner"></xs:element>
+<xs:element name="makePOPUPBannerFromHtmlBannerByLogin" type="tns:makePOPUPBannerFromHtmlBannerByLogin"></xs:element>
+<xs:element name="makePOPUPBannerFromHtmlBannerByLoginResponse" type="tns:makePOPUPBannerFromHtmlBannerByLoginResponse"></xs:element>
+<xs:element name="makePOPUPBannerFromHtmlBannerResponse" type="tns:makePOPUPBannerFromHtmlBannerResponse"></xs:element>
+<xs:element name="makeRichMediaBanner" type="tns:makeRichMediaBanner"></xs:element>
+<xs:element name="makeRichMediaBannerByLogin" type="tns:makeRichMediaBannerByLogin"></xs:element>
+<xs:element name="makeRichMediaBannerByLoginResponse" type="tns:makeRichMediaBannerByLoginResponse"></xs:element>
+<xs:element name="makeRichMediaBannerResponse" type="tns:makeRichMediaBannerResponse"></xs:element>
+<xs:complexType name="makeBannerFromXMLTemplateByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeBannerFromXMLTemplateByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTextualBanner">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTextualBannerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createThirdPartyBannerWithTagValidation">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createThirdPartyBannerWithTagValidationResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:ThirdPartyResult"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeLAYERBannerFromHtmlBannerByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element name="arg2" type="xs:int"></xs:element>
+<xs:element name="arg3" type="xs:int"></xs:element>
+<xs:element name="arg4" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg6" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeLAYERBannerFromHtmlBannerByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTextualBannerByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTextualBannerByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createThirdPartyBannerByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createThirdPartyBannerByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createThirdPartyBanner">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createThirdPartyBannerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImageByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:base64Binary"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:FlashBannerSettings"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImageByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBI">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBIResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:ApplicationErrorCode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makePOPUPBannerFromHtmlBannerByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg6" type="xs:string"></xs:element>
+<xs:element name="arg7" type="xs:boolean"></xs:element>
+<xs:element minOccurs="0" name="arg8" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg9" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makePOPUPBannerFromHtmlBannerByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeHTMLBannerFromImageBanner">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeHTMLBannerFromImageBannerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImageByLogin1">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:base64Binary"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+<xs:element name="arg4" type="xs:int"></xs:element>
+<xs:element name="arg5" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg6" type="xs:string"></xs:element>
+<xs:element name="arg7" type="xs:int"></xs:element>
+<xs:element name="arg8" type="xs:boolean"></xs:element>
+<xs:element name="arg9" type="xs:boolean"></xs:element>
+<xs:element minOccurs="0" name="arg10" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg11" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg12" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg13" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg14" type="xs:string"></xs:element>
+<xs:element name="arg15" type="xs:int"></xs:element>
+<xs:element name="arg16" type="xs:int"></xs:element>
+<xs:element name="arg17" type="xs:int"></xs:element>
+<xs:element name="arg18" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg19" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg20" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg21" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg22" type="xs:string"></xs:element>
+<xs:element name="arg23" type="xs:int"></xs:element>
+<xs:element name="arg24" type="xs:int"></xs:element>
+<xs:element name="arg25" type="xs:boolean"></xs:element>
+<xs:element name="arg26" type="xs:boolean"></xs:element>
+<xs:element minOccurs="0" name="arg27" type="xs:string"></xs:element>
+<xs:element name="arg28" type="xs:boolean"></xs:element>
+<xs:element minOccurs="0" name="arg29" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg30" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg31" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg32" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg33" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg34" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg35" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg36" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg37" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg38" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg39" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg40" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImageByLogin1Response">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeBannerFromXMLTemplate">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeBannerFromXMLTemplateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeRichMediaBannerByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeRichMediaBannerByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImage1">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:base64Binary"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+<xs:element name="arg4" type="xs:int"></xs:element>
+<xs:element name="arg5" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg6" type="xs:string"></xs:element>
+<xs:element name="arg7" type="xs:int"></xs:element>
+<xs:element name="arg8" type="xs:boolean"></xs:element>
+<xs:element name="arg9" type="xs:boolean"></xs:element>
+<xs:element minOccurs="0" name="arg10" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg11" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg12" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg13" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg14" type="xs:string"></xs:element>
+<xs:element name="arg15" type="xs:int"></xs:element>
+<xs:element name="arg16" type="xs:int"></xs:element>
+<xs:element name="arg17" type="xs:int"></xs:element>
+<xs:element name="arg18" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg19" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg20" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg21" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg22" type="xs:string"></xs:element>
+<xs:element name="arg23" type="xs:int"></xs:element>
+<xs:element name="arg24" type="xs:int"></xs:element>
+<xs:element name="arg25" type="xs:boolean"></xs:element>
+<xs:element name="arg26" type="xs:boolean"></xs:element>
+<xs:element minOccurs="0" name="arg27" type="xs:string"></xs:element>
+<xs:element name="arg28" type="xs:boolean"></xs:element>
+<xs:element minOccurs="0" name="arg29" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg30" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg31" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg32" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg33" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg34" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg35" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg36" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg37" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg38" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImage1Response">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeHTMLBannerFromImageBannerByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeHTMLBannerFromImageBannerByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImage">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:base64Binary"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:FlashBannerSettings"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlashWithFallbackImageResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createSimpleFlashBanner">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:base64Binary"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element name="arg2">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="arg3" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createSimpleFlashBannerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeRichMediaBanner">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeRichMediaBannerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makePOPUPBannerFromHtmlBanner">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg6" type="xs:string"></xs:element>
+<xs:element name="arg7" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makePOPUPBannerFromHtmlBannerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeLAYERBannerFromHtmlBanner">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:Banner"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element name="arg2" type="xs:int"></xs:element>
+<xs:element name="arg3" type="xs:int"></xs:element>
+<xs:element name="arg4" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeLAYERBannerFromHtmlBannerResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createSimpleFlashBannerByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:base64Binary"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element name="arg2">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="arg3" type="ns1:Banner"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createSimpleFlashBannerByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Banner"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://AdConverter.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://AdConverter.helios.adtech.de/">
+<xs:complexType name="ThirdPartyResult">
+<xs:sequence>
+<xs:element name="activeFileName" nillable="true" type="xs:string"></xs:element>
+<xs:element maxOccurs="unbounded" name="applicationErrorCodes" nillable="true" type="tns:ApplicationErrorCode"></xs:element>
+<xs:element name="data" nillable="true" type="xs:base64Binary"></xs:element>
+<xs:element name="fileType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainFileName" nillable="true" type="xs:string"></xs:element>
+<xs:element name="ok" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="originalData" nillable="true" type="xs:base64Binary"></xs:element>
+<xs:element name="styleTypeId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="thirdPartyTag" nillable="true" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ApplicationErrorCode">
+<xs:sequence>
+<xs:element name="errorCode" nillable="true" type="xs:int"></xs:element>
+<xs:element name="errorMessage" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="FlashBannerSettings">
+<xs:sequence>
+<xs:element name="altImageHeight" nillable="true" type="xs:int"></xs:element>
+<xs:element name="altImageLinkUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="altImageWidth" nillable="true" type="xs:int"></xs:element>
+<xs:element name="clickTagVariables">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="compress" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="counterUrl" nillable="true" type="xs:string"></xs:element>
+<xs:element name="createLayer" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="expandBottom" nillable="true" type="xs:int"></xs:element>
+<xs:element name="expandDirection" nillable="true" type="xs:string"></xs:element>
+<xs:element name="expandLeft" nillable="true" type="xs:int"></xs:element>
+<xs:element name="expandRight" nillable="true" type="xs:int"></xs:element>
+<xs:element name="expandTop" nillable="true" type="xs:int"></xs:element>
+<xs:element name="expandable" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="expandedHeight" nillable="true" type="xs:int"></xs:element>
+<xs:element name="expandedWidth" nillable="true" type="xs:int"></xs:element>
+<xs:element name="flashFilename" nillable="true" type="xs:string"></xs:element>
+<xs:element name="flashHeight" nillable="true" type="xs:int"></xs:element>
+<xs:element name="flashWidth" nillable="true" type="xs:int"></xs:element>
+<xs:element name="imageFilename" nillable="true" type="xs:string"></xs:element>
+<xs:element name="layerCloseAfter" nillable="true" type="xs:int"></xs:element>
+<xs:element name="layerPosX" nillable="true" type="xs:int"></xs:element>
+<xs:element name="layerPosY" nillable="true" type="xs:int"></xs:element>
+<xs:element name="manualLayerResize" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="transparent" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="wmode" nillable="true" type="xs:string"></xs:element>
+<xs:element name="zindex" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WSAdConverterException" type="tns:WSAdConverterException"></xs:element>
+<xs:complexType name="WSAdConverterException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="makeBannerFromXMLTemplate">
+    <wsdl:part element="tns:makeBannerFromXMLTemplate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTextualBanner">
+    <wsdl:part element="tns:createTextualBanner" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeBannerFromXMLTemplateByLoginResponse">
+    <wsdl:part element="tns:makeBannerFromXMLTemplateByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeRichMediaBannerByLoginResponse">
+    <wsdl:part element="tns:makeRichMediaBannerByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makePOPUPBannerFromHtmlBannerByLogin">
+    <wsdl:part element="tns:makePOPUPBannerFromHtmlBannerByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeBannerFromXMLTemplateByLogin">
+    <wsdl:part element="tns:makeBannerFromXMLTemplateByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeRichMediaBanner">
+    <wsdl:part element="tns:makeRichMediaBanner" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImageResponse">
+    <wsdl:part element="tns:createFlashWithFallbackImageResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTextualBannerByLogin">
+    <wsdl:part element="tns:createTextualBannerByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSimpleFlashBannerByLogin">
+    <wsdl:part element="tns:createSimpleFlashBannerByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeHTMLBannerFromImageBannerResponse">
+    <wsdl:part element="tns:makeHTMLBannerFromImageBannerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createThirdPartyBannerByLoginResponse">
+    <wsdl:part element="tns:createThirdPartyBannerByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTextualBannerByLoginResponse">
+    <wsdl:part element="tns:createTextualBannerByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImageByLoginResponse">
+    <wsdl:part element="tns:createFlashWithFallbackImageByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImageByLogin1Response">
+    <wsdl:part element="tns:createFlashWithFallbackImageByLogin1Response" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createThirdPartyBanner">
+    <wsdl:part element="tns:createThirdPartyBanner" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBIResponse">
+    <wsdl:part element="tns:getBIResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeBannerFromXMLTemplateResponse">
+    <wsdl:part element="tns:makeBannerFromXMLTemplateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createThirdPartyBannerByLogin">
+    <wsdl:part element="tns:createThirdPartyBannerByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSAdConverterException">
+    <wsdl:part element="ns1:WSAdConverterException" name="WSAdConverterException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSimpleFlashBannerByLoginResponse">
+    <wsdl:part element="tns:createSimpleFlashBannerByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeLAYERBannerFromHtmlBannerByLoginResponse">
+    <wsdl:part element="tns:makeLAYERBannerFromHtmlBannerByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTextualBannerResponse">
+    <wsdl:part element="tns:createTextualBannerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImageByLogin">
+    <wsdl:part element="tns:createFlashWithFallbackImageByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeHTMLBannerFromImageBannerByLogin">
+    <wsdl:part element="tns:makeHTMLBannerFromImageBannerByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makePOPUPBannerFromHtmlBanner">
+    <wsdl:part element="tns:makePOPUPBannerFromHtmlBanner" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImage">
+    <wsdl:part element="tns:createFlashWithFallbackImage" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImage1Response">
+    <wsdl:part element="tns:createFlashWithFallbackImage1Response" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createThirdPartyBannerResponse">
+    <wsdl:part element="tns:createThirdPartyBannerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSimpleFlashBanner">
+    <wsdl:part element="tns:createSimpleFlashBanner" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeLAYERBannerFromHtmlBannerByLogin">
+    <wsdl:part element="tns:makeLAYERBannerFromHtmlBannerByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImageByLogin1">
+    <wsdl:part element="tns:createFlashWithFallbackImageByLogin1" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlashWithFallbackImage1">
+    <wsdl:part element="tns:createFlashWithFallbackImage1" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeLAYERBannerFromHtmlBannerResponse">
+    <wsdl:part element="tns:makeLAYERBannerFromHtmlBannerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeRichMediaBannerResponse">
+    <wsdl:part element="tns:makeRichMediaBannerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeRichMediaBannerByLogin">
+    <wsdl:part element="tns:makeRichMediaBannerByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createThirdPartyBannerWithTagValidationResponse">
+    <wsdl:part element="tns:createThirdPartyBannerWithTagValidationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makePOPUPBannerFromHtmlBannerByLoginResponse">
+    <wsdl:part element="tns:makePOPUPBannerFromHtmlBannerByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeHTMLBannerFromImageBanner">
+    <wsdl:part element="tns:makeHTMLBannerFromImageBanner" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makePOPUPBannerFromHtmlBannerResponse">
+    <wsdl:part element="tns:makePOPUPBannerFromHtmlBannerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBI">
+    <wsdl:part element="tns:getBI" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeLAYERBannerFromHtmlBanner">
+    <wsdl:part element="tns:makeLAYERBannerFromHtmlBanner" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="makeHTMLBannerFromImageBannerByLoginResponse">
+    <wsdl:part element="tns:makeHTMLBannerFromImageBannerByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSimpleFlashBannerResponse">
+    <wsdl:part element="tns:createSimpleFlashBannerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createThirdPartyBannerWithTagValidation">
+    <wsdl:part element="tns:createThirdPartyBannerWithTagValidation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSAdConverter_v9">
+    <wsdl:operation name="makeBannerFromXMLTemplateByLogin">
+      <wsdl:input message="tns:makeBannerFromXMLTemplateByLogin" name="makeBannerFromXMLTemplateByLogin"></wsdl:input>
+      <wsdl:output message="tns:makeBannerFromXMLTemplateByLoginResponse" name="makeBannerFromXMLTemplateByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTextualBanner">
+      <wsdl:input message="tns:createTextualBanner" name="createTextualBanner"></wsdl:input>
+      <wsdl:output message="tns:createTextualBannerResponse" name="createTextualBannerResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createThirdPartyBannerWithTagValidation">
+      <wsdl:input message="tns:createThirdPartyBannerWithTagValidation" name="createThirdPartyBannerWithTagValidation"></wsdl:input>
+      <wsdl:output message="tns:createThirdPartyBannerWithTagValidationResponse" name="createThirdPartyBannerWithTagValidationResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeLAYERBannerFromHtmlBannerByLogin">
+      <wsdl:input message="tns:makeLAYERBannerFromHtmlBannerByLogin" name="makeLAYERBannerFromHtmlBannerByLogin"></wsdl:input>
+      <wsdl:output message="tns:makeLAYERBannerFromHtmlBannerByLoginResponse" name="makeLAYERBannerFromHtmlBannerByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTextualBannerByLogin">
+      <wsdl:input message="tns:createTextualBannerByLogin" name="createTextualBannerByLogin"></wsdl:input>
+      <wsdl:output message="tns:createTextualBannerByLoginResponse" name="createTextualBannerByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createThirdPartyBannerByLogin">
+      <wsdl:input message="tns:createThirdPartyBannerByLogin" name="createThirdPartyBannerByLogin"></wsdl:input>
+      <wsdl:output message="tns:createThirdPartyBannerByLoginResponse" name="createThirdPartyBannerByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createThirdPartyBanner">
+      <wsdl:input message="tns:createThirdPartyBanner" name="createThirdPartyBanner"></wsdl:input>
+      <wsdl:output message="tns:createThirdPartyBannerResponse" name="createThirdPartyBannerResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImageByLogin">
+      <wsdl:input message="tns:createFlashWithFallbackImageByLogin" name="createFlashWithFallbackImageByLogin"></wsdl:input>
+      <wsdl:output message="tns:createFlashWithFallbackImageByLoginResponse" name="createFlashWithFallbackImageByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBI">
+      <wsdl:input message="tns:getBI" name="getBI"></wsdl:input>
+      <wsdl:output message="tns:getBIResponse" name="getBIResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="makePOPUPBannerFromHtmlBannerByLogin">
+      <wsdl:input message="tns:makePOPUPBannerFromHtmlBannerByLogin" name="makePOPUPBannerFromHtmlBannerByLogin"></wsdl:input>
+      <wsdl:output message="tns:makePOPUPBannerFromHtmlBannerByLoginResponse" name="makePOPUPBannerFromHtmlBannerByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeHTMLBannerFromImageBanner">
+      <wsdl:input message="tns:makeHTMLBannerFromImageBanner" name="makeHTMLBannerFromImageBanner"></wsdl:input>
+      <wsdl:output message="tns:makeHTMLBannerFromImageBannerResponse" name="makeHTMLBannerFromImageBannerResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImageByLogin1">
+      <wsdl:input message="tns:createFlashWithFallbackImageByLogin1" name="createFlashWithFallbackImageByLogin1"></wsdl:input>
+      <wsdl:output message="tns:createFlashWithFallbackImageByLogin1Response" name="createFlashWithFallbackImageByLogin1Response"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeBannerFromXMLTemplate">
+      <wsdl:input message="tns:makeBannerFromXMLTemplate" name="makeBannerFromXMLTemplate"></wsdl:input>
+      <wsdl:output message="tns:makeBannerFromXMLTemplateResponse" name="makeBannerFromXMLTemplateResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeRichMediaBannerByLogin">
+      <wsdl:input message="tns:makeRichMediaBannerByLogin" name="makeRichMediaBannerByLogin"></wsdl:input>
+      <wsdl:output message="tns:makeRichMediaBannerByLoginResponse" name="makeRichMediaBannerByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImage1">
+      <wsdl:input message="tns:createFlashWithFallbackImage1" name="createFlashWithFallbackImage1"></wsdl:input>
+      <wsdl:output message="tns:createFlashWithFallbackImage1Response" name="createFlashWithFallbackImage1Response"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeHTMLBannerFromImageBannerByLogin">
+      <wsdl:input message="tns:makeHTMLBannerFromImageBannerByLogin" name="makeHTMLBannerFromImageBannerByLogin"></wsdl:input>
+      <wsdl:output message="tns:makeHTMLBannerFromImageBannerByLoginResponse" name="makeHTMLBannerFromImageBannerByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImage">
+      <wsdl:input message="tns:createFlashWithFallbackImage" name="createFlashWithFallbackImage"></wsdl:input>
+      <wsdl:output message="tns:createFlashWithFallbackImageResponse" name="createFlashWithFallbackImageResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSimpleFlashBanner">
+      <wsdl:input message="tns:createSimpleFlashBanner" name="createSimpleFlashBanner"></wsdl:input>
+      <wsdl:output message="tns:createSimpleFlashBannerResponse" name="createSimpleFlashBannerResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeRichMediaBanner">
+      <wsdl:input message="tns:makeRichMediaBanner" name="makeRichMediaBanner"></wsdl:input>
+      <wsdl:output message="tns:makeRichMediaBannerResponse" name="makeRichMediaBannerResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makePOPUPBannerFromHtmlBanner">
+      <wsdl:input message="tns:makePOPUPBannerFromHtmlBanner" name="makePOPUPBannerFromHtmlBanner"></wsdl:input>
+      <wsdl:output message="tns:makePOPUPBannerFromHtmlBannerResponse" name="makePOPUPBannerFromHtmlBannerResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeLAYERBannerFromHtmlBanner">
+      <wsdl:input message="tns:makeLAYERBannerFromHtmlBanner" name="makeLAYERBannerFromHtmlBanner"></wsdl:input>
+      <wsdl:output message="tns:makeLAYERBannerFromHtmlBannerResponse" name="makeLAYERBannerFromHtmlBannerResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSimpleFlashBannerByLogin">
+      <wsdl:input message="tns:createSimpleFlashBannerByLogin" name="createSimpleFlashBannerByLogin"></wsdl:input>
+      <wsdl:output message="tns:createSimpleFlashBannerByLoginResponse" name="createSimpleFlashBannerByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSAdConverterException" name="WSAdConverterException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSAdConverter_v9ServiceSoapBinding" type="tns:WSAdConverter_v9">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="makeBannerFromXMLTemplateByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeBannerFromXMLTemplateByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeBannerFromXMLTemplateByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTextualBanner">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTextualBanner">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTextualBannerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createThirdPartyBannerWithTagValidation">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createThirdPartyBannerWithTagValidation">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createThirdPartyBannerWithTagValidationResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeLAYERBannerFromHtmlBannerByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeLAYERBannerFromHtmlBannerByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeLAYERBannerFromHtmlBannerByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTextualBannerByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTextualBannerByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTextualBannerByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createThirdPartyBannerByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createThirdPartyBannerByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createThirdPartyBannerByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createThirdPartyBanner">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createThirdPartyBanner">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createThirdPartyBannerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImageByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createFlashWithFallbackImageByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createFlashWithFallbackImageByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBI">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getBI">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getBIResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImageByLogin1">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createFlashWithFallbackImageByLogin1">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createFlashWithFallbackImageByLogin1Response">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeHTMLBannerFromImageBanner">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeHTMLBannerFromImageBanner">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeHTMLBannerFromImageBannerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makePOPUPBannerFromHtmlBannerByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makePOPUPBannerFromHtmlBannerByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makePOPUPBannerFromHtmlBannerByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeBannerFromXMLTemplate">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeBannerFromXMLTemplate">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeBannerFromXMLTemplateResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeRichMediaBannerByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeRichMediaBannerByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeRichMediaBannerByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImage1">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createFlashWithFallbackImage1">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createFlashWithFallbackImage1Response">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeHTMLBannerFromImageBannerByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeHTMLBannerFromImageBannerByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeHTMLBannerFromImageBannerByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlashWithFallbackImage">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createFlashWithFallbackImage">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createFlashWithFallbackImageResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSimpleFlashBanner">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createSimpleFlashBanner">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createSimpleFlashBannerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeRichMediaBanner">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeRichMediaBanner">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeRichMediaBannerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makePOPUPBannerFromHtmlBanner">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makePOPUPBannerFromHtmlBanner">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makePOPUPBannerFromHtmlBannerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSimpleFlashBannerByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createSimpleFlashBannerByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createSimpleFlashBannerByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="makeLAYERBannerFromHtmlBanner">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="makeLAYERBannerFromHtmlBanner">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="makeLAYERBannerFromHtmlBannerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSAdConverterException">
+        <soap:fault name="WSAdConverterException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSAdConverter_v9Service">
+    <wsdl:port binding="tns:WSAdConverter_v9ServiceSoapBinding" name="WSAdConverter_v9Port">
+      <soap:address location="http://ws-api.adtech.de/WSAdConverter_v9"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

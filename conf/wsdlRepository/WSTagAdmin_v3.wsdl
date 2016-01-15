@@ -1,0 +1,2154 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://TagManagement_v3.lowLevel.helios.webservices.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://schemas.xmlsoap.org/soap/http" xmlns:ns2="http://security.lowLevel.helios.webservices.adtech.de/" xmlns:ns1="http://TagManagement.helios.adtech.de/" name="WSTagAdmin_v3Service" targetNamespace="http://TagManagement_v3.lowLevel.helios.webservices.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/" version="1.0">
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://TagManagement_v3.lowLevel.helios.webservices.adtech.de/" xmlns:ns1="http://TagManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://TagManagement_v3.lowLevel.helios.webservices.adtech.de/">
+<xs:import namespace="http://TagManagement.helios.adtech.de/"></xs:import>
+<xs:element name="createTagFeatureSet" type="tns:createTagFeatureSet"></xs:element>
+<xs:element name="createTagFeatureSetByLogin" type="tns:createTagFeatureSetByLogin"></xs:element>
+<xs:element name="createTagFeatureSetByLoginResponse" type="tns:createTagFeatureSetByLoginResponse"></xs:element>
+<xs:element name="createTagFeatureSetResponse" type="tns:createTagFeatureSetResponse"></xs:element>
+<xs:element name="createTagFeatures" type="tns:createTagFeatures"></xs:element>
+<xs:element name="createTagFeaturesByLogin" type="tns:createTagFeaturesByLogin"></xs:element>
+<xs:element name="createTagFeaturesByLoginResponse" type="tns:createTagFeaturesByLoginResponse"></xs:element>
+<xs:element name="createTagFeaturesResponse" type="tns:createTagFeaturesResponse"></xs:element>
+<xs:element name="createTagTemplate" type="tns:createTagTemplate"></xs:element>
+<xs:element name="createTagTemplateByLogin" type="tns:createTagTemplateByLogin"></xs:element>
+<xs:element name="createTagTemplateByLoginResponse" type="tns:createTagTemplateByLoginResponse"></xs:element>
+<xs:element name="createTagTemplateResponse" type="tns:createTagTemplateResponse"></xs:element>
+<xs:element name="createTagType" type="tns:createTagType"></xs:element>
+<xs:element name="createTagTypeByLogin" type="tns:createTagTypeByLogin"></xs:element>
+<xs:element name="createTagTypeByLoginResponse" type="tns:createTagTypeByLoginResponse"></xs:element>
+<xs:element name="createTagTypeResponse" type="tns:createTagTypeResponse"></xs:element>
+<xs:element name="deleteTagFeatureSet" type="tns:deleteTagFeatureSet"></xs:element>
+<xs:element name="deleteTagFeatureSetResponse" type="tns:deleteTagFeatureSetResponse"></xs:element>
+<xs:element name="deleteTagFeatures" type="tns:deleteTagFeatures"></xs:element>
+<xs:element name="deleteTagFeaturesResponse" type="tns:deleteTagFeaturesResponse"></xs:element>
+<xs:element name="deleteTagTemplate" type="tns:deleteTagTemplate"></xs:element>
+<xs:element name="deleteTagTemplateResponse" type="tns:deleteTagTemplateResponse"></xs:element>
+<xs:element name="getAgencyTags" type="tns:getAgencyTags"></xs:element>
+<xs:element name="getAgencyTagsByLogin" type="tns:getAgencyTagsByLogin"></xs:element>
+<xs:element name="getAgencyTagsByLoginResponse" type="tns:getAgencyTagsByLoginResponse"></xs:element>
+<xs:element name="getAgencyTagsResponse" type="tns:getAgencyTagsResponse"></xs:element>
+<xs:element name="getBeaconTagByTemplate" type="tns:getBeaconTagByTemplate"></xs:element>
+<xs:element name="getBeaconTagByTemplateByLogin" type="tns:getBeaconTagByTemplateByLogin"></xs:element>
+<xs:element name="getBeaconTagByTemplateByLoginResponse" type="tns:getBeaconTagByTemplateByLoginResponse"></xs:element>
+<xs:element name="getBeaconTagByTemplateResponse" type="tns:getBeaconTagByTemplateResponse"></xs:element>
+<xs:element name="getTagByTemplate" type="tns:getTagByTemplate"></xs:element>
+<xs:element name="getTagByTemplateByLogin" type="tns:getTagByTemplateByLogin"></xs:element>
+<xs:element name="getTagByTemplateByLoginResponse" type="tns:getTagByTemplateByLoginResponse"></xs:element>
+<xs:element name="getTagByTemplateResponse" type="tns:getTagByTemplateResponse"></xs:element>
+<xs:element name="getTagByTemplate_RDCLICK" type="tns:getTagByTemplate_RDCLICK"></xs:element>
+<xs:element name="getTagByTemplate_RDCLICKByLogin" type="tns:getTagByTemplate_RDCLICKByLogin"></xs:element>
+<xs:element name="getTagByTemplate_RDCLICKByLoginResponse" type="tns:getTagByTemplate_RDCLICKByLoginResponse"></xs:element>
+<xs:element name="getTagByTemplate_RDCLICKResponse" type="tns:getTagByTemplate_RDCLICKResponse"></xs:element>
+<xs:element name="getTagFeatureSetListByEntity" type="tns:getTagFeatureSetListByEntity"></xs:element>
+<xs:element name="getTagFeatureSetListByEntityByLogin" type="tns:getTagFeatureSetListByEntityByLogin"></xs:element>
+<xs:element name="getTagFeatureSetListByEntityByLoginResponse" type="tns:getTagFeatureSetListByEntityByLoginResponse"></xs:element>
+<xs:element name="getTagFeatureSetListByEntityResponse" type="tns:getTagFeatureSetListByEntityResponse"></xs:element>
+<xs:element name="getTagFeatureSetListByTagFeatureId" type="tns:getTagFeatureSetListByTagFeatureId"></xs:element>
+<xs:element name="getTagFeatureSetListByTagFeatureIdByLogin" type="tns:getTagFeatureSetListByTagFeatureIdByLogin"></xs:element>
+<xs:element name="getTagFeatureSetListByTagFeatureIdByLoginResponse" type="tns:getTagFeatureSetListByTagFeatureIdByLoginResponse"></xs:element>
+<xs:element name="getTagFeatureSetListByTagFeatureIdResponse" type="tns:getTagFeatureSetListByTagFeatureIdResponse"></xs:element>
+<xs:element name="getTagFeaturesByExtId" type="tns:getTagFeaturesByExtId"></xs:element>
+<xs:element name="getTagFeaturesByExtIdByLogin" type="tns:getTagFeaturesByExtIdByLogin"></xs:element>
+<xs:element name="getTagFeaturesByExtIdByLoginResponse" type="tns:getTagFeaturesByExtIdByLoginResponse"></xs:element>
+<xs:element name="getTagFeaturesByExtIdResponse" type="tns:getTagFeaturesByExtIdResponse"></xs:element>
+<xs:element name="getTagFeaturesById" type="tns:getTagFeaturesById"></xs:element>
+<xs:element name="getTagFeaturesByIdByLogin" type="tns:getTagFeaturesByIdByLogin"></xs:element>
+<xs:element name="getTagFeaturesByIdByLoginResponse" type="tns:getTagFeaturesByIdByLoginResponse"></xs:element>
+<xs:element name="getTagFeaturesByIdResponse" type="tns:getTagFeaturesByIdResponse"></xs:element>
+<xs:element name="getTagFeaturesList" type="tns:getTagFeaturesList"></xs:element>
+<xs:element name="getTagFeaturesListByLogin" type="tns:getTagFeaturesListByLogin"></xs:element>
+<xs:element name="getTagFeaturesListByLoginResponse" type="tns:getTagFeaturesListByLoginResponse"></xs:element>
+<xs:element name="getTagFeaturesListResponse" type="tns:getTagFeaturesListResponse"></xs:element>
+<xs:element name="getTagTemplateByExtId" type="tns:getTagTemplateByExtId"></xs:element>
+<xs:element name="getTagTemplateByExtIdByLogin" type="tns:getTagTemplateByExtIdByLogin"></xs:element>
+<xs:element name="getTagTemplateByExtIdByLoginResponse" type="tns:getTagTemplateByExtIdByLoginResponse"></xs:element>
+<xs:element name="getTagTemplateByExtIdResponse" type="tns:getTagTemplateByExtIdResponse"></xs:element>
+<xs:element name="getTagTemplateById" type="tns:getTagTemplateById"></xs:element>
+<xs:element name="getTagTemplateByIdByLogin" type="tns:getTagTemplateByIdByLogin"></xs:element>
+<xs:element name="getTagTemplateByIdByLoginResponse" type="tns:getTagTemplateByIdByLoginResponse"></xs:element>
+<xs:element name="getTagTemplateByIdResponse" type="tns:getTagTemplateByIdResponse"></xs:element>
+<xs:element name="getTagTemplateIdList" type="tns:getTagTemplateIdList"></xs:element>
+<xs:element name="getTagTemplateIdListByLogin" type="tns:getTagTemplateIdListByLogin"></xs:element>
+<xs:element name="getTagTemplateIdListByLoginResponse" type="tns:getTagTemplateIdListByLoginResponse"></xs:element>
+<xs:element name="getTagTemplateIdListResponse" type="tns:getTagTemplateIdListResponse"></xs:element>
+<xs:element name="getTagTemplateList" type="tns:getTagTemplateList"></xs:element>
+<xs:element name="getTagTemplateListByLogin" type="tns:getTagTemplateListByLogin"></xs:element>
+<xs:element name="getTagTemplateListByLoginResponse" type="tns:getTagTemplateListByLoginResponse"></xs:element>
+<xs:element name="getTagTemplateListResponse" type="tns:getTagTemplateListResponse"></xs:element>
+<xs:element name="getTagTypeByExtId" type="tns:getTagTypeByExtId"></xs:element>
+<xs:element name="getTagTypeByExtIdByLogin" type="tns:getTagTypeByExtIdByLogin"></xs:element>
+<xs:element name="getTagTypeByExtIdByLoginResponse" type="tns:getTagTypeByExtIdByLoginResponse"></xs:element>
+<xs:element name="getTagTypeByExtIdResponse" type="tns:getTagTypeByExtIdResponse"></xs:element>
+<xs:element name="getTagTypeById" type="tns:getTagTypeById"></xs:element>
+<xs:element name="getTagTypeByIdByLogin" type="tns:getTagTypeByIdByLogin"></xs:element>
+<xs:element name="getTagTypeByIdByLoginResponse" type="tns:getTagTypeByIdByLoginResponse"></xs:element>
+<xs:element name="getTagTypeByIdResponse" type="tns:getTagTypeByIdResponse"></xs:element>
+<xs:element name="getTagTypeList" type="tns:getTagTypeList"></xs:element>
+<xs:element name="getTagTypeListByLogin" type="tns:getTagTypeListByLogin"></xs:element>
+<xs:element name="getTagTypeListByLoginResponse" type="tns:getTagTypeListByLoginResponse"></xs:element>
+<xs:element name="getTagTypeListResponse" type="tns:getTagTypeListResponse"></xs:element>
+<xs:element name="updateTagFeatureSet" type="tns:updateTagFeatureSet"></xs:element>
+<xs:element name="updateTagFeatureSetByLogin" type="tns:updateTagFeatureSetByLogin"></xs:element>
+<xs:element name="updateTagFeatureSetByLoginResponse" type="tns:updateTagFeatureSetByLoginResponse"></xs:element>
+<xs:element name="updateTagFeatureSetResponse" type="tns:updateTagFeatureSetResponse"></xs:element>
+<xs:element name="updateTagFeatures" type="tns:updateTagFeatures"></xs:element>
+<xs:element name="updateTagFeaturesByLogin" type="tns:updateTagFeaturesByLogin"></xs:element>
+<xs:element name="updateTagFeaturesByLoginResponse" type="tns:updateTagFeaturesByLoginResponse"></xs:element>
+<xs:element name="updateTagFeaturesResponse" type="tns:updateTagFeaturesResponse"></xs:element>
+<xs:element name="updateTagTemplate" type="tns:updateTagTemplate"></xs:element>
+<xs:element name="updateTagTemplateByLogin" type="tns:updateTagTemplateByLogin"></xs:element>
+<xs:element name="updateTagTemplateByLoginResponse" type="tns:updateTagTemplateByLoginResponse"></xs:element>
+<xs:element name="updateTagTemplateResponse" type="tns:updateTagTemplateResponse"></xs:element>
+<xs:element name="updateTagType" type="tns:updateTagType"></xs:element>
+<xs:element name="updateTagTypeResponse" type="tns:updateTagTypeResponse"></xs:element>
+<xs:complexType name="getTagTemplateById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByEntityByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByEntityByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteTagFeatureSet">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteTagFeatureSetResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesByExtId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesByExtIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeatures">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeaturesResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesByIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagType">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagTypeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagType">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagTypeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgencyTagsByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg2" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgencyTagsByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagTemplate">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagTemplateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplateByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplateByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesList">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeByExtId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeByExtIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateList">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteTagFeatures">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteTagFeaturesResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeatureSetByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatureSet"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeatureSetByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBeaconTagByTemplateByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBeaconTagByTemplateByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateByExtIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateByExtIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeaturesByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatures"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeaturesByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateIdList">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeaturesByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatures"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeaturesByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByTagFeatureId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByTagFeatureIdResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteTagTemplate">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteTagTemplateResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeatureSet">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagFeatureSetResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagTemplate">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagTemplateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateIdListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateIdListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagTemplateByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagTemplate"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagTemplateByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplate">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateByExtId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateByExtIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeByExtIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeByExtIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgencyTags">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg2" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAgencyTagsResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplate_RDCLICKByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplate_RDCLICKByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplate_RDCLICK">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagByTemplate_RDCLICKResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBeaconTagByTemplate">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getBeaconTagByTemplateResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeatures">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeaturesResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagTemplateByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagTemplate"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateTagTemplateByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeList">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByEntityResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByTagFeatureIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeatureSetListByTagFeatureIdByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTypeByIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagTemplateByIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagTemplate"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeatureSetByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatureSet"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeatureSetByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesByExtIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesByExtIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagTypeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TypeOfTag"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagTypeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TypeOfTag"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeatureSet">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createTagFeatureSetResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TagFeatureSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTagFeaturesListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:TagFeatures"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://TagManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://TagManagement.helios.adtech.de/">
+<xs:complexType name="TagTemplate">
+<xs:sequence>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="html" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="tagTypeId" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TagFeatureSet">
+<xs:sequence>
+<xs:element name="entityId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="entityType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="tagFeatureId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="value" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TagFeatures">
+<xs:sequence>
+<xs:element name="defaultValue" nillable="true" type="xs:string"></xs:element>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="derived" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="placeholder" nillable="true" type="xs:string"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TypeOfTag">
+<xs:sequence>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="purpose" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WSTagAdminException" type="WSTagAdminException"></xs:element>
+<xs:complexType name="WSTagAdminException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://security.lowLevel.helios.webservices.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://security.lowLevel.helios.webservices.adtech.de/">
+<xsd:element name="SecurityException" type="tns:SecurityException"></xsd:element>
+<xsd:complexType name="SecurityException">
+<xsd:sequence></xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+
+  </wsdl:types>
+  <wsdl:message name="getTagTemplateById">
+    <wsdl:part element="tns:getTagTemplateById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesById">
+    <wsdl:part element="tns:getTagFeaturesById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgencyTagsResponse">
+    <wsdl:part element="tns:getAgencyTagsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeatureSetResponse">
+    <wsdl:part element="tns:updateTagFeatureSetResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeList">
+    <wsdl:part element="tns:getTagTypeList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeaturesResponse">
+    <wsdl:part element="tns:createTagFeaturesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateByIdResponse">
+    <wsdl:part element="tns:getTagTemplateByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgencyTagsByLoginResponse">
+    <wsdl:part element="tns:getAgencyTagsByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplateByLogin">
+    <wsdl:part element="tns:getTagByTemplateByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplate_RDCLICKResponse">
+    <wsdl:part element="tns:getTagByTemplate_RDCLICKResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeatureSetByLoginResponse">
+    <wsdl:part element="tns:createTagFeatureSetByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SecurityException">
+    <wsdl:part element="ns2:SecurityException" name="SecurityException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateByIdByLoginResponse">
+    <wsdl:part element="tns:getTagTemplateByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTagFeatures">
+    <wsdl:part element="tns:deleteTagFeatures" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByTagFeatureIdByLogin">
+    <wsdl:part element="tns:getTagFeatureSetListByTagFeatureIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesByExtId">
+    <wsdl:part element="tns:getTagFeaturesByExtId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByEntityByLoginResponse">
+    <wsdl:part element="tns:getTagFeatureSetListByEntityByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeByIdByLoginResponse">
+    <wsdl:part element="tns:getTagTypeByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagTemplateResponse">
+    <wsdl:part element="tns:updateTagTemplateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeListByLoginResponse">
+    <wsdl:part element="tns:getTagTypeListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesByExtIdByLoginResponse">
+    <wsdl:part element="tns:getTagFeaturesByExtIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeaturesByLogin">
+    <wsdl:part element="tns:updateTagFeaturesByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateByExtId">
+    <wsdl:part element="tns:getTagTemplateByExtId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeListByLogin">
+    <wsdl:part element="tns:getTagTypeListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeByIdResponse">
+    <wsdl:part element="tns:getTagTypeByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateListResponse">
+    <wsdl:part element="tns:getTagTemplateListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagTemplateByLogin">
+    <wsdl:part element="tns:createTagTemplateByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeaturesByLoginResponse">
+    <wsdl:part element="tns:createTagFeaturesByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeatureSetByLoginResponse">
+    <wsdl:part element="tns:updateTagFeatureSetByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTagFeaturesResponse">
+    <wsdl:part element="tns:deleteTagFeaturesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplate">
+    <wsdl:part element="tns:getTagByTemplate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplate_RDCLICK">
+    <wsdl:part element="tns:getTagByTemplate_RDCLICK" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesByExtIdResponse">
+    <wsdl:part element="tns:getTagFeaturesByExtIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagTypeResponse">
+    <wsdl:part element="tns:updateTagTypeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByTagFeatureIdByLoginResponse">
+    <wsdl:part element="tns:getTagFeatureSetListByTagFeatureIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagTemplate">
+    <wsdl:part element="tns:createTagTemplate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByTagFeatureId">
+    <wsdl:part element="tns:getTagFeatureSetListByTagFeatureId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeaconTagByTemplateByLoginResponse">
+    <wsdl:part element="tns:getBeaconTagByTemplateByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeListResponse">
+    <wsdl:part element="tns:getTagTypeListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesByIdByLogin">
+    <wsdl:part element="tns:getTagFeaturesByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeaconTagByTemplate">
+    <wsdl:part element="tns:getBeaconTagByTemplate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgencyTagsByLogin">
+    <wsdl:part element="tns:getAgencyTagsByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTagFeatureSet">
+    <wsdl:part element="tns:deleteTagFeatureSet" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeatureSet">
+    <wsdl:part element="tns:updateTagFeatureSet" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateByExtIdResponse">
+    <wsdl:part element="tns:getTagTemplateByExtIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTagFeatureSetResponse">
+    <wsdl:part element="tns:deleteTagFeatureSetResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeaturesResponse">
+    <wsdl:part element="tns:updateTagFeaturesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagTypeResponse">
+    <wsdl:part element="tns:createTagTypeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeByExtIdResponse">
+    <wsdl:part element="tns:getTagTypeByExtIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateListByLoginResponse">
+    <wsdl:part element="tns:getTagTemplateListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeaturesByLogin">
+    <wsdl:part element="tns:createTagFeaturesByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplateByLoginResponse">
+    <wsdl:part element="tns:getTagByTemplateByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeaconTagByTemplateResponse">
+    <wsdl:part element="tns:getBeaconTagByTemplateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBeaconTagByTemplateByLogin">
+    <wsdl:part element="tns:getBeaconTagByTemplateByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeByIdByLogin">
+    <wsdl:part element="tns:getTagTypeByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSTagAdminException">
+    <wsdl:part element="ns1:WSTagAdminException" name="WSTagAdminException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTagTemplate">
+    <wsdl:part element="tns:deleteTagTemplate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplate_RDCLICKByLogin">
+    <wsdl:part element="tns:getTagByTemplate_RDCLICKByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAgencyTags">
+    <wsdl:part element="tns:getAgencyTags" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesList">
+    <wsdl:part element="tns:getTagFeaturesList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagTemplateByLoginResponse">
+    <wsdl:part element="tns:createTagTemplateByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagTemplate">
+    <wsdl:part element="tns:updateTagTemplate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagTemplateByLoginResponse">
+    <wsdl:part element="tns:updateTagTemplateByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateByExtIdByLogin">
+    <wsdl:part element="tns:getTagTemplateByExtIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateByIdByLogin">
+    <wsdl:part element="tns:getTagTemplateByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeByExtIdByLoginResponse">
+    <wsdl:part element="tns:getTagTypeByExtIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateIdListByLogin">
+    <wsdl:part element="tns:getTagTemplateIdListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeatureSetResponse">
+    <wsdl:part element="tns:createTagFeatureSetResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTagTemplateResponse">
+    <wsdl:part element="tns:deleteTagTemplateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateIdList">
+    <wsdl:part element="tns:getTagTemplateIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateList">
+    <wsdl:part element="tns:getTagTemplateList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagTemplateResponse">
+    <wsdl:part element="tns:createTagTemplateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateListByLogin">
+    <wsdl:part element="tns:getTagTemplateListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesByExtIdByLogin">
+    <wsdl:part element="tns:getTagFeaturesByExtIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateIdListResponse">
+    <wsdl:part element="tns:getTagTemplateIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesByIdResponse">
+    <wsdl:part element="tns:getTagFeaturesByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByEntityResponse">
+    <wsdl:part element="tns:getTagFeatureSetListByEntityResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByTagFeatureIdResponse">
+    <wsdl:part element="tns:getTagFeatureSetListByTagFeatureIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeatureSetByLogin">
+    <wsdl:part element="tns:updateTagFeatureSetByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateByExtIdByLoginResponse">
+    <wsdl:part element="tns:getTagTemplateByExtIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplate_RDCLICKByLoginResponse">
+    <wsdl:part element="tns:getTagByTemplate_RDCLICKByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeatures">
+    <wsdl:part element="tns:createTagFeatures" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByEntity">
+    <wsdl:part element="tns:getTagFeatureSetListByEntity" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeByExtIdByLogin">
+    <wsdl:part element="tns:getTagTypeByExtIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagTemplateByLogin">
+    <wsdl:part element="tns:updateTagTemplateByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesListByLogin">
+    <wsdl:part element="tns:getTagFeaturesListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagType">
+    <wsdl:part element="tns:createTagType" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagType">
+    <wsdl:part element="tns:updateTagType" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeatureSet">
+    <wsdl:part element="tns:createTagFeatureSet" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeByExtId">
+    <wsdl:part element="tns:getTagTypeByExtId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagByTemplateResponse">
+    <wsdl:part element="tns:getTagByTemplateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesListResponse">
+    <wsdl:part element="tns:getTagFeaturesListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeaturesByLoginResponse">
+    <wsdl:part element="tns:updateTagFeaturesByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesListByLoginResponse">
+    <wsdl:part element="tns:getTagFeaturesListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTypeById">
+    <wsdl:part element="tns:getTagTypeById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagTypeByLogin">
+    <wsdl:part element="tns:createTagTypeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagTypeByLoginResponse">
+    <wsdl:part element="tns:createTagTypeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeatureSetListByEntityByLogin">
+    <wsdl:part element="tns:getTagFeatureSetListByEntityByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTagFeatureSetByLogin">
+    <wsdl:part element="tns:createTagFeatureSetByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagTemplateIdListByLoginResponse">
+    <wsdl:part element="tns:getTagTemplateIdListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTagFeatures">
+    <wsdl:part element="tns:updateTagFeatures" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTagFeaturesByIdByLoginResponse">
+    <wsdl:part element="tns:getTagFeaturesByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSTagAdmin_v3">
+    <wsdl:operation name="getTagTemplateById">
+      <wsdl:input message="tns:getTagTemplateById" name="getTagTemplateById"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateByIdResponse" name="getTagTemplateByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByEntityByLogin">
+      <wsdl:input message="tns:getTagFeatureSetListByEntityByLogin" name="getTagFeatureSetListByEntityByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagFeatureSetListByEntityByLoginResponse" name="getTagFeatureSetListByEntityByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTagFeatureSet">
+      <wsdl:input message="tns:deleteTagFeatureSet" name="deleteTagFeatureSet"></wsdl:input>
+      <wsdl:output message="tns:deleteTagFeatureSetResponse" name="deleteTagFeatureSetResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesByExtId">
+      <wsdl:input message="tns:getTagFeaturesByExtId" name="getTagFeaturesByExtId"></wsdl:input>
+      <wsdl:output message="tns:getTagFeaturesByExtIdResponse" name="getTagFeaturesByExtIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeatures">
+      <wsdl:input message="tns:updateTagFeatures" name="updateTagFeatures"></wsdl:input>
+      <wsdl:output message="tns:updateTagFeaturesResponse" name="updateTagFeaturesResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesByIdByLogin">
+      <wsdl:input message="tns:getTagFeaturesByIdByLogin" name="getTagFeaturesByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagFeaturesByIdByLoginResponse" name="getTagFeaturesByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagType">
+      <wsdl:input message="tns:createTagType" name="createTagType"></wsdl:input>
+      <wsdl:output message="tns:createTagTypeResponse" name="createTagTypeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagType">
+      <wsdl:input message="tns:updateTagType" name="updateTagType"></wsdl:input>
+      <wsdl:output message="tns:updateTagTypeResponse" name="updateTagTypeResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencyTagsByLogin">
+      <wsdl:input message="tns:getAgencyTagsByLogin" name="getAgencyTagsByLogin"></wsdl:input>
+      <wsdl:output message="tns:getAgencyTagsByLoginResponse" name="getAgencyTagsByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagTemplate">
+      <wsdl:input message="tns:updateTagTemplate" name="updateTagTemplate"></wsdl:input>
+      <wsdl:output message="tns:updateTagTemplateResponse" name="updateTagTemplateResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplateByLogin">
+      <wsdl:input message="tns:getTagByTemplateByLogin" name="getTagByTemplateByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagByTemplateByLoginResponse" name="getTagByTemplateByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesList">
+      <wsdl:input message="tns:getTagFeaturesList" name="getTagFeaturesList"></wsdl:input>
+      <wsdl:output message="tns:getTagFeaturesListResponse" name="getTagFeaturesListResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeByExtId">
+      <wsdl:input message="tns:getTagTypeByExtId" name="getTagTypeByExtId"></wsdl:input>
+      <wsdl:output message="tns:getTagTypeByExtIdResponse" name="getTagTypeByExtIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateList">
+      <wsdl:input message="tns:getTagTemplateList" name="getTagTemplateList"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateListResponse" name="getTagTemplateListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTagFeatures">
+      <wsdl:input message="tns:deleteTagFeatures" name="deleteTagFeatures"></wsdl:input>
+      <wsdl:output message="tns:deleteTagFeaturesResponse" name="deleteTagFeaturesResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeatureSetByLogin">
+      <wsdl:input message="tns:updateTagFeatureSetByLogin" name="updateTagFeatureSetByLogin"></wsdl:input>
+      <wsdl:output message="tns:updateTagFeatureSetByLoginResponse" name="updateTagFeatureSetByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBeaconTagByTemplateByLogin">
+      <wsdl:input message="tns:getBeaconTagByTemplateByLogin" name="getBeaconTagByTemplateByLogin"></wsdl:input>
+      <wsdl:output message="tns:getBeaconTagByTemplateByLoginResponse" name="getBeaconTagByTemplateByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateByExtIdByLogin">
+      <wsdl:input message="tns:getTagTemplateByExtIdByLogin" name="getTagTemplateByExtIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateByExtIdByLoginResponse" name="getTagTemplateByExtIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeaturesByLogin">
+      <wsdl:input message="tns:createTagFeaturesByLogin" name="createTagFeaturesByLogin"></wsdl:input>
+      <wsdl:output message="tns:createTagFeaturesByLoginResponse" name="createTagFeaturesByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateListByLogin">
+      <wsdl:input message="tns:getTagTemplateListByLogin" name="getTagTemplateListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateListByLoginResponse" name="getTagTemplateListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateIdList">
+      <wsdl:input message="tns:getTagTemplateIdList" name="getTagTemplateIdList"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateIdListResponse" name="getTagTemplateIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeaturesByLogin">
+      <wsdl:input message="tns:updateTagFeaturesByLogin" name="updateTagFeaturesByLogin"></wsdl:input>
+      <wsdl:output message="tns:updateTagFeaturesByLoginResponse" name="updateTagFeaturesByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByTagFeatureId">
+      <wsdl:input message="tns:getTagFeatureSetListByTagFeatureId" name="getTagFeatureSetListByTagFeatureId"></wsdl:input>
+      <wsdl:output message="tns:getTagFeatureSetListByTagFeatureIdResponse" name="getTagFeatureSetListByTagFeatureIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTagTemplate">
+      <wsdl:input message="tns:deleteTagTemplate" name="deleteTagTemplate"></wsdl:input>
+      <wsdl:output message="tns:deleteTagTemplateResponse" name="deleteTagTemplateResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeatureSet">
+      <wsdl:input message="tns:updateTagFeatureSet" name="updateTagFeatureSet"></wsdl:input>
+      <wsdl:output message="tns:updateTagFeatureSetResponse" name="updateTagFeatureSetResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagTemplate">
+      <wsdl:input message="tns:createTagTemplate" name="createTagTemplate"></wsdl:input>
+      <wsdl:output message="tns:createTagTemplateResponse" name="createTagTemplateResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateIdListByLogin">
+      <wsdl:input message="tns:getTagTemplateIdListByLogin" name="getTagTemplateIdListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateIdListByLoginResponse" name="getTagTemplateIdListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesById">
+      <wsdl:input message="tns:getTagFeaturesById" name="getTagFeaturesById"></wsdl:input>
+      <wsdl:output message="tns:getTagFeaturesByIdResponse" name="getTagFeaturesByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagTemplateByLogin">
+      <wsdl:input message="tns:createTagTemplateByLogin" name="createTagTemplateByLogin"></wsdl:input>
+      <wsdl:output message="tns:createTagTemplateByLoginResponse" name="createTagTemplateByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplate">
+      <wsdl:input message="tns:getTagByTemplate" name="getTagByTemplate"></wsdl:input>
+      <wsdl:output message="tns:getTagByTemplateResponse" name="getTagByTemplateResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateByExtId">
+      <wsdl:input message="tns:getTagTemplateByExtId" name="getTagTemplateByExtId"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateByExtIdResponse" name="getTagTemplateByExtIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeById">
+      <wsdl:input message="tns:getTagTypeById" name="getTagTypeById"></wsdl:input>
+      <wsdl:output message="tns:getTagTypeByIdResponse" name="getTagTypeByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeByExtIdByLogin">
+      <wsdl:input message="tns:getTagTypeByExtIdByLogin" name="getTagTypeByExtIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagTypeByExtIdByLoginResponse" name="getTagTypeByExtIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencyTags">
+      <wsdl:input message="tns:getAgencyTags" name="getAgencyTags"></wsdl:input>
+      <wsdl:output message="tns:getAgencyTagsResponse" name="getAgencyTagsResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplate_RDCLICKByLogin">
+      <wsdl:input message="tns:getTagByTemplate_RDCLICKByLogin" name="getTagByTemplate_RDCLICKByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagByTemplate_RDCLICKByLoginResponse" name="getTagByTemplate_RDCLICKByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeListByLogin">
+      <wsdl:input message="tns:getTagTypeListByLogin" name="getTagTypeListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagTypeListByLoginResponse" name="getTagTypeListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplate_RDCLICK">
+      <wsdl:input message="tns:getTagByTemplate_RDCLICK" name="getTagByTemplate_RDCLICK"></wsdl:input>
+      <wsdl:output message="tns:getTagByTemplate_RDCLICKResponse" name="getTagByTemplate_RDCLICKResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBeaconTagByTemplate">
+      <wsdl:input message="tns:getBeaconTagByTemplate" name="getBeaconTagByTemplate"></wsdl:input>
+      <wsdl:output message="tns:getBeaconTagByTemplateResponse" name="getBeaconTagByTemplateResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeatures">
+      <wsdl:input message="tns:createTagFeatures" name="createTagFeatures"></wsdl:input>
+      <wsdl:output message="tns:createTagFeaturesResponse" name="createTagFeaturesResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagTemplateByLogin">
+      <wsdl:input message="tns:updateTagTemplateByLogin" name="updateTagTemplateByLogin"></wsdl:input>
+      <wsdl:output message="tns:updateTagTemplateByLoginResponse" name="updateTagTemplateByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeList">
+      <wsdl:input message="tns:getTagTypeList" name="getTagTypeList"></wsdl:input>
+      <wsdl:output message="tns:getTagTypeListResponse" name="getTagTypeListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByEntity">
+      <wsdl:input message="tns:getTagFeatureSetListByEntity" name="getTagFeatureSetListByEntity"></wsdl:input>
+      <wsdl:output message="tns:getTagFeatureSetListByEntityResponse" name="getTagFeatureSetListByEntityResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByTagFeatureIdByLogin">
+      <wsdl:input message="tns:getTagFeatureSetListByTagFeatureIdByLogin" name="getTagFeatureSetListByTagFeatureIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagFeatureSetListByTagFeatureIdByLoginResponse" name="getTagFeatureSetListByTagFeatureIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeByIdByLogin">
+      <wsdl:input message="tns:getTagTypeByIdByLogin" name="getTagTypeByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagTypeByIdByLoginResponse" name="getTagTypeByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateByIdByLogin">
+      <wsdl:input message="tns:getTagTemplateByIdByLogin" name="getTagTemplateByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagTemplateByIdByLoginResponse" name="getTagTemplateByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeatureSetByLogin">
+      <wsdl:input message="tns:createTagFeatureSetByLogin" name="createTagFeatureSetByLogin"></wsdl:input>
+      <wsdl:output message="tns:createTagFeatureSetByLoginResponse" name="createTagFeatureSetByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesByExtIdByLogin">
+      <wsdl:input message="tns:getTagFeaturesByExtIdByLogin" name="getTagFeaturesByExtIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagFeaturesByExtIdByLoginResponse" name="getTagFeaturesByExtIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagTypeByLogin">
+      <wsdl:input message="tns:createTagTypeByLogin" name="createTagTypeByLogin"></wsdl:input>
+      <wsdl:output message="tns:createTagTypeByLoginResponse" name="createTagTypeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeatureSet">
+      <wsdl:input message="tns:createTagFeatureSet" name="createTagFeatureSet"></wsdl:input>
+      <wsdl:output message="tns:createTagFeatureSetResponse" name="createTagFeatureSetResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSTagAdminException" name="WSTagAdminException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesListByLogin">
+      <wsdl:input message="tns:getTagFeaturesListByLogin" name="getTagFeaturesListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getTagFeaturesListByLoginResponse" name="getTagFeaturesListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSTagAdmin_v3ServiceSoapBinding" type="tns:WSTagAdmin_v3">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getTagTemplateById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByEntityByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeatureSetListByEntityByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeatureSetListByEntityByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTagFeatureSet">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="deleteTagFeatureSet">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="deleteTagFeatureSetResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesByExtId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeaturesByExtId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeaturesByExtIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeatures">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateTagFeatures">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateTagFeaturesResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeaturesByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeaturesByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagType">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagType">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagTypeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagType">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateTagType">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateTagTypeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencyTagsByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getAgencyTagsByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getAgencyTagsByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagTemplate">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateTagTemplate">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateTagTemplateResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplateByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagByTemplateByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagByTemplateByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeaturesList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeaturesListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeByExtId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTypeByExtId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTypeByExtIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTagFeatures">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="deleteTagFeatures">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="deleteTagFeaturesResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBeaconTagByTemplateByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getBeaconTagByTemplateByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getBeaconTagByTemplateByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeatureSetByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateTagFeatureSetByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateTagFeatureSetByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateByExtIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateByExtIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateByExtIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeaturesByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagFeaturesByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagFeaturesByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeaturesByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateTagFeaturesByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateTagFeaturesByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByTagFeatureId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeatureSetListByTagFeatureId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeatureSetListByTagFeatureIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTagTemplate">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="deleteTagTemplate">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="deleteTagTemplateResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagFeatureSet">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateTagFeatureSet">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateTagFeatureSetResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagTemplate">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagTemplate">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagTemplateResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateIdListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateIdListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateIdListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagTemplateByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagTemplateByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagTemplateByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeaturesById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeaturesByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplate">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagByTemplate">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagByTemplateResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateByExtId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateByExtId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateByExtIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTypeById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTypeByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAgencyTags">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getAgencyTags">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getAgencyTagsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeByExtIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTypeByExtIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTypeByExtIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplate_RDCLICKByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagByTemplate_RDCLICKByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagByTemplate_RDCLICKByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagByTemplate_RDCLICK">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagByTemplate_RDCLICK">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagByTemplate_RDCLICKResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTypeListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTypeListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBeaconTagByTemplate">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getBeaconTagByTemplate">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getBeaconTagByTemplateResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeatures">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagFeatures">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagFeaturesResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTagTemplateByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateTagTemplateByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateTagTemplateByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTypeList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTypeListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByTagFeatureIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeatureSetListByTagFeatureIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeatureSetListByTagFeatureIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeatureSetListByEntity">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeatureSetListByEntity">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeatureSetListByEntityResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTemplateByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTemplateByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTemplateByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagTypeByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagTypeByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagTypeByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeatureSetByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagFeatureSetByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagFeatureSetByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagTypeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagTypeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagTypeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesByExtIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeaturesByExtIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeaturesByExtIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTagFeatureSet">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createTagFeatureSet">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createTagFeatureSetResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSTagAdminException">
+        <soap:fault name="WSTagAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTagFeaturesListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTagFeaturesListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTagFeaturesListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSTagAdmin_v3Service">
+    <wsdl:port binding="tns:WSTagAdmin_v3ServiceSoapBinding" name="WSTagAdmin_v3Port">
+      <soap:address location="http://ws-api.adtech.de/WSTagAdmin_v3"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

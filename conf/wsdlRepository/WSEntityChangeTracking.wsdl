@@ -1,0 +1,268 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://EntityChangeTracking.lowLevel.helios.webservices.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WSEntityChangeTrackingService" targetNamespace="http://EntityChangeTracking.lowLevel.helios.webservices.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/" version="1.0">
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AttributeOperatorValueExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence>
+<xs:element name="attribute" nillable="true" type="xs:string"></xs:element>
+<xs:element name="operator" nillable="true" type="xs:string"></xs:element>
+<xs:element name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://EntityChangeTracking.lowLevel.helios.webservices.adtech.de/" xmlns:ns1="http://helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://EntityChangeTracking.lowLevel.helios.webservices.adtech.de/">
+<xs:import namespace="http://helios.adtech.de/"></xs:import>
+<xs:element name="getAE" type="tns:getAE"></xs:element>
+<xs:element name="getAEResponse" type="tns:getAEResponse"></xs:element>
+<xs:element name="getAOVE" type="tns:getAOVE"></xs:element>
+<xs:element name="getAOVEResponse" type="tns:getAOVEResponse"></xs:element>
+<xs:element name="getChangedEntityIds" type="tns:getChangedEntityIds"></xs:element>
+<xs:element name="getChangedEntityIdsByLogin" type="tns:getChangedEntityIdsByLogin"></xs:element>
+<xs:element name="getChangedEntityIdsByLoginResponse" type="tns:getChangedEntityIdsByLoginResponse"></xs:element>
+<xs:element name="getChangedEntityIdsResponse" type="tns:getChangedEntityIdsResponse"></xs:element>
+<xs:element name="getNE" type="tns:getNE"></xs:element>
+<xs:element name="getNEResponse" type="tns:getNEResponse"></xs:element>
+<xs:element name="getOE" type="tns:getOE"></xs:element>
+<xs:element name="getOEResponse" type="tns:getOEResponse"></xs:element>
+<xs:complexType name="getOE">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getOEResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:ORExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getChangedEntityIds">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:dateTime"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getChangedEntityIdsResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAOVE">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAOVEResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:AttributeOperatorValueExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getNE">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getNEResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:NOTExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getChangedEntityIdsByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:dateTime"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getChangedEntityIdsByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAE">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAEResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:ANDExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WSEntityChangeTrackingException" type="tns:WSEntityChangeTrackingException"></xs:element>
+<xs:complexType name="WSEntityChangeTrackingException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="getChangedEntityIdsResponse">
+    <wsdl:part element="tns:getChangedEntityIdsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAOVEResponse">
+    <wsdl:part element="tns:getAOVEResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getChangedEntityIdsByLoginResponse">
+    <wsdl:part element="tns:getChangedEntityIdsByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOEResponse">
+    <wsdl:part element="tns:getOEResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAE">
+    <wsdl:part element="tns:getAE" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSEntityChangeTrackingException">
+    <wsdl:part element="tns:WSEntityChangeTrackingException" name="WSEntityChangeTrackingException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNEResponse">
+    <wsdl:part element="tns:getNEResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAOVE">
+    <wsdl:part element="tns:getAOVE" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNE">
+    <wsdl:part element="tns:getNE" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getChangedEntityIds">
+    <wsdl:part element="tns:getChangedEntityIds" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOE">
+    <wsdl:part element="tns:getOE" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAEResponse">
+    <wsdl:part element="tns:getAEResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getChangedEntityIdsByLogin">
+    <wsdl:part element="tns:getChangedEntityIdsByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSEntityChangeTracking">
+    <wsdl:operation name="getOE">
+      <wsdl:input message="tns:getOE" name="getOE"></wsdl:input>
+      <wsdl:output message="tns:getOEResponse" name="getOEResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChangedEntityIds">
+      <wsdl:input message="tns:getChangedEntityIds" name="getChangedEntityIds"></wsdl:input>
+      <wsdl:output message="tns:getChangedEntityIdsResponse" name="getChangedEntityIdsResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityChangeTrackingException" name="WSEntityChangeTrackingException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAOVE">
+      <wsdl:input message="tns:getAOVE" name="getAOVE"></wsdl:input>
+      <wsdl:output message="tns:getAOVEResponse" name="getAOVEResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNE">
+      <wsdl:input message="tns:getNE" name="getNE"></wsdl:input>
+      <wsdl:output message="tns:getNEResponse" name="getNEResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChangedEntityIdsByLogin">
+      <wsdl:input message="tns:getChangedEntityIdsByLogin" name="getChangedEntityIdsByLogin"></wsdl:input>
+      <wsdl:output message="tns:getChangedEntityIdsByLoginResponse" name="getChangedEntityIdsByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityChangeTrackingException" name="WSEntityChangeTrackingException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAE">
+      <wsdl:input message="tns:getAE" name="getAE"></wsdl:input>
+      <wsdl:output message="tns:getAEResponse" name="getAEResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSEntityChangeTrackingServiceSoapBinding" type="tns:WSEntityChangeTracking">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getChangedEntityIds">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getChangedEntityIds">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getChangedEntityIdsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityChangeTrackingException">
+        <soap:fault name="WSEntityChangeTrackingException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOE">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getOE">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getOEResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAOVE">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getAOVE">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getAOVEResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNE">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getNE">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getNEResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getChangedEntityIdsByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getChangedEntityIdsByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getChangedEntityIdsByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityChangeTrackingException">
+        <soap:fault name="WSEntityChangeTrackingException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAE">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getAE">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getAEResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSEntityChangeTrackingService">
+    <wsdl:port binding="tns:WSEntityChangeTrackingServiceSoapBinding" name="WSEntityChangeTrackingPort">
+      <soap:address location="http://ws-api.adtech.de/WSEntityChangeTracking"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    adtech-api-client (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  adtech-api-client!
+
+BUNDLED WITH
+   1.11.2

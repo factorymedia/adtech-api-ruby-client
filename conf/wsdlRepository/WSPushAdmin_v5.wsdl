@@ -1,0 +1,1931 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://PushManagement_v5.lowLevel.helios.webservices.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns4="http://schemas.xmlsoap.org/soap/http" xmlns:ns3="http://PushManagement.helios.adtech.de/" xmlns:ns2="http://security.lowLevel.helios.webservices.adtech.de/" xmlns:ns1="http://helios.adtech.de/" name="WSPushAdmin_v5Service" targetNamespace="http://PushManagement_v5.lowLevel.helios.webservices.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/">
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="HeliosPersistenceException" type="tns:HeliosPersistenceException"></xs:element>
+<xs:complexType name="HeliosPersistenceException">
+<xs:sequence>
+<xs:element name="errorCause" nillable="true" type="xs:int"></xs:element>
+<xs:element name="errorLevel" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://UserManagement.helios.adtech.de/" version="1.0">
+<xs:complexType name="ContactData">
+<xs:sequence>
+<xs:element name="customerTerritory" nillable="true" type="xs:string"></xs:element>
+<xs:element name="email" nillable="true" type="xs:string"></xs:element>
+<xs:element name="fax" nillable="true" type="xs:string"></xs:element>
+<xs:element name="firstName" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastName" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mobile" nillable="true" type="xs:string"></xs:element>
+<xs:element name="phone" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://PushManagement_v5.lowLevel.helios.webservices.adtech.de/" xmlns:ns3="http://UserManagement.helios.adtech.de/" xmlns:ns2="http://PushManagement.helios.adtech.de/" xmlns:ns1="http://CampaignManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://PushManagement_v5.lowLevel.helios.webservices.adtech.de/">
+<xs:import namespace="http://CampaignManagement.helios.adtech.de/"></xs:import>
+<xs:import namespace="http://PushManagement.helios.adtech.de/"></xs:import>
+<xs:import namespace="http://UserManagement.helios.adtech.de/"></xs:import>
+<xs:element name="gagt" type="tns:gagt"></xs:element>
+<xs:element name="gagtResponse" type="tns:gagtResponse"></xs:element>
+<xs:element name="gctc" type="tns:gctc"></xs:element>
+<xs:element name="gctcResponse" type="tns:gctcResponse"></xs:element>
+<xs:element name="gdc" type="tns:gdc"></xs:element>
+<xs:element name="gdcResponse" type="tns:gdcResponse"></xs:element>
+<xs:element name="gdg" type="tns:gdg"></xs:element>
+<xs:element name="gdgResponse" type="tns:gdgResponse"></xs:element>
+<xs:element name="gdr" type="tns:gdr"></xs:element>
+<xs:element name="gdrResponse" type="tns:gdrResponse"></xs:element>
+<xs:element name="getCFC" type="tns:getCFC"></xs:element>
+<xs:element name="getCFCResponse" type="tns:getCFCResponse"></xs:element>
+<xs:element name="getCFS" type="tns:getCFS"></xs:element>
+<xs:element name="getCFSResponse" type="tns:getCFSResponse"></xs:element>
+<xs:element name="getPushQueueEntryPriorityList" type="tns:getPushQueueEntryPriorityList"></xs:element>
+<xs:element name="getPushQueueEntryPriorityListByLogin" type="tns:getPushQueueEntryPriorityListByLogin"></xs:element>
+<xs:element name="getPushQueueEntryPriorityListByLoginResponse" type="tns:getPushQueueEntryPriorityListByLoginResponse"></xs:element>
+<xs:element name="getPushQueueEntryPriorityListResponse" type="tns:getPushQueueEntryPriorityListResponse"></xs:element>
+<xs:element name="gfc" type="tns:gfc"></xs:element>
+<xs:element name="gfcResponse" type="tns:gfcResponse"></xs:element>
+<xs:element name="goc" type="tns:goc"></xs:element>
+<xs:element name="gocResponse" type="tns:gocResponse"></xs:element>
+<xs:element name="gpc" type="tns:gpc"></xs:element>
+<xs:element name="gpcResponse" type="tns:gpcResponse"></xs:element>
+<xs:element name="gpcb" type="tns:gpcb"></xs:element>
+<xs:element name="gpcbResponse" type="tns:gpcbResponse"></xs:element>
+<xs:element name="gprc" type="tns:gprc"></xs:element>
+<xs:element name="gprcResponse" type="tns:gprcResponse"></xs:element>
+<xs:element name="gtd" type="tns:gtd"></xs:element>
+<xs:element name="gtdResponse" type="tns:gtdResponse"></xs:element>
+<xs:element name="gtr" type="tns:gtr"></xs:element>
+<xs:element name="gtrResponse" type="tns:gtrResponse"></xs:element>
+<xs:element name="gts" type="tns:gts"></xs:element>
+<xs:element name="gtsResponse" type="tns:gtsResponse"></xs:element>
+<xs:element name="gw" type="tns:gw"></xs:element>
+<xs:element name="gwResponse" type="tns:gwResponse"></xs:element>
+<xs:element name="holdCampaignById" type="tns:holdCampaignById"></xs:element>
+<xs:element name="holdCampaignByIdByLogin" type="tns:holdCampaignByIdByLogin"></xs:element>
+<xs:element name="holdCampaignByIdByLoginResponse" type="tns:holdCampaignByIdByLoginResponse"></xs:element>
+<xs:element name="holdCampaignByIdResponse" type="tns:holdCampaignByIdResponse"></xs:element>
+<xs:element name="holdCampaigns" type="tns:holdCampaigns"></xs:element>
+<xs:element name="holdCampaignsResponse" type="tns:holdCampaignsResponse"></xs:element>
+<xs:element name="holdMasterCampaignById" type="tns:holdMasterCampaignById"></xs:element>
+<xs:element name="holdMasterCampaignByIdByLogin" type="tns:holdMasterCampaignByIdByLogin"></xs:element>
+<xs:element name="holdMasterCampaignByIdByLoginResponse" type="tns:holdMasterCampaignByIdByLoginResponse"></xs:element>
+<xs:element name="holdMasterCampaignByIdResponse" type="tns:holdMasterCampaignByIdResponse"></xs:element>
+<xs:element name="startCampaignById" type="tns:startCampaignById"></xs:element>
+<xs:element name="startCampaignByIdAt" type="tns:startCampaignByIdAt"></xs:element>
+<xs:element name="startCampaignByIdAtByLogin" type="tns:startCampaignByIdAtByLogin"></xs:element>
+<xs:element name="startCampaignByIdAtByLogin1" type="tns:startCampaignByIdAtByLogin1"></xs:element>
+<xs:element name="startCampaignByIdAtByLogin1Response" type="tns:startCampaignByIdAtByLogin1Response"></xs:element>
+<xs:element name="startCampaignByIdAtByLoginResponse" type="tns:startCampaignByIdAtByLoginResponse"></xs:element>
+<xs:element name="startCampaignByIdAtResponse" type="tns:startCampaignByIdAtResponse"></xs:element>
+<xs:element name="startCampaignByIdLight" type="tns:startCampaignByIdLight"></xs:element>
+<xs:element name="startCampaignByIdLightByLogin" type="tns:startCampaignByIdLightByLogin"></xs:element>
+<xs:element name="startCampaignByIdLightByLoginResponse" type="tns:startCampaignByIdLightByLoginResponse"></xs:element>
+<xs:element name="startCampaignByIdLightResponse" type="tns:startCampaignByIdLightResponse"></xs:element>
+<xs:element name="startCampaignByIdResponse" type="tns:startCampaignByIdResponse"></xs:element>
+<xs:element name="startCampaignsByIdLight" type="tns:startCampaignsByIdLight"></xs:element>
+<xs:element name="startCampaignsByIdLightByLogin" type="tns:startCampaignsByIdLightByLogin"></xs:element>
+<xs:element name="startCampaignsByIdLightByLoginResponse" type="tns:startCampaignsByIdLightByLoginResponse"></xs:element>
+<xs:element name="startCampaignsByIdLightResponse" type="tns:startCampaignsByIdLightResponse"></xs:element>
+<xs:element name="startCampaignsLight" type="tns:startCampaignsLight"></xs:element>
+<xs:element name="startCampaignsLightResponse" type="tns:startCampaignsLightResponse"></xs:element>
+<xs:element name="startCampaignsRegular" type="tns:startCampaignsRegular"></xs:element>
+<xs:element name="startCampaignsRegularResponse" type="tns:startCampaignsRegularResponse"></xs:element>
+<xs:element name="startMasterCampaignById" type="tns:startMasterCampaignById"></xs:element>
+<xs:element name="startMasterCampaignByIdByLogin" type="tns:startMasterCampaignByIdByLogin"></xs:element>
+<xs:element name="startMasterCampaignByIdByLoginResponse" type="tns:startMasterCampaignByIdByLoginResponse"></xs:element>
+<xs:element name="startMasterCampaignByIdResponse" type="tns:startMasterCampaignByIdResponse"></xs:element>
+<xs:element name="stopCampaignById" type="tns:stopCampaignById"></xs:element>
+<xs:element name="stopCampaignByIdByLogin" type="tns:stopCampaignByIdByLogin"></xs:element>
+<xs:element name="stopCampaignByIdByLoginResponse" type="tns:stopCampaignByIdByLoginResponse"></xs:element>
+<xs:element name="stopCampaignByIdResponse" type="tns:stopCampaignByIdResponse"></xs:element>
+<xs:element name="stopCampaigns" type="tns:stopCampaigns"></xs:element>
+<xs:element name="stopCampaignsResponse" type="tns:stopCampaignsResponse"></xs:element>
+<xs:complexType name="holdCampaignById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdCampaignByIdResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gagt">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gagtResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:AdGoalType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gdg">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gdgResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:DeliveryGoal"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdAtByLogin1">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdAtByLogin1Response">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:PushQueueEntry"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdMasterCampaignByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdMasterCampaignByIdByLoginResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gdc">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gdcResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:DeliveryConfiguration"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gtr">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gtrResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TimeRange"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:PushQueueEntry"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPushQueueEntryPriorityList">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPushQueueEntryPriorityListResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gw">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gwResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:Weekdays"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="goc">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gocResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:OptimizingConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCFC">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCFCResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignFeatureConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdLightByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdLightByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:PushQueueEntry"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gpc">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gpcResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PostclickConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCFS">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCFSResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignFeatureSettings"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startMasterCampaignById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startMasterCampaignByIdResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsByIdLight">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsByIdLightResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:LightPushResult"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdAtByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdAtByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:PushQueueEntry"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="stopCampaignByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="stopCampaignByIdByLoginResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gprc">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gprcResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PricingConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="stopCampaignById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="stopCampaignByIdResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPushQueueEntryPriorityListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPushQueueEntryPriorityListByLoginResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsByIdLightByLogin">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsByIdLightByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:LightPushResult"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsRegular">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsRegularResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gdr">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gdrResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:DateRange"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="stopCampaigns">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="stopCampaignsResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gts">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gtsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TargetingSet"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsLight">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignsLightResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startMasterCampaignByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startMasterCampaignByIdByLoginResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdCampaigns">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdCampaignsResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdCampaignByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdCampaignByIdByLoginResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gctc">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gctcResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignTypeCategory"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdAt">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:dateTime"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdAtResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:PushQueueEntry"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdMasterCampaignById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="holdMasterCampaignByIdResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gtd">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gtdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:TargetingData"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdLight">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="startCampaignByIdLightResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:PushQueueEntry"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gpcb">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gpcbResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PostclickBeacon"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gfc">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gfcResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:FrequencyConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="PushManagementException" type="tns:PushManagementException"></xs:element>
+<xs:complexType name="PushManagementException">
+<xs:sequence>
+<xs:element name="errorCause" nillable="true" type="xs:int"></xs:element>
+<xs:element name="errorLevel" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ParseException" type="tns:ParseException"></xs:element>
+<xs:complexType name="ParseException">
+<xs:sequence>
+<xs:element name="errorOffset" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://PushManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://PushManagement.helios.adtech.de/">
+<xs:complexType name="PushQueueEntry">
+<xs:sequence>
+<xs:element name="campaignId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="dateCompleted" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="dateEntered" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="dateModified" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="dateToPush" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="errorId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="errorMsg" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="operation" nillable="true" type="xs:int"></xs:element>
+<xs:element name="prio" nillable="true" type="xs:int"></xs:element>
+<xs:element name="pusherUserId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="retryCount" nillable="true" type="xs:int"></xs:element>
+<xs:element name="state" nillable="true" type="xs:int"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="trigger" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LightPushResult">
+<xs:sequence>
+<xs:element form="unqualified" name="campaignId" nillable="true" type="xs:long"></xs:element>
+<xs:element form="unqualified" name="message" nillable="true" type="xs:string"></xs:element>
+<xs:element form="unqualified" name="responseCode" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WSPushServiceException" type="WSPushServiceException"></xs:element>
+<xs:complexType name="WSPushServiceException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:element name="PushServiceException" type="PushServiceException"></xs:element>
+<xs:complexType name="PushServiceException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://CampaignManagement.helios.adtech.de/" xmlns:ns1="http://UserManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://CampaignManagement.helios.adtech.de/">
+<xs:import namespace="http://UserManagement.helios.adtech.de/"></xs:import>
+<xs:complexType name="AdGoalType">
+<xs:sequence>
+<xs:element name="id" nillable="true" type="xs:int"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element maxOccurs="unbounded" name="optimizerIds" nillable="true" type="xs:long"></xs:element>
+<xs:element name="stdOptimizerId" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeliveryGoal">
+<xs:sequence>
+<xs:element name="clicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="dailyClickCapping" nillable="true" type="xs:long"></xs:element>
+<xs:element name="dailyImpressionCapping" nillable="true" type="xs:long"></xs:element>
+<xs:element name="desiredImpressions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="distributedVol" nillable="true" type="xs:int"></xs:element>
+<xs:element name="flatFeeLimitationPeriod" nillable="true" type="xs:int"></xs:element>
+<xs:element name="flatFeeLimitationType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="flatFeeLimitationValue" nillable="true" type="xs:long"></xs:element>
+<xs:element name="guaranteedDeliveredImpressions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="guaranteedImpressions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="hasDailyClickCapping" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="hasDailyImpressionCapping" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="hasFlatFeeLimitation" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="hasImpressionLimit" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="imsInventory" nillable="true" type="xs:long"></xs:element>
+<xs:element name="limitVol" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="transactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="views" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DeliveryConfiguration">
+<xs:sequence>
+<xs:element name="adGoalType" nillable="true" type="tns:AdGoalType"></xs:element>
+<xs:element name="distributedVol" nillable="true" type="xs:int"></xs:element>
+<xs:element name="id" nillable="true" type="xs:int"></xs:element>
+<xs:element name="layerId" nillable="true" type="xs:int"></xs:element>
+<xs:element name="resourceName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TimeRange">
+<xs:sequence>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="endHour" nillable="true" type="xs:int"></xs:element>
+<xs:element name="endMinute" nillable="true" type="xs:int"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="pos" nillable="true" type="xs:int"></xs:element>
+<xs:element name="startHour" nillable="true" type="xs:int"></xs:element>
+<xs:element name="startMinute" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Weekdays">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="daysOfWeek" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="pos" nillable="true" type="xs:int"></xs:element>
+<xs:element maxOccurs="unbounded" name="timeRanges" nillable="true" type="tns:TimeRange"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="OptimizingConfig">
+<xs:sequence>
+<xs:element name="delayedStop" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="delayedStopAfterDays" nillable="true" type="xs:int"></xs:element>
+<xs:element name="ECPM" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="ecpmMode" nillable="true" type="xs:int"></xs:element>
+<xs:element name="minClickRate" nillable="true" type="xs:double"></xs:element>
+<xs:element name="minNoPlacements" nillable="true" type="xs:int"></xs:element>
+<xs:element maxOccurs="unbounded" name="optimizingOptionList" nillable="true" type="tns:optimizingOption"></xs:element>
+<xs:element name="placementPerformanceOptimized" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="runOverFlexTree" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="runOverNetwork" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="runOverPage" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="runOverPlacementFormula" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="runOverWebsite" nillable="true" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="optimizingOption">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="CampaignFeatureConfig">
+<xs:sequence>
+<xs:element name="changeable" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="featureName" nillable="true" type="xs:string"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="selected" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="shared" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PostclickConfig">
+<xs:sequence>
+<xs:element name="clickValidityPeriod" nillable="true" type="xs:int"></xs:element>
+<xs:element name="commission" nillable="true" type="xs:float"></xs:element>
+<xs:element name="commissionType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="onlyFirst" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="postClickBeaconId" nillable="true" type="xs:long"></xs:element>
+<xs:element maxOccurs="unbounded" name="thirdPartyBeaconTags" nillable="true" type="xs:string"></xs:element>
+<xs:element name="userTrackBeaconId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="viewValidityPeriod" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CampaignFeatureSettings">
+<xs:sequence>
+<xs:element name="locked" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="shared" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="visible" nillable="true" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PricingConfig">
+<xs:sequence>
+<xs:element name="clickrate" nillable="true" type="xs:float"></xs:element>
+<xs:element name="cpc" nillable="true" type="xs:float"></xs:element>
+<xs:element name="cpe" nillable="true" type="xs:float"></xs:element>
+<xs:element name="cpm" nillable="true" type="xs:float"></xs:element>
+<xs:element name="cpt" nillable="true" type="xs:float"></xs:element>
+<xs:element name="cpv" nillable="true" type="xs:float"></xs:element>
+<xs:element name="discrepancy" nillable="true" type="xs:float"></xs:element>
+<xs:element name="flatfee" nillable="true" type="xs:float"></xs:element>
+<xs:element name="invoiceClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="invoiceImpressions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="invoiceTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="staticRevenueType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="target" nillable="true" type="xs:float"></xs:element>
+<xs:element name="targetType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="viewCountRevenue" nillable="true" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DateRange">
+<xs:sequence>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="deliveryGoal" nillable="true" type="tns:DeliveryGoal"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="endDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="imsReservationDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="imsReservationId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="imsReservationPriority" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="pos" nillable="true" type="xs:int"></xs:element>
+<xs:element name="startDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element maxOccurs="unbounded" name="weekdayList" nillable="true" type="tns:Weekdays"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TargetingSet">
+<xs:sequence>
+<xs:element name="pos" nillable="true" type="xs:int"></xs:element>
+<xs:element name="targetData">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="value" type="tns:TargetingData"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TargetingData">
+<xs:sequence>
+<xs:element name="boolType" nillable="true" type="xs:int"></xs:element>
+<xs:element maxOccurs="unbounded" name="targetIds" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CampaignTypeCategory">
+<xs:sequence>
+<xs:element name="deleted" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PostclickBeacon">
+<xs:sequence>
+<xs:element name="advertiserId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="archiveDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="archiveStatus" nillable="true" type="xs:int"></xs:element>
+<xs:element name="clickValidityPeriod" nillable="true" type="xs:int"></xs:element>
+<xs:element name="commission" nillable="true" type="xs:float"></xs:element>
+<xs:element name="commissionType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="contact" nillable="true" type="ns1:ContactData"></xs:element>
+<xs:element name="creationId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="onlyFirst" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="paramCaption1" nillable="true" type="xs:string"></xs:element>
+<xs:element name="paramCaption2" nillable="true" type="xs:string"></xs:element>
+<xs:element name="paramCaption3" nillable="true" type="xs:string"></xs:element>
+<xs:element name="paramCaption4" nillable="true" type="xs:string"></xs:element>
+<xs:element name="paramCaption5" nillable="true" type="xs:string"></xs:element>
+<xs:element name="type" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="FrequencyConfig">
+<xs:sequence>
+<xs:element name="cappingType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="distributed" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="noCookieDelivery" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="type" nillable="true" type="xs:int"></xs:element>
+<xs:element name="views" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="cappingType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="IMPRESSION"></xs:enumeration>
+<xs:enumeration value="CLICK"></xs:enumeration>
+<xs:enumeration value="VIEW"></xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://security.lowLevel.helios.webservices.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://security.lowLevel.helios.webservices.adtech.de/">
+<xsd:element name="SecurityException" type="tns:SecurityException"></xsd:element>
+<xsd:complexType name="SecurityException">
+<xsd:sequence></xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+
+  </wsdl:types>
+  <wsdl:message name="gdrResponse">
+    <wsdl:part element="tns:gdrResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdLightByLogin">
+    <wsdl:part element="tns:startCampaignByIdLightByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gfcResponse">
+    <wsdl:part element="tns:gfcResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaignByIdResponse">
+    <wsdl:part element="tns:stopCampaignByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ParseException">
+    <wsdl:part element="tns:ParseException" name="ParseException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startMasterCampaignByIdByLogin">
+    <wsdl:part element="tns:startMasterCampaignByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdMasterCampaignByIdByLogin">
+    <wsdl:part element="tns:holdMasterCampaignByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gdr">
+    <wsdl:part element="tns:gdr" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startMasterCampaignByIdByLoginResponse">
+    <wsdl:part element="tns:startMasterCampaignByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="goc">
+    <wsdl:part element="tns:goc" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startMasterCampaignById">
+    <wsdl:part element="tns:startMasterCampaignById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsByIdLight">
+    <wsdl:part element="tns:startCampaignsByIdLight" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdCampaignByIdByLogin">
+    <wsdl:part element="tns:holdCampaignByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gdg">
+    <wsdl:part element="tns:gdg" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdLightByLoginResponse">
+    <wsdl:part element="tns:startCampaignByIdLightByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PushServiceException">
+    <wsdl:part element="ns3:PushServiceException" name="PushServiceException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gdc">
+    <wsdl:part element="tns:gdc" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gpcResponse">
+    <wsdl:part element="tns:gpcResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gtrResponse">
+    <wsdl:part element="tns:gtrResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCFCResponse">
+    <wsdl:part element="tns:getCFCResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdMasterCampaignByIdByLoginResponse">
+    <wsdl:part element="tns:holdMasterCampaignByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsLight">
+    <wsdl:part element="tns:startCampaignsLight" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gagt">
+    <wsdl:part element="tns:gagt" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gwResponse">
+    <wsdl:part element="tns:gwResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaignByIdByLoginResponse">
+    <wsdl:part element="tns:stopCampaignByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdResponse">
+    <wsdl:part element="tns:startCampaignByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdCampaignById">
+    <wsdl:part element="tns:holdCampaignById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCFC">
+    <wsdl:part element="tns:getCFC" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdAt">
+    <wsdl:part element="tns:startCampaignByIdAt" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gtsResponse">
+    <wsdl:part element="tns:gtsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdLight">
+    <wsdl:part element="tns:startCampaignByIdLight" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gpcbResponse">
+    <wsdl:part element="tns:gpcbResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsRegularResponse">
+    <wsdl:part element="tns:startCampaignsRegularResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gctcResponse">
+    <wsdl:part element="tns:gctcResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCFS">
+    <wsdl:part element="tns:getCFS" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gtdResponse">
+    <wsdl:part element="tns:gtdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PushManagementException">
+    <wsdl:part element="tns:PushManagementException" name="PushManagementException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gagtResponse">
+    <wsdl:part element="tns:gagtResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdCampaigns">
+    <wsdl:part element="tns:holdCampaigns" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gts">
+    <wsdl:part element="tns:gts" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdAtResponse">
+    <wsdl:part element="tns:startCampaignByIdAtResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignById">
+    <wsdl:part element="tns:startCampaignById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaignByIdByLogin">
+    <wsdl:part element="tns:stopCampaignByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaigns">
+    <wsdl:part element="tns:stopCampaigns" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gtr">
+    <wsdl:part element="tns:gtr" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCFSResponse">
+    <wsdl:part element="tns:getCFSResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gpcb">
+    <wsdl:part element="tns:gpcb" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPushQueueEntryPriorityListByLoginResponse">
+    <wsdl:part element="tns:getPushQueueEntryPriorityListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdMasterCampaignByIdResponse">
+    <wsdl:part element="tns:holdMasterCampaignByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdCampaignByIdByLoginResponse">
+    <wsdl:part element="tns:holdCampaignByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SecurityException">
+    <wsdl:part element="ns2:SecurityException" name="SecurityException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsByIdLightByLoginResponse">
+    <wsdl:part element="tns:startCampaignsByIdLightByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdAtByLogin">
+    <wsdl:part element="tns:startCampaignByIdAtByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsByIdLightByLogin">
+    <wsdl:part element="tns:startCampaignsByIdLightByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdAtByLogin1Response">
+    <wsdl:part element="tns:startCampaignByIdAtByLogin1Response" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gprcResponse">
+    <wsdl:part element="tns:gprcResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gdcResponse">
+    <wsdl:part element="tns:gdcResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPushQueueEntryPriorityListByLogin">
+    <wsdl:part element="tns:getPushQueueEntryPriorityListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSPushServiceException">
+    <wsdl:part element="ns3:WSPushServiceException" name="WSPushServiceException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdMasterCampaignById">
+    <wsdl:part element="tns:holdMasterCampaignById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPushQueueEntryPriorityListResponse">
+    <wsdl:part element="tns:getPushQueueEntryPriorityListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gctc">
+    <wsdl:part element="tns:gctc" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdCampaignsResponse">
+    <wsdl:part element="tns:holdCampaignsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gfc">
+    <wsdl:part element="tns:gfc" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdLightResponse">
+    <wsdl:part element="tns:startCampaignByIdLightResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gpc">
+    <wsdl:part element="tns:gpc" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPushQueueEntryPriorityList">
+    <wsdl:part element="tns:getPushQueueEntryPriorityList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdAtByLogin1">
+    <wsdl:part element="tns:startCampaignByIdAtByLogin1" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startMasterCampaignByIdResponse">
+    <wsdl:part element="tns:startMasterCampaignByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HeliosPersistenceException">
+    <wsdl:part element="ns1:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gocResponse">
+    <wsdl:part element="tns:gocResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gprc">
+    <wsdl:part element="tns:gprc" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsRegular">
+    <wsdl:part element="tns:startCampaignsRegular" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaignById">
+    <wsdl:part element="tns:stopCampaignById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gw">
+    <wsdl:part element="tns:gw" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaignsResponse">
+    <wsdl:part element="tns:stopCampaignsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdCampaignByIdResponse">
+    <wsdl:part element="tns:holdCampaignByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gtd">
+    <wsdl:part element="tns:gtd" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsByIdLightResponse">
+    <wsdl:part element="tns:startCampaignsByIdLightResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignsLightResponse">
+    <wsdl:part element="tns:startCampaignsLightResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gdgResponse">
+    <wsdl:part element="tns:gdgResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignByIdAtByLoginResponse">
+    <wsdl:part element="tns:startCampaignByIdAtByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSPushAdmin_v5">
+    <wsdl:operation name="holdCampaignById">
+      <wsdl:input message="tns:holdCampaignById" name="holdCampaignById"></wsdl:input>
+      <wsdl:output message="tns:holdCampaignByIdResponse" name="holdCampaignByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gagt">
+      <wsdl:input message="tns:gagt" name="gagt"></wsdl:input>
+      <wsdl:output message="tns:gagtResponse" name="gagtResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gdg">
+      <wsdl:input message="tns:gdg" name="gdg"></wsdl:input>
+      <wsdl:output message="tns:gdgResponse" name="gdgResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdAtByLogin1">
+      <wsdl:input message="tns:startCampaignByIdAtByLogin1" name="startCampaignByIdAtByLogin1"></wsdl:input>
+      <wsdl:output message="tns:startCampaignByIdAtByLogin1Response" name="startCampaignByIdAtByLogin1Response"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+      <wsdl:fault message="tns:ParseException" name="ParseException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdMasterCampaignByIdByLogin">
+      <wsdl:input message="tns:holdMasterCampaignByIdByLogin" name="holdMasterCampaignByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:holdMasterCampaignByIdByLoginResponse" name="holdMasterCampaignByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gdc">
+      <wsdl:input message="tns:gdc" name="gdc"></wsdl:input>
+      <wsdl:output message="tns:gdcResponse" name="gdcResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gtr">
+      <wsdl:input message="tns:gtr" name="gtr"></wsdl:input>
+      <wsdl:output message="tns:gtrResponse" name="gtrResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignById">
+      <wsdl:input message="tns:startCampaignById" name="startCampaignById"></wsdl:input>
+      <wsdl:output message="tns:startCampaignByIdResponse" name="startCampaignByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPushQueueEntryPriorityList">
+      <wsdl:input message="tns:getPushQueueEntryPriorityList" name="getPushQueueEntryPriorityList"></wsdl:input>
+      <wsdl:output message="tns:getPushQueueEntryPriorityListResponse" name="getPushQueueEntryPriorityListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gw">
+      <wsdl:input message="tns:gw" name="gw"></wsdl:input>
+      <wsdl:output message="tns:gwResponse" name="gwResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="goc">
+      <wsdl:input message="tns:goc" name="goc"></wsdl:input>
+      <wsdl:output message="tns:gocResponse" name="gocResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCFC">
+      <wsdl:input message="tns:getCFC" name="getCFC"></wsdl:input>
+      <wsdl:output message="tns:getCFCResponse" name="getCFCResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdLightByLogin">
+      <wsdl:input message="tns:startCampaignByIdLightByLogin" name="startCampaignByIdLightByLogin"></wsdl:input>
+      <wsdl:output message="tns:startCampaignByIdLightByLoginResponse" name="startCampaignByIdLightByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gpc">
+      <wsdl:input message="tns:gpc" name="gpc"></wsdl:input>
+      <wsdl:output message="tns:gpcResponse" name="gpcResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCFS">
+      <wsdl:input message="tns:getCFS" name="getCFS"></wsdl:input>
+      <wsdl:output message="tns:getCFSResponse" name="getCFSResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startMasterCampaignById">
+      <wsdl:input message="tns:startMasterCampaignById" name="startMasterCampaignById"></wsdl:input>
+      <wsdl:output message="tns:startMasterCampaignByIdResponse" name="startMasterCampaignByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsByIdLight">
+      <wsdl:input message="tns:startCampaignsByIdLight" name="startCampaignsByIdLight"></wsdl:input>
+      <wsdl:output message="tns:startCampaignsByIdLightResponse" name="startCampaignsByIdLightResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:PushServiceException" name="PushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdAtByLogin">
+      <wsdl:input message="tns:startCampaignByIdAtByLogin" name="startCampaignByIdAtByLogin"></wsdl:input>
+      <wsdl:output message="tns:startCampaignByIdAtByLoginResponse" name="startCampaignByIdAtByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaignByIdByLogin">
+      <wsdl:input message="tns:stopCampaignByIdByLogin" name="stopCampaignByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:stopCampaignByIdByLoginResponse" name="stopCampaignByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gprc">
+      <wsdl:input message="tns:gprc" name="gprc"></wsdl:input>
+      <wsdl:output message="tns:gprcResponse" name="gprcResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaignById">
+      <wsdl:input message="tns:stopCampaignById" name="stopCampaignById"></wsdl:input>
+      <wsdl:output message="tns:stopCampaignByIdResponse" name="stopCampaignByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPushQueueEntryPriorityListByLogin">
+      <wsdl:input message="tns:getPushQueueEntryPriorityListByLogin" name="getPushQueueEntryPriorityListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getPushQueueEntryPriorityListByLoginResponse" name="getPushQueueEntryPriorityListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsByIdLightByLogin">
+      <wsdl:input message="tns:startCampaignsByIdLightByLogin" name="startCampaignsByIdLightByLogin"></wsdl:input>
+      <wsdl:output message="tns:startCampaignsByIdLightByLoginResponse" name="startCampaignsByIdLightByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:PushServiceException" name="PushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsRegular">
+      <wsdl:input message="tns:startCampaignsRegular" name="startCampaignsRegular"></wsdl:input>
+      <wsdl:output message="tns:startCampaignsRegularResponse" name="startCampaignsRegularResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gdr">
+      <wsdl:input message="tns:gdr" name="gdr"></wsdl:input>
+      <wsdl:output message="tns:gdrResponse" name="gdrResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaigns">
+      <wsdl:input message="tns:stopCampaigns" name="stopCampaigns"></wsdl:input>
+      <wsdl:output message="tns:stopCampaignsResponse" name="stopCampaignsResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gts">
+      <wsdl:input message="tns:gts" name="gts"></wsdl:input>
+      <wsdl:output message="tns:gtsResponse" name="gtsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsLight">
+      <wsdl:input message="tns:startCampaignsLight" name="startCampaignsLight"></wsdl:input>
+      <wsdl:output message="tns:startCampaignsLightResponse" name="startCampaignsLightResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startMasterCampaignByIdByLogin">
+      <wsdl:input message="tns:startMasterCampaignByIdByLogin" name="startMasterCampaignByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:startMasterCampaignByIdByLoginResponse" name="startMasterCampaignByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdCampaigns">
+      <wsdl:input message="tns:holdCampaigns" name="holdCampaigns"></wsdl:input>
+      <wsdl:output message="tns:holdCampaignsResponse" name="holdCampaignsResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdCampaignByIdByLogin">
+      <wsdl:input message="tns:holdCampaignByIdByLogin" name="holdCampaignByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:holdCampaignByIdByLoginResponse" name="holdCampaignByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gctc">
+      <wsdl:input message="tns:gctc" name="gctc"></wsdl:input>
+      <wsdl:output message="tns:gctcResponse" name="gctcResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdAt">
+      <wsdl:input message="tns:startCampaignByIdAt" name="startCampaignByIdAt"></wsdl:input>
+      <wsdl:output message="tns:startCampaignByIdAtResponse" name="startCampaignByIdAtResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+      <wsdl:fault message="tns:PushManagementException" name="PushManagementException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdMasterCampaignById">
+      <wsdl:input message="tns:holdMasterCampaignById" name="holdMasterCampaignById"></wsdl:input>
+      <wsdl:output message="tns:holdMasterCampaignByIdResponse" name="holdMasterCampaignByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:HeliosPersistenceException" name="HeliosPersistenceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gtd">
+      <wsdl:input message="tns:gtd" name="gtd"></wsdl:input>
+      <wsdl:output message="tns:gtdResponse" name="gtdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdLight">
+      <wsdl:input message="tns:startCampaignByIdLight" name="startCampaignByIdLight"></wsdl:input>
+      <wsdl:output message="tns:startCampaignByIdLightResponse" name="startCampaignByIdLightResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSPushServiceException" name="WSPushServiceException"></wsdl:fault>
+      <wsdl:fault message="tns:SecurityException" name="SecurityException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gpcb">
+      <wsdl:input message="tns:gpcb" name="gpcb"></wsdl:input>
+      <wsdl:output message="tns:gpcbResponse" name="gpcbResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gfc">
+      <wsdl:input message="tns:gfc" name="gfc"></wsdl:input>
+      <wsdl:output message="tns:gfcResponse" name="gfcResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSPushAdmin_v5ServiceSoapBinding" type="tns:WSPushAdmin_v5">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="gagt">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gagt">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gagtResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="holdCampaignById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="holdCampaignById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="holdCampaignByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gdg">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gdg">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gdgResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdAtByLogin1">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignByIdAtByLogin1">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignByIdAtByLogin1Response">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="ParseException">
+        <soap:fault name="ParseException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdMasterCampaignByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="holdMasterCampaignByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="holdMasterCampaignByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gdc">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gdc">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gdcResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gtr">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gtr">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gtrResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPushQueueEntryPriorityList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPushQueueEntryPriorityList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPushQueueEntryPriorityListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gw">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gw">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gwResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCFC">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCFC">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCFCResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="goc">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="goc">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gocResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCFS">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCFS">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCFSResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gpc">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gpc">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gpcResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdLightByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignByIdLightByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignByIdLightByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startMasterCampaignById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startMasterCampaignById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startMasterCampaignByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdAtByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignByIdAtByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignByIdAtByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsByIdLight">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignsByIdLight">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignsByIdLightResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushServiceException">
+        <soap:fault name="PushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gprc">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gprc">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gprcResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaignByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="stopCampaignByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="stopCampaignByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaignById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="stopCampaignById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="stopCampaignByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPushQueueEntryPriorityListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPushQueueEntryPriorityListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPushQueueEntryPriorityListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsByIdLightByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignsByIdLightByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignsByIdLightByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushServiceException">
+        <soap:fault name="PushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsRegular">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignsRegular">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignsRegularResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gdr">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gdr">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gdrResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gts">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gts">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gtsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaigns">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="stopCampaigns">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="stopCampaignsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignsLight">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignsLight">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignsLightResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startMasterCampaignByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startMasterCampaignByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startMasterCampaignByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdCampaigns">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="holdCampaigns">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="holdCampaignsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdCampaignByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="holdCampaignByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="holdCampaignByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gctc">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gctc">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gctcResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdAt">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignByIdAt">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignByIdAtResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="PushManagementException">
+        <soap:fault name="PushManagementException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="holdMasterCampaignById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="holdMasterCampaignById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="holdMasterCampaignByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="HeliosPersistenceException">
+        <soap:fault name="HeliosPersistenceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gtd">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gtd">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gtdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gfc">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gfc">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gfcResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gpcb">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gpcb">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gpcbResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaignByIdLight">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="startCampaignByIdLight">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="startCampaignByIdLightResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSPushServiceException">
+        <soap:fault name="WSPushServiceException" use="literal"></soap:fault>
+      </wsdl:fault>
+      <wsdl:fault name="SecurityException">
+        <soap:fault name="SecurityException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSPushAdmin_v5Service">
+    <wsdl:port binding="tns:WSPushAdmin_v5ServiceSoapBinding" name="WSPushAdmin_v5Port">
+      <soap:address location="http://ws-api.adtech.de/WSPushAdmin_v5"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

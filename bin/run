@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path('../../lib', __FILE__)
+
+require 'bundler'; Bundler.setup(:default)
+require 'adtech'
+require 'date'
+
+report = ADTech::API::Report.new
+report.get_report(1293, Date.today, Date.today, [1185844, 1185854])

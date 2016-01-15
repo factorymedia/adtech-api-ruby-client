@@ -1,0 +1,1614 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://StatisticsManagement_v4.lowLevel.helios.webservices.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://StatisticsManagement.helios.adtech.de/" name="WSStatisticsAdmin_v4Service" targetNamespace="http://StatisticsManagement_v4.lowLevel.helios.webservices.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/" version="1.0">
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AttributeOperatorValueExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence>
+<xs:element name="attribute" nillable="true" type="xs:string"></xs:element>
+<xs:element name="operator" nillable="true" type="xs:string"></xs:element>
+<xs:element name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://StatisticsManagement_v4.lowLevel.helios.webservices.adtech.de/" xmlns:ns2="http://helios.adtech.de/" xmlns:ns1="http://StatisticsManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://StatisticsManagement_v4.lowLevel.helios.webservices.adtech.de/">
+<xs:import namespace="http://StatisticsManagement.helios.adtech.de/"></xs:import>
+<xs:import namespace="http://helios.adtech.de/"></xs:import>
+<xs:element name="createCampaignStatistics" type="tns:createCampaignStatistics"></xs:element>
+<xs:element name="createCampaignStatisticsByLogin" type="tns:createCampaignStatisticsByLogin"></xs:element>
+<xs:element name="createCampaignStatisticsByLoginResponse" type="tns:createCampaignStatisticsByLoginResponse"></xs:element>
+<xs:element name="createCampaignStatisticsResponse" type="tns:createCampaignStatisticsResponse"></xs:element>
+<xs:element name="createPlacementStatistics" type="tns:createPlacementStatistics"></xs:element>
+<xs:element name="createPlacementStatisticsByLogin" type="tns:createPlacementStatisticsByLogin"></xs:element>
+<xs:element name="createPlacementStatisticsByLoginResponse" type="tns:createPlacementStatisticsByLoginResponse"></xs:element>
+<xs:element name="createPlacementStatisticsResponse" type="tns:createPlacementStatisticsResponse"></xs:element>
+<xs:element name="createWebsiteStatistics" type="tns:createWebsiteStatistics"></xs:element>
+<xs:element name="createWebsiteStatisticsByLogin" type="tns:createWebsiteStatisticsByLogin"></xs:element>
+<xs:element name="createWebsiteStatisticsByLoginResponse" type="tns:createWebsiteStatisticsByLoginResponse"></xs:element>
+<xs:element name="createWebsiteStatisticsResponse" type="tns:createWebsiteStatisticsResponse"></xs:element>
+<xs:element name="getAOVE" type="tns:getAOVE"></xs:element>
+<xs:element name="getAOVEResponse" type="tns:getAOVEResponse"></xs:element>
+<xs:element name="getCampaignStatisticsByCampaignId" type="tns:getCampaignStatisticsByCampaignId"></xs:element>
+<xs:element name="getCampaignStatisticsByCampaignIdByLogin" type="tns:getCampaignStatisticsByCampaignIdByLogin"></xs:element>
+<xs:element name="getCampaignStatisticsByCampaignIdByLoginResponse" type="tns:getCampaignStatisticsByCampaignIdByLoginResponse"></xs:element>
+<xs:element name="getCampaignStatisticsByCampaignIdResponse" type="tns:getCampaignStatisticsByCampaignIdResponse"></xs:element>
+<xs:element name="getCampaignStatisticsIdList" type="tns:getCampaignStatisticsIdList"></xs:element>
+<xs:element name="getCampaignStatisticsIdListByLogin" type="tns:getCampaignStatisticsIdListByLogin"></xs:element>
+<xs:element name="getCampaignStatisticsIdListByLoginResponse" type="tns:getCampaignStatisticsIdListByLoginResponse"></xs:element>
+<xs:element name="getCampaignStatisticsIdListResponse" type="tns:getCampaignStatisticsIdListResponse"></xs:element>
+<xs:element name="getCampaignStatisticsList" type="tns:getCampaignStatisticsList"></xs:element>
+<xs:element name="getCampaignStatisticsListByLogin" type="tns:getCampaignStatisticsListByLogin"></xs:element>
+<xs:element name="getCampaignStatisticsListByLoginResponse" type="tns:getCampaignStatisticsListByLoginResponse"></xs:element>
+<xs:element name="getCampaignStatisticsListResponse" type="tns:getCampaignStatisticsListResponse"></xs:element>
+<xs:element name="getCampaignStatisticsListSize" type="tns:getCampaignStatisticsListSize"></xs:element>
+<xs:element name="getCampaignStatisticsListSizeByLogin" type="tns:getCampaignStatisticsListSizeByLogin"></xs:element>
+<xs:element name="getCampaignStatisticsListSizeByLoginResponse" type="tns:getCampaignStatisticsListSizeByLoginResponse"></xs:element>
+<xs:element name="getCampaignStatisticsListSizeResponse" type="tns:getCampaignStatisticsListSizeResponse"></xs:element>
+<xs:element name="getPlacementStatisticsByPlacementId" type="tns:getPlacementStatisticsByPlacementId"></xs:element>
+<xs:element name="getPlacementStatisticsByPlacementIdByLogin" type="tns:getPlacementStatisticsByPlacementIdByLogin"></xs:element>
+<xs:element name="getPlacementStatisticsByPlacementIdByLoginResponse" type="tns:getPlacementStatisticsByPlacementIdByLoginResponse"></xs:element>
+<xs:element name="getPlacementStatisticsByPlacementIdResponse" type="tns:getPlacementStatisticsByPlacementIdResponse"></xs:element>
+<xs:element name="getPlacementStatisticsIdList" type="tns:getPlacementStatisticsIdList"></xs:element>
+<xs:element name="getPlacementStatisticsIdListByLogin" type="tns:getPlacementStatisticsIdListByLogin"></xs:element>
+<xs:element name="getPlacementStatisticsIdListByLoginResponse" type="tns:getPlacementStatisticsIdListByLoginResponse"></xs:element>
+<xs:element name="getPlacementStatisticsIdListResponse" type="tns:getPlacementStatisticsIdListResponse"></xs:element>
+<xs:element name="getPlacementStatisticsList" type="tns:getPlacementStatisticsList"></xs:element>
+<xs:element name="getPlacementStatisticsListByLogin" type="tns:getPlacementStatisticsListByLogin"></xs:element>
+<xs:element name="getPlacementStatisticsListByLoginResponse" type="tns:getPlacementStatisticsListByLoginResponse"></xs:element>
+<xs:element name="getPlacementStatisticsListResponse" type="tns:getPlacementStatisticsListResponse"></xs:element>
+<xs:element name="getPlacementStatisticsListSize" type="tns:getPlacementStatisticsListSize"></xs:element>
+<xs:element name="getPlacementStatisticsListSizeByLogin" type="tns:getPlacementStatisticsListSizeByLogin"></xs:element>
+<xs:element name="getPlacementStatisticsListSizeByLoginResponse" type="tns:getPlacementStatisticsListSizeByLoginResponse"></xs:element>
+<xs:element name="getPlacementStatisticsListSizeResponse" type="tns:getPlacementStatisticsListSizeResponse"></xs:element>
+<xs:element name="getQOP" type="tns:getQOP"></xs:element>
+<xs:element name="getQOPResponse" type="tns:getQOPResponse"></xs:element>
+<xs:element name="getTodaysBannerStatisticsByCampaignFilter" type="tns:getTodaysBannerStatisticsByCampaignFilter"></xs:element>
+<xs:element name="getTodaysBannerStatisticsByCampaignFilterResponse" type="tns:getTodaysBannerStatisticsByCampaignFilterResponse"></xs:element>
+<xs:element name="getTodaysBannerStatisticsByCampaignId" type="tns:getTodaysBannerStatisticsByCampaignId"></xs:element>
+<xs:element name="getTodaysBannerStatisticsByCampaignIdResponse" type="tns:getTodaysBannerStatisticsByCampaignIdResponse"></xs:element>
+<xs:element name="getWebsiteStatisticsByWebsiteId" type="tns:getWebsiteStatisticsByWebsiteId"></xs:element>
+<xs:element name="getWebsiteStatisticsByWebsiteIdResponse" type="tns:getWebsiteStatisticsByWebsiteIdResponse"></xs:element>
+<xs:element name="getWebsiteStatisticsIdList" type="tns:getWebsiteStatisticsIdList"></xs:element>
+<xs:element name="getWebsiteStatisticsIdListByLogin" type="tns:getWebsiteStatisticsIdListByLogin"></xs:element>
+<xs:element name="getWebsiteStatisticsIdListByLoginResponse" type="tns:getWebsiteStatisticsIdListByLoginResponse"></xs:element>
+<xs:element name="getWebsiteStatisticsIdListResponse" type="tns:getWebsiteStatisticsIdListResponse"></xs:element>
+<xs:element name="getWebsiteStatisticsList" type="tns:getWebsiteStatisticsList"></xs:element>
+<xs:element name="getWebsiteStatisticsListByLogin" type="tns:getWebsiteStatisticsListByLogin"></xs:element>
+<xs:element name="getWebsiteStatisticsListByLoginResponse" type="tns:getWebsiteStatisticsListByLoginResponse"></xs:element>
+<xs:element name="getWebsiteStatisticsListResponse" type="tns:getWebsiteStatisticsListResponse"></xs:element>
+<xs:element name="getWebsiteStatisticsListSize" type="tns:getWebsiteStatisticsListSize"></xs:element>
+<xs:element name="getWebsiteStatisticsListSizeByLogin" type="tns:getWebsiteStatisticsListSizeByLogin"></xs:element>
+<xs:element name="getWebsiteStatisticsListSizeByLoginResponse" type="tns:getWebsiteStatisticsListSizeByLoginResponse"></xs:element>
+<xs:element name="getWebsiteStatisticsListSizeResponse" type="tns:getWebsiteStatisticsListSizeResponse"></xs:element>
+<xs:element name="updateCampaignStatisticsInterval" type="tns:updateCampaignStatisticsInterval"></xs:element>
+<xs:element name="updateCampaignStatisticsIntervalByLogin" type="tns:updateCampaignStatisticsIntervalByLogin"></xs:element>
+<xs:element name="updateCampaignStatisticsIntervalByLoginResponse" type="tns:updateCampaignStatisticsIntervalByLoginResponse"></xs:element>
+<xs:element name="updateCampaignStatisticsIntervalResponse" type="tns:updateCampaignStatisticsIntervalResponse"></xs:element>
+<xs:element name="updatePlacementStatisticsInterval" type="tns:updatePlacementStatisticsInterval"></xs:element>
+<xs:element name="updatePlacementStatisticsIntervalByLogin" type="tns:updatePlacementStatisticsIntervalByLogin"></xs:element>
+<xs:element name="updatePlacementStatisticsIntervalByLoginResponse" type="tns:updatePlacementStatisticsIntervalByLoginResponse"></xs:element>
+<xs:element name="updatePlacementStatisticsIntervalResponse" type="tns:updatePlacementStatisticsIntervalResponse"></xs:element>
+<xs:element name="updateWebsiteStatisticsInterval" type="tns:updateWebsiteStatisticsInterval"></xs:element>
+<xs:element name="updateWebsiteStatisticsIntervalByLogin" type="tns:updateWebsiteStatisticsIntervalByLogin"></xs:element>
+<xs:element name="updateWebsiteStatisticsIntervalByLoginResponse" type="tns:updateWebsiteStatisticsIntervalByLoginResponse"></xs:element>
+<xs:element name="updateWebsiteStatisticsIntervalResponse" type="tns:updateWebsiteStatisticsIntervalResponse"></xs:element>
+<xs:complexType name="updateCampaignStatisticsIntervalByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateCampaignStatisticsIntervalByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createPlacementStatistics">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createPlacementStatisticsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateWebsiteStatisticsInterval">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateWebsiteStatisticsIntervalResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:WebsiteStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTodaysBannerStatisticsByCampaignFilter">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTodaysBannerStatisticsByCampaignFilterResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:BannerStatistic"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAOVE">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAOVEResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsByPlacementIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsByPlacementIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createWebsiteStatistics">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createWebsiteStatisticsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:WebsiteStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:WebsiteStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsByPlacementId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsByPlacementIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createCampaignStatisticsByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createCampaignStatisticsByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsByCampaignId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsByCampaignIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsIdListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsIdListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsListSizeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsListSizeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsByWebsiteId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsByWebsiteIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:WebsiteStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updatePlacementStatisticsIntervalByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updatePlacementStatisticsIntervalByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updatePlacementStatisticsInterval">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updatePlacementStatisticsIntervalResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsByCampaignIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsByCampaignIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsListSizeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsListSizeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createCampaignStatistics">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createCampaignStatisticsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createPlacementStatisticsByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createPlacementStatisticsByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:PlacementStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getQOP">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getQOPResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:QueryOrderParameter"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsIdListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsIdListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateWebsiteStatisticsIntervalByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateWebsiteStatisticsIntervalByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:WebsiteStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createWebsiteStatisticsByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createWebsiteStatisticsByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:WebsiteStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateCampaignStatisticsInterval">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element name="arg1" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateCampaignStatisticsIntervalResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:CampaignStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getWebsiteStatisticsListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:WebsiteStatistics"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCampaignStatisticsListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsIdListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsIdListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsListSizeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPlacementStatisticsListSizeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTodaysBannerStatisticsByCampaignId">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getTodaysBannerStatisticsByCampaignIdResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:BannerStatistic"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://StatisticsManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://StatisticsManagement.helios.adtech.de/">
+<xs:complexType name="CampaignStatistics">
+<xs:sequence>
+<xs:element name="campaignId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="entityId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="goalPercentReached" nillable="true" type="xs:float"></xs:element>
+<xs:element name="intervalType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="lastOverallUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastTodaysUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="overallClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="overallGoal" nillable="true" type="xs:long"></xs:element>
+<xs:element name="overallImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="overallTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="overallValidatedTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="overallViews" nillable="true" type="xs:long"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysValidatedTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysViews" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysViews" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PlacementStatistics">
+<xs:sequence>
+<xs:element name="intervalType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="lastMonthsClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastMonthsDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastMonthsImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastMonthsTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastOverallUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastTodaysUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastWeeksClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastWeeksDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastWeeksImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastWeeksTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="pageId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="placementId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="websiteId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysTransactions" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="WebsiteStatistics">
+<xs:sequence>
+<xs:element name="intervalType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="lastMonthsClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastMonthsDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastMonthsImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastMonthsTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastOverallUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastTodaysUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastWeeksClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastWeeksDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastWeeksImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="lastWeeksTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="todaysTransactions" nillable="true" type="xs:long"></xs:element>
+<xs:element name="websiteId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysClicks" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysDefaults" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysImps" nillable="true" type="xs:long"></xs:element>
+<xs:element name="yesterdaysTransactions" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="BannerStatistic">
+<xs:sequence>
+<xs:element form="unqualified" name="bannerId" nillable="true" type="xs:long"></xs:element>
+<xs:element form="unqualified" name="campaignId" nillable="true" type="xs:long"></xs:element>
+<xs:element form="unqualified" name="clicks" nillable="true" type="xs:long"></xs:element>
+<xs:element form="unqualified" name="impressions" nillable="true" type="xs:long"></xs:element>
+<xs:element form="unqualified" name="reportDate" nillable="true" type="xs:int"></xs:element>
+<xs:element form="unqualified" name="views" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WSStatisticsAdminException" type="WSStatisticsAdminException"></xs:element>
+<xs:complexType name="WSStatisticsAdminException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="getWebsiteStatisticsByWebsiteId">
+    <wsdl:part element="tns:getWebsiteStatisticsByWebsiteId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsListByLoginResponse">
+    <wsdl:part element="tns:getPlacementStatisticsListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsIdListByLoginResponse">
+    <wsdl:part element="tns:getCampaignStatisticsIdListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQOPResponse">
+    <wsdl:part element="tns:getQOPResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsListSizeByLoginResponse">
+    <wsdl:part element="tns:getPlacementStatisticsListSizeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsListByLogin">
+    <wsdl:part element="tns:getPlacementStatisticsListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCampaignStatisticsIntervalResponse">
+    <wsdl:part element="tns:updateCampaignStatisticsIntervalResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQOP">
+    <wsdl:part element="tns:getQOP" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsListByLoginResponse">
+    <wsdl:part element="tns:getCampaignStatisticsListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsListByLoginResponse">
+    <wsdl:part element="tns:getWebsiteStatisticsListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsListSizeByLoginResponse">
+    <wsdl:part element="tns:getWebsiteStatisticsListSizeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsByWebsiteIdResponse">
+    <wsdl:part element="tns:getWebsiteStatisticsByWebsiteIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsByPlacementId">
+    <wsdl:part element="tns:getPlacementStatisticsByPlacementId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsByCampaignIdByLoginResponse">
+    <wsdl:part element="tns:getCampaignStatisticsByCampaignIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePlacementStatisticsInterval">
+    <wsdl:part element="tns:updatePlacementStatisticsInterval" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAOVE">
+    <wsdl:part element="tns:getAOVE" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createWebsiteStatistics">
+    <wsdl:part element="tns:createWebsiteStatistics" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCampaignStatisticsInterval">
+    <wsdl:part element="tns:updateCampaignStatisticsInterval" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateWebsiteStatisticsIntervalByLogin">
+    <wsdl:part element="tns:updateWebsiteStatisticsIntervalByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsIdListResponse">
+    <wsdl:part element="tns:getPlacementStatisticsIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTodaysBannerStatisticsByCampaignIdResponse">
+    <wsdl:part element="tns:getTodaysBannerStatisticsByCampaignIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsListSizeResponse">
+    <wsdl:part element="tns:getWebsiteStatisticsListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsListResponse">
+    <wsdl:part element="tns:getWebsiteStatisticsListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsIdListByLogin">
+    <wsdl:part element="tns:getCampaignStatisticsIdListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createWebsiteStatisticsByLoginResponse">
+    <wsdl:part element="tns:createWebsiteStatisticsByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateWebsiteStatisticsInterval">
+    <wsdl:part element="tns:updateWebsiteStatisticsInterval" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsListResponse">
+    <wsdl:part element="tns:getPlacementStatisticsListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createWebsiteStatisticsByLogin">
+    <wsdl:part element="tns:createWebsiteStatisticsByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsListSizeByLogin">
+    <wsdl:part element="tns:getCampaignStatisticsListSizeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsListSizeByLogin">
+    <wsdl:part element="tns:getWebsiteStatisticsListSizeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createWebsiteStatisticsResponse">
+    <wsdl:part element="tns:createWebsiteStatisticsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsByPlacementIdByLogin">
+    <wsdl:part element="tns:getPlacementStatisticsByPlacementIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCampaignStatisticsIntervalByLogin">
+    <wsdl:part element="tns:updateCampaignStatisticsIntervalByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCampaignStatisticsIntervalByLoginResponse">
+    <wsdl:part element="tns:updateCampaignStatisticsIntervalByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPlacementStatistics">
+    <wsdl:part element="tns:createPlacementStatistics" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsByPlacementIdResponse">
+    <wsdl:part element="tns:getPlacementStatisticsByPlacementIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsListSizeByLogin">
+    <wsdl:part element="tns:getPlacementStatisticsListSizeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsListSizeByLoginResponse">
+    <wsdl:part element="tns:getCampaignStatisticsListSizeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAOVEResponse">
+    <wsdl:part element="tns:getAOVEResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTodaysBannerStatisticsByCampaignFilter">
+    <wsdl:part element="tns:getTodaysBannerStatisticsByCampaignFilter" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPlacementStatisticsResponse">
+    <wsdl:part element="tns:createPlacementStatisticsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePlacementStatisticsIntervalResponse">
+    <wsdl:part element="tns:updatePlacementStatisticsIntervalResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsListByLogin">
+    <wsdl:part element="tns:getCampaignStatisticsListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsIdList">
+    <wsdl:part element="tns:getWebsiteStatisticsIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsByCampaignId">
+    <wsdl:part element="tns:getCampaignStatisticsByCampaignId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsIdList">
+    <wsdl:part element="tns:getPlacementStatisticsIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSStatisticsAdminException">
+    <wsdl:part element="ns1:WSStatisticsAdminException" name="WSStatisticsAdminException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCampaignStatisticsByLoginResponse">
+    <wsdl:part element="tns:createCampaignStatisticsByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsByCampaignIdResponse">
+    <wsdl:part element="tns:getCampaignStatisticsByCampaignIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsListSizeResponse">
+    <wsdl:part element="tns:getPlacementStatisticsListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsListSize">
+    <wsdl:part element="tns:getCampaignStatisticsListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsIdListResponse">
+    <wsdl:part element="tns:getWebsiteStatisticsIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsListSize">
+    <wsdl:part element="tns:getWebsiteStatisticsListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTodaysBannerStatisticsByCampaignFilterResponse">
+    <wsdl:part element="tns:getTodaysBannerStatisticsByCampaignFilterResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsIdListResponse">
+    <wsdl:part element="tns:getCampaignStatisticsIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsIdListByLoginResponse">
+    <wsdl:part element="tns:getPlacementStatisticsIdListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsByPlacementIdByLoginResponse">
+    <wsdl:part element="tns:getPlacementStatisticsByPlacementIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTodaysBannerStatisticsByCampaignId">
+    <wsdl:part element="tns:getTodaysBannerStatisticsByCampaignId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateWebsiteStatisticsIntervalByLoginResponse">
+    <wsdl:part element="tns:updateWebsiteStatisticsIntervalByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsIdList">
+    <wsdl:part element="tns:getCampaignStatisticsIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCampaignStatisticsResponse">
+    <wsdl:part element="tns:createCampaignStatisticsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsListResponse">
+    <wsdl:part element="tns:getCampaignStatisticsListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPlacementStatisticsByLoginResponse">
+    <wsdl:part element="tns:createPlacementStatisticsByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCampaignStatisticsByLogin">
+    <wsdl:part element="tns:createCampaignStatisticsByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsIdListByLogin">
+    <wsdl:part element="tns:getPlacementStatisticsIdListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsList">
+    <wsdl:part element="tns:getCampaignStatisticsList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateWebsiteStatisticsIntervalResponse">
+    <wsdl:part element="tns:updateWebsiteStatisticsIntervalResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPlacementStatisticsByLogin">
+    <wsdl:part element="tns:createPlacementStatisticsByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsListSizeResponse">
+    <wsdl:part element="tns:getCampaignStatisticsListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCampaignStatistics">
+    <wsdl:part element="tns:createCampaignStatistics" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsListSize">
+    <wsdl:part element="tns:getPlacementStatisticsListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePlacementStatisticsIntervalByLogin">
+    <wsdl:part element="tns:updatePlacementStatisticsIntervalByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsList">
+    <wsdl:part element="tns:getWebsiteStatisticsList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsIdListByLogin">
+    <wsdl:part element="tns:getWebsiteStatisticsIdListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePlacementStatisticsIntervalByLoginResponse">
+    <wsdl:part element="tns:updatePlacementStatisticsIntervalByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlacementStatisticsList">
+    <wsdl:part element="tns:getPlacementStatisticsList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsIdListByLoginResponse">
+    <wsdl:part element="tns:getWebsiteStatisticsIdListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWebsiteStatisticsListByLogin">
+    <wsdl:part element="tns:getWebsiteStatisticsListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCampaignStatisticsByCampaignIdByLogin">
+    <wsdl:part element="tns:getCampaignStatisticsByCampaignIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSStatisticsAdmin_v4">
+    <wsdl:operation name="updateCampaignStatisticsIntervalByLogin">
+      <wsdl:input message="tns:updateCampaignStatisticsIntervalByLogin" name="updateCampaignStatisticsIntervalByLogin"></wsdl:input>
+      <wsdl:output message="tns:updateCampaignStatisticsIntervalByLoginResponse" name="updateCampaignStatisticsIntervalByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPlacementStatistics">
+      <wsdl:input message="tns:createPlacementStatistics" name="createPlacementStatistics"></wsdl:input>
+      <wsdl:output message="tns:createPlacementStatisticsResponse" name="createPlacementStatisticsResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateWebsiteStatisticsInterval">
+      <wsdl:input message="tns:updateWebsiteStatisticsInterval" name="updateWebsiteStatisticsInterval"></wsdl:input>
+      <wsdl:output message="tns:updateWebsiteStatisticsIntervalResponse" name="updateWebsiteStatisticsIntervalResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsListSize">
+      <wsdl:input message="tns:getPlacementStatisticsListSize" name="getPlacementStatisticsListSize"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsListSizeResponse" name="getPlacementStatisticsListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsListByLogin">
+      <wsdl:input message="tns:getPlacementStatisticsListByLogin" name="getPlacementStatisticsListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsListByLoginResponse" name="getPlacementStatisticsListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsIdList">
+      <wsdl:input message="tns:getCampaignStatisticsIdList" name="getCampaignStatisticsIdList"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsIdListResponse" name="getCampaignStatisticsIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTodaysBannerStatisticsByCampaignFilter">
+      <wsdl:input message="tns:getTodaysBannerStatisticsByCampaignFilter" name="getTodaysBannerStatisticsByCampaignFilter"></wsdl:input>
+      <wsdl:output message="tns:getTodaysBannerStatisticsByCampaignFilterResponse" name="getTodaysBannerStatisticsByCampaignFilterResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSStatisticsAdminException" name="WSStatisticsAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAOVE">
+      <wsdl:input message="tns:getAOVE" name="getAOVE"></wsdl:input>
+      <wsdl:output message="tns:getAOVEResponse" name="getAOVEResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsByPlacementIdByLogin">
+      <wsdl:input message="tns:getPlacementStatisticsByPlacementIdByLogin" name="getPlacementStatisticsByPlacementIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsByPlacementIdByLoginResponse" name="getPlacementStatisticsByPlacementIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createWebsiteStatistics">
+      <wsdl:input message="tns:createWebsiteStatistics" name="createWebsiteStatistics"></wsdl:input>
+      <wsdl:output message="tns:createWebsiteStatisticsResponse" name="createWebsiteStatisticsResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsListSize">
+      <wsdl:input message="tns:getWebsiteStatisticsListSize" name="getWebsiteStatisticsListSize"></wsdl:input>
+      <wsdl:output message="tns:getWebsiteStatisticsListSizeResponse" name="getWebsiteStatisticsListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsList">
+      <wsdl:input message="tns:getWebsiteStatisticsList" name="getWebsiteStatisticsList"></wsdl:input>
+      <wsdl:output message="tns:getWebsiteStatisticsListResponse" name="getWebsiteStatisticsListResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsByPlacementId">
+      <wsdl:input message="tns:getPlacementStatisticsByPlacementId" name="getPlacementStatisticsByPlacementId"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsByPlacementIdResponse" name="getPlacementStatisticsByPlacementIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsIdList">
+      <wsdl:input message="tns:getPlacementStatisticsIdList" name="getPlacementStatisticsIdList"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsIdListResponse" name="getPlacementStatisticsIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaignStatisticsByLogin">
+      <wsdl:input message="tns:createCampaignStatisticsByLogin" name="createCampaignStatisticsByLogin"></wsdl:input>
+      <wsdl:output message="tns:createCampaignStatisticsByLoginResponse" name="createCampaignStatisticsByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsByCampaignId">
+      <wsdl:input message="tns:getCampaignStatisticsByCampaignId" name="getCampaignStatisticsByCampaignId"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsByCampaignIdResponse" name="getCampaignStatisticsByCampaignIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsListByLogin">
+      <wsdl:input message="tns:getCampaignStatisticsListByLogin" name="getCampaignStatisticsListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsListByLoginResponse" name="getCampaignStatisticsListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsIdListByLogin">
+      <wsdl:input message="tns:getWebsiteStatisticsIdListByLogin" name="getWebsiteStatisticsIdListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getWebsiteStatisticsIdListByLoginResponse" name="getWebsiteStatisticsIdListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsList">
+      <wsdl:input message="tns:getCampaignStatisticsList" name="getCampaignStatisticsList"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsListResponse" name="getCampaignStatisticsListResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsListSizeByLogin">
+      <wsdl:input message="tns:getWebsiteStatisticsListSizeByLogin" name="getWebsiteStatisticsListSizeByLogin"></wsdl:input>
+      <wsdl:output message="tns:getWebsiteStatisticsListSizeByLoginResponse" name="getWebsiteStatisticsListSizeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsByWebsiteId">
+      <wsdl:input message="tns:getWebsiteStatisticsByWebsiteId" name="getWebsiteStatisticsByWebsiteId"></wsdl:input>
+      <wsdl:output message="tns:getWebsiteStatisticsByWebsiteIdResponse" name="getWebsiteStatisticsByWebsiteIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlacementStatisticsIntervalByLogin">
+      <wsdl:input message="tns:updatePlacementStatisticsIntervalByLogin" name="updatePlacementStatisticsIntervalByLogin"></wsdl:input>
+      <wsdl:output message="tns:updatePlacementStatisticsIntervalByLoginResponse" name="updatePlacementStatisticsIntervalByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlacementStatisticsInterval">
+      <wsdl:input message="tns:updatePlacementStatisticsInterval" name="updatePlacementStatisticsInterval"></wsdl:input>
+      <wsdl:output message="tns:updatePlacementStatisticsIntervalResponse" name="updatePlacementStatisticsIntervalResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsByCampaignIdByLogin">
+      <wsdl:input message="tns:getCampaignStatisticsByCampaignIdByLogin" name="getCampaignStatisticsByCampaignIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsByCampaignIdByLoginResponse" name="getCampaignStatisticsByCampaignIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsListSizeByLogin">
+      <wsdl:input message="tns:getCampaignStatisticsListSizeByLogin" name="getCampaignStatisticsListSizeByLogin"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsListSizeByLoginResponse" name="getCampaignStatisticsListSizeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaignStatistics">
+      <wsdl:input message="tns:createCampaignStatistics" name="createCampaignStatistics"></wsdl:input>
+      <wsdl:output message="tns:createCampaignStatisticsResponse" name="createCampaignStatisticsResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsList">
+      <wsdl:input message="tns:getPlacementStatisticsList" name="getPlacementStatisticsList"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsListResponse" name="getPlacementStatisticsListResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPlacementStatisticsByLogin">
+      <wsdl:input message="tns:createPlacementStatisticsByLogin" name="createPlacementStatisticsByLogin"></wsdl:input>
+      <wsdl:output message="tns:createPlacementStatisticsByLoginResponse" name="createPlacementStatisticsByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQOP">
+      <wsdl:input message="tns:getQOP" name="getQOP"></wsdl:input>
+      <wsdl:output message="tns:getQOPResponse" name="getQOPResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsIdList">
+      <wsdl:input message="tns:getWebsiteStatisticsIdList" name="getWebsiteStatisticsIdList"></wsdl:input>
+      <wsdl:output message="tns:getWebsiteStatisticsIdListResponse" name="getWebsiteStatisticsIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsIdListByLogin">
+      <wsdl:input message="tns:getCampaignStatisticsIdListByLogin" name="getCampaignStatisticsIdListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsIdListByLoginResponse" name="getCampaignStatisticsIdListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateWebsiteStatisticsIntervalByLogin">
+      <wsdl:input message="tns:updateWebsiteStatisticsIntervalByLogin" name="updateWebsiteStatisticsIntervalByLogin"></wsdl:input>
+      <wsdl:output message="tns:updateWebsiteStatisticsIntervalByLoginResponse" name="updateWebsiteStatisticsIntervalByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createWebsiteStatisticsByLogin">
+      <wsdl:input message="tns:createWebsiteStatisticsByLogin" name="createWebsiteStatisticsByLogin"></wsdl:input>
+      <wsdl:output message="tns:createWebsiteStatisticsByLoginResponse" name="createWebsiteStatisticsByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCampaignStatisticsInterval">
+      <wsdl:input message="tns:updateCampaignStatisticsInterval" name="updateCampaignStatisticsInterval"></wsdl:input>
+      <wsdl:output message="tns:updateCampaignStatisticsIntervalResponse" name="updateCampaignStatisticsIntervalResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsListByLogin">
+      <wsdl:input message="tns:getWebsiteStatisticsListByLogin" name="getWebsiteStatisticsListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getWebsiteStatisticsListByLoginResponse" name="getWebsiteStatisticsListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsListSize">
+      <wsdl:input message="tns:getCampaignStatisticsListSize" name="getCampaignStatisticsListSize"></wsdl:input>
+      <wsdl:output message="tns:getCampaignStatisticsListSizeResponse" name="getCampaignStatisticsListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsIdListByLogin">
+      <wsdl:input message="tns:getPlacementStatisticsIdListByLogin" name="getPlacementStatisticsIdListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsIdListByLoginResponse" name="getPlacementStatisticsIdListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsListSizeByLogin">
+      <wsdl:input message="tns:getPlacementStatisticsListSizeByLogin" name="getPlacementStatisticsListSizeByLogin"></wsdl:input>
+      <wsdl:output message="tns:getPlacementStatisticsListSizeByLoginResponse" name="getPlacementStatisticsListSizeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTodaysBannerStatisticsByCampaignId">
+      <wsdl:input message="tns:getTodaysBannerStatisticsByCampaignId" name="getTodaysBannerStatisticsByCampaignId"></wsdl:input>
+      <wsdl:output message="tns:getTodaysBannerStatisticsByCampaignIdResponse" name="getTodaysBannerStatisticsByCampaignIdResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSStatisticsAdmin_v4ServiceSoapBinding" type="tns:WSStatisticsAdmin_v4">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="createPlacementStatistics">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createPlacementStatistics">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createPlacementStatisticsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCampaignStatisticsIntervalByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateCampaignStatisticsIntervalByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateCampaignStatisticsIntervalByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateWebsiteStatisticsInterval">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateWebsiteStatisticsInterval">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateWebsiteStatisticsIntervalResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAOVE">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getAOVE">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getAOVEResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTodaysBannerStatisticsByCampaignFilter">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTodaysBannerStatisticsByCampaignFilter">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTodaysBannerStatisticsByCampaignFilterResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSStatisticsAdminException">
+        <soap:fault name="WSStatisticsAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsByPlacementIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsByPlacementIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsByPlacementIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createWebsiteStatistics">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createWebsiteStatistics">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createWebsiteStatisticsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getWebsiteStatisticsListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getWebsiteStatisticsListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getWebsiteStatisticsList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getWebsiteStatisticsListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsByPlacementId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsByPlacementId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsByPlacementIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaignStatisticsByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createCampaignStatisticsByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createCampaignStatisticsByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsByCampaignId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsByCampaignId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsByCampaignIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsIdListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getWebsiteStatisticsIdListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getWebsiteStatisticsIdListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsByWebsiteId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getWebsiteStatisticsByWebsiteId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getWebsiteStatisticsByWebsiteIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsListSizeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getWebsiteStatisticsListSizeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getWebsiteStatisticsListSizeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlacementStatisticsIntervalByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updatePlacementStatisticsIntervalByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updatePlacementStatisticsIntervalByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlacementStatisticsInterval">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updatePlacementStatisticsInterval">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updatePlacementStatisticsIntervalResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsByCampaignIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsByCampaignIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsByCampaignIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsListSizeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsListSizeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsListSizeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaignStatistics">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createCampaignStatistics">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createCampaignStatisticsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPlacementStatisticsByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createPlacementStatisticsByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createPlacementStatisticsByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQOP">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getQOP">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getQOPResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsIdListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsIdListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsIdListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getWebsiteStatisticsIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getWebsiteStatisticsIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createWebsiteStatisticsByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createWebsiteStatisticsByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createWebsiteStatisticsByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateWebsiteStatisticsIntervalByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateWebsiteStatisticsIntervalByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateWebsiteStatisticsIntervalByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCampaignStatisticsInterval">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateCampaignStatisticsInterval">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateCampaignStatisticsIntervalResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getWebsiteStatisticsListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getWebsiteStatisticsListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getWebsiteStatisticsListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignStatisticsListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getCampaignStatisticsListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getCampaignStatisticsListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsIdListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsIdListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsIdListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPlacementStatisticsListSizeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getPlacementStatisticsListSizeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getPlacementStatisticsListSizeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTodaysBannerStatisticsByCampaignId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getTodaysBannerStatisticsByCampaignId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getTodaysBannerStatisticsByCampaignIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSStatisticsAdmin_v4Service">
+    <wsdl:port binding="tns:WSStatisticsAdmin_v4ServiceSoapBinding" name="WSStatisticsAdmin_v4Port">
+      <soap:address location="http://ws-api.adtech.de/WSStatisticsAdmin_v4"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
