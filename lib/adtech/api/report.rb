@@ -11,7 +11,11 @@ module ADTech
 
         puts "Your report (#{report_type_id}) is of entity type: #{report.getEntityType} "
              "and report category: #{report.getReportCategory()}"
+
+        puts start_date.month
       end
+
+
     end
   end
 end

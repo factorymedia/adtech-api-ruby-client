@@ -13,7 +13,7 @@ module ADTech
   class Client
     attr_reader :helios
 
-    def initialize()
+    def initialize
       @helios = HeliosWSClientSystem.new
       @helios.initServices('https://ws-api.adtech.de',
                            '.',
