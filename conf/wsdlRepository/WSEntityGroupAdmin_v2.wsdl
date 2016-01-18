@@ -1,0 +1,752 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://EntityGrouping_v2.lowLevel.helios.webservices.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://EntityGrouping.helios.adtech.de/" name="WSEntityGroupAdmin_v2Service" targetNamespace="http://EntityGrouping_v2.lowLevel.helios.webservices.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/" version="1.0">
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AttributeOperatorValueExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence>
+<xs:element name="attribute" nillable="true" type="xs:string"></xs:element>
+<xs:element name="operator" nillable="true" type="xs:string"></xs:element>
+<xs:element name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://EntityGrouping_v2.lowLevel.helios.webservices.adtech.de/" xmlns:ns2="http://helios.adtech.de/" xmlns:ns1="http://EntityGrouping.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://EntityGrouping_v2.lowLevel.helios.webservices.adtech.de/">
+<xs:import namespace="http://EntityGrouping.helios.adtech.de/"></xs:import>
+<xs:import namespace="http://helios.adtech.de/"></xs:import>
+<xs:element name="createFlexTreeConfig" type="tns:createFlexTreeConfig"></xs:element>
+<xs:element name="createFlexTreeConfigResponse" type="tns:createFlexTreeConfigResponse"></xs:element>
+<xs:element name="createGroupKeyDefinition" type="tns:createGroupKeyDefinition"></xs:element>
+<xs:element name="createGroupKeyDefinitionResponse" type="tns:createGroupKeyDefinitionResponse"></xs:element>
+<xs:element name="gaove" type="tns:gaove"></xs:element>
+<xs:element name="gaoveResponse" type="tns:gaoveResponse"></xs:element>
+<xs:element name="getFlexTreeConfigByExtId" type="tns:getFlexTreeConfigByExtId"></xs:element>
+<xs:element name="getFlexTreeConfigByExtIdResponse" type="tns:getFlexTreeConfigByExtIdResponse"></xs:element>
+<xs:element name="getFlexTreeConfigById" type="tns:getFlexTreeConfigById"></xs:element>
+<xs:element name="getFlexTreeConfigByIdResponse" type="tns:getFlexTreeConfigByIdResponse"></xs:element>
+<xs:element name="getFlexTreeConfigIdList" type="tns:getFlexTreeConfigIdList"></xs:element>
+<xs:element name="getFlexTreeConfigIdListResponse" type="tns:getFlexTreeConfigIdListResponse"></xs:element>
+<xs:element name="getFlexTreeConfigList" type="tns:getFlexTreeConfigList"></xs:element>
+<xs:element name="getFlexTreeConfigListResponse" type="tns:getFlexTreeConfigListResponse"></xs:element>
+<xs:element name="getFlexTreeConfigListSize" type="tns:getFlexTreeConfigListSize"></xs:element>
+<xs:element name="getFlexTreeConfigListSizeResponse" type="tns:getFlexTreeConfigListSizeResponse"></xs:element>
+<xs:element name="getGroupKeyDefinitionByExtId" type="tns:getGroupKeyDefinitionByExtId"></xs:element>
+<xs:element name="getGroupKeyDefinitionByExtIdResponse" type="tns:getGroupKeyDefinitionByExtIdResponse"></xs:element>
+<xs:element name="getGroupKeyDefinitionById" type="tns:getGroupKeyDefinitionById"></xs:element>
+<xs:element name="getGroupKeyDefinitionByIdResponse" type="tns:getGroupKeyDefinitionByIdResponse"></xs:element>
+<xs:element name="getGroupKeyDefinitionIdList" type="tns:getGroupKeyDefinitionIdList"></xs:element>
+<xs:element name="getGroupKeyDefinitionIdListResponse" type="tns:getGroupKeyDefinitionIdListResponse"></xs:element>
+<xs:element name="getGroupKeyDefinitionList" type="tns:getGroupKeyDefinitionList"></xs:element>
+<xs:element name="getGroupKeyDefinitionListResponse" type="tns:getGroupKeyDefinitionListResponse"></xs:element>
+<xs:element name="getGroupKeyDefinitionListSize" type="tns:getGroupKeyDefinitionListSize"></xs:element>
+<xs:element name="getGroupKeyDefinitionListSizeResponse" type="tns:getGroupKeyDefinitionListSizeResponse"></xs:element>
+<xs:element name="getKeyValuePairs" type="tns:getKeyValuePairs"></xs:element>
+<xs:element name="getKeyValuePairsResponse" type="tns:getKeyValuePairsResponse"></xs:element>
+<xs:element name="gfti" type="tns:gfti"></xs:element>
+<xs:element name="gftiResponse" type="tns:gftiResponse"></xs:element>
+<xs:element name="ggvd" type="tns:ggvd"></xs:element>
+<xs:element name="ggvdResponse" type="tns:ggvdResponse"></xs:element>
+<xs:element name="updateFlexTreeConfig" type="tns:updateFlexTreeConfig"></xs:element>
+<xs:element name="updateFlexTreeConfigResponse" type="tns:updateFlexTreeConfigResponse"></xs:element>
+<xs:element name="updateGroupKeyDefinition" type="tns:updateGroupKeyDefinition"></xs:element>
+<xs:element name="updateGroupKeyDefinitionResponse" type="tns:updateGroupKeyDefinitionResponse"></xs:element>
+<xs:complexType name="getGroupKeyDefinitionByExtId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionByExtIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:GroupKeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:GroupKeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:GroupKeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateFlexTreeConfig">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:FlexTreeConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateFlexTreeConfigResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:FlexTreeConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:FlexTreeConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateGroupKeyDefinition">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:GroupKeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateGroupKeyDefinitionResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:GroupKeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ggvd">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="ggvdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:GroupValueDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createGroupKeyDefinition">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:GroupKeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createGroupKeyDefinitionResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:GroupKeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyValuePairs">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg1" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyValuePairsResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gaove">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gaoveResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:AttributeOperatorValueExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getGroupKeyDefinitionIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigByExtId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigByExtIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:FlexTreeConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="gfti">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="gftiResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:FlexTreeItem"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns2:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getFlexTreeConfigByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:FlexTreeConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlexTreeConfig">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:FlexTreeConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createFlexTreeConfigResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:FlexTreeConfig"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://EntityGrouping.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://EntityGrouping.helios.adtech.de/">
+<xs:complexType name="GroupKeyDefinition">
+<xs:sequence>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element maxOccurs="unbounded" name="groupValueDefinitions" nillable="true" type="xs:anyType"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="pushableProperty" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="treeType" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="FlexTreeConfig">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="config" nillable="true" type="tns:FlexTreeItem"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="treeTypeId" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="FlexTreeItem">
+<xs:sequence>
+<xs:element name="key" nillable="true" type="xs:long"></xs:element>
+<xs:element name="position" nillable="true" type="xs:int"></xs:element>
+<xs:element name="type" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GroupValueDefinition">
+<xs:sequence>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WSEntityGroupAdminException" type="tns:WSEntityGroupAdminException"></xs:element>
+<xs:complexType name="WSEntityGroupAdminException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="getFlexTreeConfigListResponse">
+    <wsdl:part element="tns:getFlexTreeConfigListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigIdListResponse">
+    <wsdl:part element="tns:getFlexTreeConfigIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionById">
+    <wsdl:part element="tns:getGroupKeyDefinitionById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlexTreeConfig">
+    <wsdl:part element="tns:createFlexTreeConfig" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlexTreeConfigResponse">
+    <wsdl:part element="tns:createFlexTreeConfigResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionListSizeResponse">
+    <wsdl:part element="tns:getGroupKeyDefinitionListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyValuePairs">
+    <wsdl:part element="tns:getKeyValuePairs" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionIdList">
+    <wsdl:part element="tns:getGroupKeyDefinitionIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createGroupKeyDefinitionResponse">
+    <wsdl:part element="tns:createGroupKeyDefinitionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gaove">
+    <wsdl:part element="tns:gaove" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigByExtId">
+    <wsdl:part element="tns:getFlexTreeConfigByExtId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSEntityGroupAdminException">
+    <wsdl:part element="ns1:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyValuePairsResponse">
+    <wsdl:part element="tns:getKeyValuePairsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateGroupKeyDefinition">
+    <wsdl:part element="tns:updateGroupKeyDefinition" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigList">
+    <wsdl:part element="tns:getFlexTreeConfigList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ggvd">
+    <wsdl:part element="tns:ggvd" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionIdListResponse">
+    <wsdl:part element="tns:getGroupKeyDefinitionIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigListSizeResponse">
+    <wsdl:part element="tns:getFlexTreeConfigListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createGroupKeyDefinition">
+    <wsdl:part element="tns:createGroupKeyDefinition" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionByExtIdResponse">
+    <wsdl:part element="tns:getGroupKeyDefinitionByExtIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionByIdResponse">
+    <wsdl:part element="tns:getGroupKeyDefinitionByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionByExtId">
+    <wsdl:part element="tns:getGroupKeyDefinitionByExtId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gaoveResponse">
+    <wsdl:part element="tns:gaoveResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigListSize">
+    <wsdl:part element="tns:getFlexTreeConfigListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionListResponse">
+    <wsdl:part element="tns:getGroupKeyDefinitionListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigByIdResponse">
+    <wsdl:part element="tns:getFlexTreeConfigByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigById">
+    <wsdl:part element="tns:getFlexTreeConfigById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateFlexTreeConfigResponse">
+    <wsdl:part element="tns:updateFlexTreeConfigResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigIdList">
+    <wsdl:part element="tns:getFlexTreeConfigIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionList">
+    <wsdl:part element="tns:getGroupKeyDefinitionList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateGroupKeyDefinitionResponse">
+    <wsdl:part element="tns:updateGroupKeyDefinitionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGroupKeyDefinitionListSize">
+    <wsdl:part element="tns:getGroupKeyDefinitionListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlexTreeConfigByExtIdResponse">
+    <wsdl:part element="tns:getFlexTreeConfigByExtIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateFlexTreeConfig">
+    <wsdl:part element="tns:updateFlexTreeConfig" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ggvdResponse">
+    <wsdl:part element="tns:ggvdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gftiResponse">
+    <wsdl:part element="tns:gftiResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="gfti">
+    <wsdl:part element="tns:gfti" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSEntityGroupAdmin_v2">
+    <wsdl:operation name="getGroupKeyDefinitionByExtId">
+      <wsdl:input message="tns:getGroupKeyDefinitionByExtId" name="getGroupKeyDefinitionByExtId"></wsdl:input>
+      <wsdl:output message="tns:getGroupKeyDefinitionByExtIdResponse" name="getGroupKeyDefinitionByExtIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionById">
+      <wsdl:input message="tns:getGroupKeyDefinitionById" name="getGroupKeyDefinitionById"></wsdl:input>
+      <wsdl:output message="tns:getGroupKeyDefinitionByIdResponse" name="getGroupKeyDefinitionByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionList">
+      <wsdl:input message="tns:getGroupKeyDefinitionList" name="getGroupKeyDefinitionList"></wsdl:input>
+      <wsdl:output message="tns:getGroupKeyDefinitionListResponse" name="getGroupKeyDefinitionListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateFlexTreeConfig">
+      <wsdl:input message="tns:updateFlexTreeConfig" name="updateFlexTreeConfig"></wsdl:input>
+      <wsdl:output message="tns:updateFlexTreeConfigResponse" name="updateFlexTreeConfigResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigList">
+      <wsdl:input message="tns:getFlexTreeConfigList" name="getFlexTreeConfigList"></wsdl:input>
+      <wsdl:output message="tns:getFlexTreeConfigListResponse" name="getFlexTreeConfigListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateGroupKeyDefinition">
+      <wsdl:input message="tns:updateGroupKeyDefinition" name="updateGroupKeyDefinition"></wsdl:input>
+      <wsdl:output message="tns:updateGroupKeyDefinitionResponse" name="updateGroupKeyDefinitionResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ggvd">
+      <wsdl:input message="tns:ggvd" name="ggvd"></wsdl:input>
+      <wsdl:output message="tns:ggvdResponse" name="ggvdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createGroupKeyDefinition">
+      <wsdl:input message="tns:createGroupKeyDefinition" name="createGroupKeyDefinition"></wsdl:input>
+      <wsdl:output message="tns:createGroupKeyDefinitionResponse" name="createGroupKeyDefinitionResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyValuePairs">
+      <wsdl:input message="tns:getKeyValuePairs" name="getKeyValuePairs"></wsdl:input>
+      <wsdl:output message="tns:getKeyValuePairsResponse" name="getKeyValuePairsResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gaove">
+      <wsdl:input message="tns:gaove" name="gaove"></wsdl:input>
+      <wsdl:output message="tns:gaoveResponse" name="gaoveResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionListSize">
+      <wsdl:input message="tns:getGroupKeyDefinitionListSize" name="getGroupKeyDefinitionListSize"></wsdl:input>
+      <wsdl:output message="tns:getGroupKeyDefinitionListSizeResponse" name="getGroupKeyDefinitionListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigListSize">
+      <wsdl:input message="tns:getFlexTreeConfigListSize" name="getFlexTreeConfigListSize"></wsdl:input>
+      <wsdl:output message="tns:getFlexTreeConfigListSizeResponse" name="getFlexTreeConfigListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionIdList">
+      <wsdl:input message="tns:getGroupKeyDefinitionIdList" name="getGroupKeyDefinitionIdList"></wsdl:input>
+      <wsdl:output message="tns:getGroupKeyDefinitionIdListResponse" name="getGroupKeyDefinitionIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigByExtId">
+      <wsdl:input message="tns:getFlexTreeConfigByExtId" name="getFlexTreeConfigByExtId"></wsdl:input>
+      <wsdl:output message="tns:getFlexTreeConfigByExtIdResponse" name="getFlexTreeConfigByExtIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gfti">
+      <wsdl:input message="tns:gfti" name="gfti"></wsdl:input>
+      <wsdl:output message="tns:gftiResponse" name="gftiResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigIdList">
+      <wsdl:input message="tns:getFlexTreeConfigIdList" name="getFlexTreeConfigIdList"></wsdl:input>
+      <wsdl:output message="tns:getFlexTreeConfigIdListResponse" name="getFlexTreeConfigIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigById">
+      <wsdl:input message="tns:getFlexTreeConfigById" name="getFlexTreeConfigById"></wsdl:input>
+      <wsdl:output message="tns:getFlexTreeConfigByIdResponse" name="getFlexTreeConfigByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createFlexTreeConfig">
+      <wsdl:input message="tns:createFlexTreeConfig" name="createFlexTreeConfig"></wsdl:input>
+      <wsdl:output message="tns:createFlexTreeConfigResponse" name="createFlexTreeConfigResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSEntityGroupAdminException" name="WSEntityGroupAdminException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSEntityGroupAdmin_v2ServiceSoapBinding" type="tns:WSEntityGroupAdmin_v2">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getGroupKeyDefinitionByExtId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getGroupKeyDefinitionByExtId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getGroupKeyDefinitionByExtIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getGroupKeyDefinitionById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getGroupKeyDefinitionByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getGroupKeyDefinitionList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getGroupKeyDefinitionListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getFlexTreeConfigList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getFlexTreeConfigListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateFlexTreeConfig">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateFlexTreeConfig">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateFlexTreeConfigResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateGroupKeyDefinition">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateGroupKeyDefinition">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateGroupKeyDefinitionResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createGroupKeyDefinition">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createGroupKeyDefinition">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createGroupKeyDefinitionResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ggvd">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="ggvd">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="ggvdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyValuePairs">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyValuePairs">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyValuePairsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gaove">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gaove">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gaoveResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getGroupKeyDefinitionListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getGroupKeyDefinitionListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getFlexTreeConfigListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getFlexTreeConfigListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigByExtId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getFlexTreeConfigByExtId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getFlexTreeConfigByExtIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupKeyDefinitionIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getGroupKeyDefinitionIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getGroupKeyDefinitionIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getFlexTreeConfigIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getFlexTreeConfigIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="gfti">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="gfti">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="gftiResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFlexTreeConfig">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createFlexTreeConfig">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createFlexTreeConfigResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFlexTreeConfigById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getFlexTreeConfigById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getFlexTreeConfigByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSEntityGroupAdminException">
+        <soap:fault name="WSEntityGroupAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSEntityGroupAdmin_v2Service">
+    <wsdl:port binding="tns:WSEntityGroupAdmin_v2ServiceSoapBinding" name="WSEntityGroupAdmin_v2Port">
+      <soap:address location="http://ws-api.adtech.de/WSEntityGroupAdmin_v2"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

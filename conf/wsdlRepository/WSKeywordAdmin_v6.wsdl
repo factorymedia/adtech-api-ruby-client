@@ -1,0 +1,1682 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://KeywordManagement_v6.lowLevel.helios.webservices.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://KeywordManagement.helios.adtech.de/" name="WSKeywordAdmin_v6Service" targetNamespace="http://KeywordManagement_v6.lowLevel.helios.webservices.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/" version="1.0">
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AttributeOperatorValueExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence>
+<xs:element name="attribute" nillable="true" type="xs:string"></xs:element>
+<xs:element name="operator" nillable="true" type="xs:string"></xs:element>
+<xs:element name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://KeywordManagement_v6.lowLevel.helios.webservices.adtech.de/" xmlns:ns2="http://KeywordManagement.helios.adtech.de/" xmlns:ns1="http://helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://KeywordManagement_v6.lowLevel.helios.webservices.adtech.de/">
+<xs:import namespace="http://helios.adtech.de/"></xs:import>
+<xs:import namespace="http://KeywordManagement.helios.adtech.de/"></xs:import>
+<xs:element name="createKeywordTreeNode" type="tns:createKeywordTreeNode"></xs:element>
+<xs:element name="createKeywordTreeNodeByLogin" type="tns:createKeywordTreeNodeByLogin"></xs:element>
+<xs:element name="createKeywordTreeNodeByLoginResponse" type="tns:createKeywordTreeNodeByLoginResponse"></xs:element>
+<xs:element name="createKeywordTreeNodeResponse" type="tns:createKeywordTreeNodeResponse"></xs:element>
+<xs:element name="deleteKeywordTreeNode" type="tns:deleteKeywordTreeNode"></xs:element>
+<xs:element name="deleteKeywordTreeNodeByLogin" type="tns:deleteKeywordTreeNodeByLogin"></xs:element>
+<xs:element name="deleteKeywordTreeNodeByLoginResponse" type="tns:deleteKeywordTreeNodeByLoginResponse"></xs:element>
+<xs:element name="deleteKeywordTreeNodeResponse" type="tns:deleteKeywordTreeNodeResponse"></xs:element>
+<xs:element name="getAOVE" type="tns:getAOVE"></xs:element>
+<xs:element name="getAOVEResponse" type="tns:getAOVEResponse"></xs:element>
+<xs:element name="getKeyById" type="tns:getKeyById"></xs:element>
+<xs:element name="getKeyByIdByLogin" type="tns:getKeyByIdByLogin"></xs:element>
+<xs:element name="getKeyByIdByLoginResponse" type="tns:getKeyByIdByLoginResponse"></xs:element>
+<xs:element name="getKeyByIdResponse" type="tns:getKeyByIdResponse"></xs:element>
+<xs:element name="getKeyDefinitionById" type="tns:getKeyDefinitionById"></xs:element>
+<xs:element name="getKeyDefinitionByIdByLogin" type="tns:getKeyDefinitionByIdByLogin"></xs:element>
+<xs:element name="getKeyDefinitionByIdByLoginResponse" type="tns:getKeyDefinitionByIdByLoginResponse"></xs:element>
+<xs:element name="getKeyDefinitionByIdResponse" type="tns:getKeyDefinitionByIdResponse"></xs:element>
+<xs:element name="getKeyDefinitionIdList" type="tns:getKeyDefinitionIdList"></xs:element>
+<xs:element name="getKeyDefinitionIdListByLogin" type="tns:getKeyDefinitionIdListByLogin"></xs:element>
+<xs:element name="getKeyDefinitionIdListByLoginResponse" type="tns:getKeyDefinitionIdListByLoginResponse"></xs:element>
+<xs:element name="getKeyDefinitionIdListResponse" type="tns:getKeyDefinitionIdListResponse"></xs:element>
+<xs:element name="getKeyDefinitionList" type="tns:getKeyDefinitionList"></xs:element>
+<xs:element name="getKeyDefinitionListByLogin" type="tns:getKeyDefinitionListByLogin"></xs:element>
+<xs:element name="getKeyDefinitionListByLoginResponse" type="tns:getKeyDefinitionListByLoginResponse"></xs:element>
+<xs:element name="getKeyDefinitionListResponse" type="tns:getKeyDefinitionListResponse"></xs:element>
+<xs:element name="getKeyDefinitionListSize" type="tns:getKeyDefinitionListSize"></xs:element>
+<xs:element name="getKeyDefinitionListSizeByLogin" type="tns:getKeyDefinitionListSizeByLogin"></xs:element>
+<xs:element name="getKeyDefinitionListSizeByLoginResponse" type="tns:getKeyDefinitionListSizeByLoginResponse"></xs:element>
+<xs:element name="getKeyDefinitionListSizeResponse" type="tns:getKeyDefinitionListSizeResponse"></xs:element>
+<xs:element name="getKeyGroupById" type="tns:getKeyGroupById"></xs:element>
+<xs:element name="getKeyGroupByIdResponse" type="tns:getKeyGroupByIdResponse"></xs:element>
+<xs:element name="getKeyGroupIdList" type="tns:getKeyGroupIdList"></xs:element>
+<xs:element name="getKeyGroupIdListResponse" type="tns:getKeyGroupIdListResponse"></xs:element>
+<xs:element name="getKeyGroupList" type="tns:getKeyGroupList"></xs:element>
+<xs:element name="getKeyGroupListResponse" type="tns:getKeyGroupListResponse"></xs:element>
+<xs:element name="getKeyIdList" type="tns:getKeyIdList"></xs:element>
+<xs:element name="getKeyIdListByLogin" type="tns:getKeyIdListByLogin"></xs:element>
+<xs:element name="getKeyIdListByLoginResponse" type="tns:getKeyIdListByLoginResponse"></xs:element>
+<xs:element name="getKeyIdListResponse" type="tns:getKeyIdListResponse"></xs:element>
+<xs:element name="getKeyList" type="tns:getKeyList"></xs:element>
+<xs:element name="getKeyListByLogin" type="tns:getKeyListByLogin"></xs:element>
+<xs:element name="getKeyListByLoginResponse" type="tns:getKeyListByLoginResponse"></xs:element>
+<xs:element name="getKeyListResponse" type="tns:getKeyListResponse"></xs:element>
+<xs:element name="getKeyListSize" type="tns:getKeyListSize"></xs:element>
+<xs:element name="getKeyListSizeByLogin" type="tns:getKeyListSizeByLogin"></xs:element>
+<xs:element name="getKeyListSizeByLoginResponse" type="tns:getKeyListSizeByLoginResponse"></xs:element>
+<xs:element name="getKeyListSizeResponse" type="tns:getKeyListSizeResponse"></xs:element>
+<xs:element name="getKeywordById" type="tns:getKeywordById"></xs:element>
+<xs:element name="getKeywordByIdResponse" type="tns:getKeywordByIdResponse"></xs:element>
+<xs:element name="getKeywordMapByIdList" type="tns:getKeywordMapByIdList"></xs:element>
+<xs:element name="getKeywordMapByIdListResponse" type="tns:getKeywordMapByIdListResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeByExtId" type="tns:getKeywordTreeNodeByExtId"></xs:element>
+<xs:element name="getKeywordTreeNodeByExtIdByLogin" type="tns:getKeywordTreeNodeByExtIdByLogin"></xs:element>
+<xs:element name="getKeywordTreeNodeByExtIdByLoginResponse" type="tns:getKeywordTreeNodeByExtIdByLoginResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeByExtIdResponse" type="tns:getKeywordTreeNodeByExtIdResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeById" type="tns:getKeywordTreeNodeById"></xs:element>
+<xs:element name="getKeywordTreeNodeByIdByLogin" type="tns:getKeywordTreeNodeByIdByLogin"></xs:element>
+<xs:element name="getKeywordTreeNodeByIdByLoginResponse" type="tns:getKeywordTreeNodeByIdByLoginResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeByIdResponse" type="tns:getKeywordTreeNodeByIdResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeIdList" type="tns:getKeywordTreeNodeIdList"></xs:element>
+<xs:element name="getKeywordTreeNodeIdListByLogin" type="tns:getKeywordTreeNodeIdListByLogin"></xs:element>
+<xs:element name="getKeywordTreeNodeIdListByLoginResponse" type="tns:getKeywordTreeNodeIdListByLoginResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeIdListResponse" type="tns:getKeywordTreeNodeIdListResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeList" type="tns:getKeywordTreeNodeList"></xs:element>
+<xs:element name="getKeywordTreeNodeListByLogin" type="tns:getKeywordTreeNodeListByLogin"></xs:element>
+<xs:element name="getKeywordTreeNodeListByLoginResponse" type="tns:getKeywordTreeNodeListByLoginResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeListResponse" type="tns:getKeywordTreeNodeListResponse"></xs:element>
+<xs:element name="getKeywordTreeNodeListSize" type="tns:getKeywordTreeNodeListSize"></xs:element>
+<xs:element name="getKeywordTreeNodeListSizeResponse" type="tns:getKeywordTreeNodeListSizeResponse"></xs:element>
+<xs:element name="getKeywordsByWebsiteId" type="tns:getKeywordsByWebsiteId"></xs:element>
+<xs:element name="getKeywordsByWebsiteIdResponse" type="tns:getKeywordsByWebsiteIdResponse"></xs:element>
+<xs:element name="registerKeyword" type="tns:registerKeyword"></xs:element>
+<xs:element name="registerKeywordByLogin" type="tns:registerKeywordByLogin"></xs:element>
+<xs:element name="registerKeywordByLoginResponse" type="tns:registerKeywordByLoginResponse"></xs:element>
+<xs:element name="registerKeywordDirect" type="tns:registerKeywordDirect"></xs:element>
+<xs:element name="registerKeywordDirectByLogin" type="tns:registerKeywordDirectByLogin"></xs:element>
+<xs:element name="registerKeywordDirectByLoginResponse" type="tns:registerKeywordDirectByLoginResponse"></xs:element>
+<xs:element name="registerKeywordDirectResponse" type="tns:registerKeywordDirectResponse"></xs:element>
+<xs:element name="registerKeywordResponse" type="tns:registerKeywordResponse"></xs:element>
+<xs:element name="updateKeywordTreeNode" type="tns:updateKeywordTreeNode"></xs:element>
+<xs:element name="updateKeywordTreeNodeByLogin" type="tns:updateKeywordTreeNodeByLogin"></xs:element>
+<xs:element name="updateKeywordTreeNodeByLoginResponse" type="tns:updateKeywordTreeNodeByLoginResponse"></xs:element>
+<xs:element name="updateKeywordTreeNodeResponse" type="tns:updateKeywordTreeNodeResponse"></xs:element>
+<xs:complexType name="getKeywordTreeNodeListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyGroupById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyGroupByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeyGroup"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionListSizeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:BoolExpression"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionListSizeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateKeywordTreeNode">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateKeywordTreeNodeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:Key"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:KeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyGroupList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyGroupListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:KeyGroup"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeByExtId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeByExtIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAOVE">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAOVEResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeywordDirectByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeywordDirectByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeByIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeByExtIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeByExtIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordMapByIdList">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordMapByIdListResponse">
+<xs:sequence>
+<xs:element name="_return">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="key" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="value" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteKeywordTreeNodeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteKeywordTreeNodeByLoginResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:Key"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordsByWebsiteId">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordsByWebsiteIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionIdListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionIdListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionListSize">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:BoolExpression"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionListSizeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteKeywordTreeNode">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteKeywordTreeNodeResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+<xs:complexType name="createKeywordTreeNodeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:KeywordTreeNode"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createKeywordTreeNodeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeywordByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeywordByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns2:KeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg1" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyByIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:Key"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionByIdByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyDefinitionByIdByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeyDefinition"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyIdListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+<xs:element minOccurs="0" name="arg4" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg5" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyIdListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeywordDirect">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeywordDirectResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyListSizeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns1:BoolExpression"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyListSizeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeIdListByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeywordTreeNodeIdListByLoginResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyById">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyByIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:Key"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyGroupIdList">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:long"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="ns1:BoolExpression"></xs:element>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="arg3" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getKeyGroupIdListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeyword">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKeywordResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateKeywordTreeNodeByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:KeywordTreeNode"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateKeywordTreeNodeByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createKeywordTreeNode">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createKeywordTreeNodeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns2:KeywordTreeNode"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://KeywordManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://KeywordManagement.helios.adtech.de/">
+<xs:complexType name="KeyGroup">
+<xs:sequence>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element maxOccurs="unbounded" name="keys" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="sourceType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="KeywordTreeNode">
+<xs:sequence>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="keyword" nillable="true" type="xs:string"></xs:element>
+<xs:element name="keywordId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="level" nillable="true" type="xs:int"></xs:element>
+<xs:element name="mainNetworkId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="parentId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="subNetworkId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="type" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Key">
+<xs:sequence>
+<xs:element name="caption" nillable="true" type="xs:string"></xs:element>
+<xs:element name="description" nillable="true" type="xs:string"></xs:element>
+<xs:element name="extId" nillable="true" type="xs:string"></xs:element>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="keyDefinitionId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="maximumValue" nillable="true" type="xs:int"></xs:element>
+<xs:element name="minimumValue" nillable="true" type="xs:int"></xs:element>
+<xs:element name="multiselect" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element maxOccurs="unbounded" name="preDefinedValues" nillable="true" type="xs:anyType"></xs:element>
+<xs:element name="preValueFunction" nillable="true" type="xs:string"></xs:element>
+<xs:element name="replicate" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="replicatedAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="sourceType" nillable="true" type="xs:int"></xs:element>
+<xs:element name="type" nillable="true" type="xs:int"></xs:element>
+<xs:element name="validationPattern" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="KeyDefinition">
+<xs:sequence>
+<xs:element name="id" nillable="true" type="xs:long"></xs:element>
+<xs:element name="name" nillable="true" type="xs:string"></xs:element>
+<xs:element name="replicate" nillable="true" type="xs:boolean"></xs:element>
+<xs:element name="replicatedAt" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="sourceType" nillable="true" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="WSKeywordAdminException" type="WSKeywordAdminException"></xs:element>
+<xs:complexType name="WSKeywordAdminException">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="createKeywordTreeNodeResponse">
+    <wsdl:part element="tns:createKeywordTreeNodeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeIdListByLoginResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeIdListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionListSize">
+    <wsdl:part element="tns:getKeyDefinitionListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateKeywordTreeNodeByLoginResponse">
+    <wsdl:part element="tns:updateKeywordTreeNodeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeByExtId">
+    <wsdl:part element="tns:getKeywordTreeNodeByExtId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyGroupList">
+    <wsdl:part element="tns:getKeyGroupList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeByExtIdByLogin">
+    <wsdl:part element="tns:getKeywordTreeNodeByExtIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeyword">
+    <wsdl:part element="tns:registerKeyword" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createKeywordTreeNodeByLoginResponse">
+    <wsdl:part element="tns:createKeywordTreeNodeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyListSize">
+    <wsdl:part element="tns:getKeyListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeListSizeResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyGroupIdListResponse">
+    <wsdl:part element="tns:getKeyGroupIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyListSizeByLoginResponse">
+    <wsdl:part element="tns:getKeyListSizeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionIdList">
+    <wsdl:part element="tns:getKeyDefinitionIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeByIdByLogin">
+    <wsdl:part element="tns:getKeywordTreeNodeByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyGroupListResponse">
+    <wsdl:part element="tns:getKeyGroupListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionByIdResponse">
+    <wsdl:part element="tns:getKeyDefinitionByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionListByLogin">
+    <wsdl:part element="tns:getKeyDefinitionListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionListSizeByLoginResponse">
+    <wsdl:part element="tns:getKeyDefinitionListSizeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordMapByIdList">
+    <wsdl:part element="tns:getKeywordMapByIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyList">
+    <wsdl:part element="tns:getKeyList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyIdListByLoginResponse">
+    <wsdl:part element="tns:getKeyIdListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteKeywordTreeNodeResponse">
+    <wsdl:part element="tns:deleteKeywordTreeNodeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyIdListResponse">
+    <wsdl:part element="tns:getKeyIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeListByLogin">
+    <wsdl:part element="tns:getKeywordTreeNodeListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionListResponse">
+    <wsdl:part element="tns:getKeyDefinitionListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyIdListByLogin">
+    <wsdl:part element="tns:getKeyIdListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeList">
+    <wsdl:part element="tns:getKeywordTreeNodeList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyListResponse">
+    <wsdl:part element="tns:getKeyListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyByIdResponse">
+    <wsdl:part element="tns:getKeyByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeListByLoginResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordMapByIdListResponse">
+    <wsdl:part element="tns:getKeywordMapByIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionIdListResponse">
+    <wsdl:part element="tns:getKeyDefinitionIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionByIdByLoginResponse">
+    <wsdl:part element="tns:getKeyDefinitionByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteKeywordTreeNodeByLogin">
+    <wsdl:part element="tns:deleteKeywordTreeNodeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyListByLogin">
+    <wsdl:part element="tns:getKeyListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAOVE">
+    <wsdl:part element="tns:getAOVE" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyGroupById">
+    <wsdl:part element="tns:getKeyGroupById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyGroupIdList">
+    <wsdl:part element="tns:getKeyGroupIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeByExtIdResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeByExtIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateKeywordTreeNode">
+    <wsdl:part element="tns:updateKeywordTreeNode" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordsByWebsiteId">
+    <wsdl:part element="tns:getKeywordsByWebsiteId" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeywordDirect">
+    <wsdl:part element="tns:registerKeywordDirect" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyByIdByLoginResponse">
+    <wsdl:part element="tns:getKeyByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeywordDirectByLoginResponse">
+    <wsdl:part element="tns:registerKeywordDirectByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeByIdByLoginResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeByIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeIdList">
+    <wsdl:part element="tns:getKeywordTreeNodeIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeByIdResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyByIdByLogin">
+    <wsdl:part element="tns:getKeyByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionIdListByLogin">
+    <wsdl:part element="tns:getKeyDefinitionIdListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyGroupByIdResponse">
+    <wsdl:part element="tns:getKeyGroupByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeIdListResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeIdListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeywordByLoginResponse">
+    <wsdl:part element="tns:registerKeywordByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeById">
+    <wsdl:part element="tns:getKeywordTreeNodeById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createKeywordTreeNode">
+    <wsdl:part element="tns:createKeywordTreeNode" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateKeywordTreeNodeResponse">
+    <wsdl:part element="tns:updateKeywordTreeNodeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteKeywordTreeNode">
+    <wsdl:part element="tns:deleteKeywordTreeNode" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeListResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionIdListByLoginResponse">
+    <wsdl:part element="tns:getKeyDefinitionIdListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createKeywordTreeNodeByLogin">
+    <wsdl:part element="tns:createKeywordTreeNodeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeListSize">
+    <wsdl:part element="tns:getKeywordTreeNodeListSize" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyListByLoginResponse">
+    <wsdl:part element="tns:getKeyListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeywordDirectResponse">
+    <wsdl:part element="tns:registerKeywordDirectResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeywordResponse">
+    <wsdl:part element="tns:registerKeywordResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyById">
+    <wsdl:part element="tns:getKeyById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyListSizeResponse">
+    <wsdl:part element="tns:getKeyListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionListSizeByLogin">
+    <wsdl:part element="tns:getKeyDefinitionListSizeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeByExtIdByLoginResponse">
+    <wsdl:part element="tns:getKeywordTreeNodeByExtIdByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionById">
+    <wsdl:part element="tns:getKeyDefinitionById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionListByLoginResponse">
+    <wsdl:part element="tns:getKeyDefinitionListByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordByIdResponse">
+    <wsdl:part element="tns:getKeywordByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAOVEResponse">
+    <wsdl:part element="tns:getAOVEResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyListSizeByLogin">
+    <wsdl:part element="tns:getKeyListSizeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeywordByLogin">
+    <wsdl:part element="tns:registerKeywordByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKeywordDirectByLogin">
+    <wsdl:part element="tns:registerKeywordDirectByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyIdList">
+    <wsdl:part element="tns:getKeyIdList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordsByWebsiteIdResponse">
+    <wsdl:part element="tns:getKeywordsByWebsiteIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSKeywordAdminException">
+    <wsdl:part element="ns1:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteKeywordTreeNodeByLoginResponse">
+    <wsdl:part element="tns:deleteKeywordTreeNodeByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateKeywordTreeNodeByLogin">
+    <wsdl:part element="tns:updateKeywordTreeNodeByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionByIdByLogin">
+    <wsdl:part element="tns:getKeyDefinitionByIdByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionListSizeResponse">
+    <wsdl:part element="tns:getKeyDefinitionListSizeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordById">
+    <wsdl:part element="tns:getKeywordById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeywordTreeNodeIdListByLogin">
+    <wsdl:part element="tns:getKeywordTreeNodeIdListByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getKeyDefinitionList">
+    <wsdl:part element="tns:getKeyDefinitionList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSKeywordAdmin_v6">
+    <wsdl:operation name="getKeywordTreeNodeListSize">
+      <wsdl:input message="tns:getKeywordTreeNodeListSize" name="getKeywordTreeNodeListSize"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeListSizeResponse" name="getKeywordTreeNodeListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionIdList">
+      <wsdl:input message="tns:getKeyDefinitionIdList" name="getKeyDefinitionIdList"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionIdListResponse" name="getKeyDefinitionIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyGroupById">
+      <wsdl:input message="tns:getKeyGroupById" name="getKeyGroupById"></wsdl:input>
+      <wsdl:output message="tns:getKeyGroupByIdResponse" name="getKeyGroupByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionListSizeByLogin">
+      <wsdl:input message="tns:getKeyDefinitionListSizeByLogin" name="getKeyDefinitionListSizeByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionListSizeByLoginResponse" name="getKeyDefinitionListSizeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateKeywordTreeNode">
+      <wsdl:input message="tns:updateKeywordTreeNode" name="updateKeywordTreeNode"></wsdl:input>
+      <wsdl:output message="tns:updateKeywordTreeNodeResponse" name="updateKeywordTreeNodeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyListByLogin">
+      <wsdl:input message="tns:getKeyListByLogin" name="getKeyListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyListByLoginResponse" name="getKeyListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyListSize">
+      <wsdl:input message="tns:getKeyListSize" name="getKeyListSize"></wsdl:input>
+      <wsdl:output message="tns:getKeyListSizeResponse" name="getKeyListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionList">
+      <wsdl:input message="tns:getKeyDefinitionList" name="getKeyDefinitionList"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionListResponse" name="getKeyDefinitionListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyGroupList">
+      <wsdl:input message="tns:getKeyGroupList" name="getKeyGroupList"></wsdl:input>
+      <wsdl:output message="tns:getKeyGroupListResponse" name="getKeyGroupListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeByExtId">
+      <wsdl:input message="tns:getKeywordTreeNodeByExtId" name="getKeywordTreeNodeByExtId"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeByExtIdResponse" name="getKeywordTreeNodeByExtIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAOVE">
+      <wsdl:input message="tns:getAOVE" name="getAOVE"></wsdl:input>
+      <wsdl:output message="tns:getAOVEResponse" name="getAOVEResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeListByLogin">
+      <wsdl:input message="tns:getKeywordTreeNodeListByLogin" name="getKeywordTreeNodeListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeListByLoginResponse" name="getKeywordTreeNodeListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeList">
+      <wsdl:input message="tns:getKeywordTreeNodeList" name="getKeywordTreeNodeList"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeListResponse" name="getKeywordTreeNodeListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeywordDirectByLogin">
+      <wsdl:input message="tns:registerKeywordDirectByLogin" name="registerKeywordDirectByLogin"></wsdl:input>
+      <wsdl:output message="tns:registerKeywordDirectByLoginResponse" name="registerKeywordDirectByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeByIdByLogin">
+      <wsdl:input message="tns:getKeywordTreeNodeByIdByLogin" name="getKeywordTreeNodeByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeByIdByLoginResponse" name="getKeywordTreeNodeByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeByExtIdByLogin">
+      <wsdl:input message="tns:getKeywordTreeNodeByExtIdByLogin" name="getKeywordTreeNodeByExtIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeByExtIdByLoginResponse" name="getKeywordTreeNodeByExtIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordMapByIdList">
+      <wsdl:input message="tns:getKeywordMapByIdList" name="getKeywordMapByIdList"></wsdl:input>
+      <wsdl:output message="tns:getKeywordMapByIdListResponse" name="getKeywordMapByIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyIdList">
+      <wsdl:input message="tns:getKeyIdList" name="getKeyIdList"></wsdl:input>
+      <wsdl:output message="tns:getKeyIdListResponse" name="getKeyIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteKeywordTreeNodeByLogin">
+      <wsdl:input message="tns:deleteKeywordTreeNodeByLogin" name="deleteKeywordTreeNodeByLogin"></wsdl:input>
+      <wsdl:output message="tns:deleteKeywordTreeNodeByLoginResponse" name="deleteKeywordTreeNodeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyList">
+      <wsdl:input message="tns:getKeyList" name="getKeyList"></wsdl:input>
+      <wsdl:output message="tns:getKeyListResponse" name="getKeyListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionById">
+      <wsdl:input message="tns:getKeyDefinitionById" name="getKeyDefinitionById"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionByIdResponse" name="getKeyDefinitionByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordsByWebsiteId">
+      <wsdl:input message="tns:getKeywordsByWebsiteId" name="getKeywordsByWebsiteId"></wsdl:input>
+      <wsdl:output message="tns:getKeywordsByWebsiteIdResponse" name="getKeywordsByWebsiteIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionIdListByLogin">
+      <wsdl:input message="tns:getKeyDefinitionIdListByLogin" name="getKeyDefinitionIdListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionIdListByLoginResponse" name="getKeyDefinitionIdListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionListSize">
+      <wsdl:input message="tns:getKeyDefinitionListSize" name="getKeyDefinitionListSize"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionListSizeResponse" name="getKeyDefinitionListSizeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteKeywordTreeNode">
+      <wsdl:input message="tns:deleteKeywordTreeNode" name="deleteKeywordTreeNode"></wsdl:input>
+      <wsdl:output message="tns:deleteKeywordTreeNodeResponse" name="deleteKeywordTreeNodeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createKeywordTreeNodeByLogin">
+      <wsdl:input message="tns:createKeywordTreeNodeByLogin" name="createKeywordTreeNodeByLogin"></wsdl:input>
+      <wsdl:output message="tns:createKeywordTreeNodeByLoginResponse" name="createKeywordTreeNodeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeywordByLogin">
+      <wsdl:input message="tns:registerKeywordByLogin" name="registerKeywordByLogin"></wsdl:input>
+      <wsdl:output message="tns:registerKeywordByLoginResponse" name="registerKeywordByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionListByLogin">
+      <wsdl:input message="tns:getKeyDefinitionListByLogin" name="getKeyDefinitionListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionListByLoginResponse" name="getKeyDefinitionListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeById">
+      <wsdl:input message="tns:getKeywordTreeNodeById" name="getKeywordTreeNodeById"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeByIdResponse" name="getKeywordTreeNodeByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyByIdByLogin">
+      <wsdl:input message="tns:getKeyByIdByLogin" name="getKeyByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyByIdByLoginResponse" name="getKeyByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionByIdByLogin">
+      <wsdl:input message="tns:getKeyDefinitionByIdByLogin" name="getKeyDefinitionByIdByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyDefinitionByIdByLoginResponse" name="getKeyDefinitionByIdByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyIdListByLogin">
+      <wsdl:input message="tns:getKeyIdListByLogin" name="getKeyIdListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyIdListByLoginResponse" name="getKeyIdListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeywordDirect">
+      <wsdl:input message="tns:registerKeywordDirect" name="registerKeywordDirect"></wsdl:input>
+      <wsdl:output message="tns:registerKeywordDirectResponse" name="registerKeywordDirectResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeIdList">
+      <wsdl:input message="tns:getKeywordTreeNodeIdList" name="getKeywordTreeNodeIdList"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeIdListResponse" name="getKeywordTreeNodeIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordById">
+      <wsdl:input message="tns:getKeywordById" name="getKeywordById"></wsdl:input>
+      <wsdl:output message="tns:getKeywordByIdResponse" name="getKeywordByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyListSizeByLogin">
+      <wsdl:input message="tns:getKeyListSizeByLogin" name="getKeyListSizeByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeyListSizeByLoginResponse" name="getKeyListSizeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeIdListByLogin">
+      <wsdl:input message="tns:getKeywordTreeNodeIdListByLogin" name="getKeywordTreeNodeIdListByLogin"></wsdl:input>
+      <wsdl:output message="tns:getKeywordTreeNodeIdListByLoginResponse" name="getKeywordTreeNodeIdListByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyById">
+      <wsdl:input message="tns:getKeyById" name="getKeyById"></wsdl:input>
+      <wsdl:output message="tns:getKeyByIdResponse" name="getKeyByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyGroupIdList">
+      <wsdl:input message="tns:getKeyGroupIdList" name="getKeyGroupIdList"></wsdl:input>
+      <wsdl:output message="tns:getKeyGroupIdListResponse" name="getKeyGroupIdListResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeyword">
+      <wsdl:input message="tns:registerKeyword" name="registerKeyword"></wsdl:input>
+      <wsdl:output message="tns:registerKeywordResponse" name="registerKeywordResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateKeywordTreeNodeByLogin">
+      <wsdl:input message="tns:updateKeywordTreeNodeByLogin" name="updateKeywordTreeNodeByLogin"></wsdl:input>
+      <wsdl:output message="tns:updateKeywordTreeNodeByLoginResponse" name="updateKeywordTreeNodeByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createKeywordTreeNode">
+      <wsdl:input message="tns:createKeywordTreeNode" name="createKeywordTreeNode"></wsdl:input>
+      <wsdl:output message="tns:createKeywordTreeNodeResponse" name="createKeywordTreeNodeResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSKeywordAdminException" name="WSKeywordAdminException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSKeywordAdmin_v6ServiceSoapBinding" type="tns:WSKeywordAdmin_v6">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getKeyDefinitionIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyGroupById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyGroupById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyGroupByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionListSizeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionListSizeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionListSizeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateKeywordTreeNode">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateKeywordTreeNode">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateKeywordTreeNodeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyGroupList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyGroupList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyGroupListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeByExtId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeByExtId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeByExtIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAOVE">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getAOVE">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getAOVEResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeywordDirectByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="registerKeywordDirectByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="registerKeywordDirectByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeByExtIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeByExtIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeByExtIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordMapByIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordMapByIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordMapByIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteKeywordTreeNodeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="deleteKeywordTreeNodeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="deleteKeywordTreeNodeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordsByWebsiteId">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordsByWebsiteId">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordsByWebsiteIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionIdListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionIdListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionIdListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionListSize">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionListSize">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionListSizeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createKeywordTreeNodeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createKeywordTreeNodeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createKeywordTreeNodeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteKeywordTreeNode">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="deleteKeywordTreeNode">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="deleteKeywordTreeNodeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeywordByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="registerKeywordByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="registerKeywordByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyDefinitionByIdByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyDefinitionByIdByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyDefinitionByIdByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyIdListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyIdListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyIdListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeywordDirect">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="registerKeywordDirect">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="registerKeywordDirectResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyListSizeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyListSizeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyListSizeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyById">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyById">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyByIdResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeywordTreeNodeIdListByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeywordTreeNodeIdListByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeywordTreeNodeIdListByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getKeyGroupIdList">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getKeyGroupIdList">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getKeyGroupIdListResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerKeyword">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="registerKeyword">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="registerKeywordResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateKeywordTreeNodeByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateKeywordTreeNodeByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateKeywordTreeNodeByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createKeywordTreeNode">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="createKeywordTreeNode">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="createKeywordTreeNodeResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="WSKeywordAdminException">
+        <soap:fault name="WSKeywordAdminException" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSKeywordAdmin_v6Service">
+    <wsdl:port binding="tns:WSKeywordAdmin_v6ServiceSoapBinding" name="WSKeywordAdmin_v6Port">
+      <soap:address location="http://ws-api.adtech.de/WSKeywordAdmin_v6"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

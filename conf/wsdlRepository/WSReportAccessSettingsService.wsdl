@@ -1,0 +1,163 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ReportAccessSettingsService.lowLevel.helios.webservices.adtech.de/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WSReportAccessSettingsServiceService" targetNamespace="http://ReportAccessSettingsService.lowLevel.helios.webservices.adtech.de/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://helios.adtech.de/" elementFormDefault="qualified" targetNamespace="http://helios.adtech.de/" version="1.0">
+<xs:complexType name="Wrapper">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="value" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ANDExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BoolExpression">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="expressions" nillable="true" type="xs:anyType"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ORExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="QueryOrderParameter">
+<xs:sequence>
+<xs:element name="order" nillable="true" type="xs:string"></xs:element>
+<xs:element name="propertyName" nillable="true" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="NOTExpression">
+<xs:complexContent>
+<xs:extension base="tns:BoolExpression">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ReportManagement.helios.adtech.de/" version="1.0">
+<xs:complexType name="ReportAccessSettings">
+<xs:sequence>
+<xs:element name="aggregationTimeRange" nillable="true" type="xs:string"></xs:element>
+<xs:element name="consumerStatus" nillable="true" type="xs:int"></xs:element>
+<xs:element name="dataSource" nillable="true" type="xs:string"></xs:element>
+<xs:element name="dataSourceSubType" nillable="true" type="xs:string"></xs:element>
+<xs:element name="lastOptimizerRun" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastStatisticsUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastSubscriptionGenerate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="lastUpdate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="mainNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="mainNetworkId" nillable="true" type="xs:long"></xs:element>
+<xs:element name="maxEndDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="minStartDate" nillable="true" type="xs:dateTime"></xs:element>
+<xs:element name="status" nillable="true" type="xs:int"></xs:element>
+<xs:element name="subNetwork" nillable="true" type="xs:long"></xs:element>
+<xs:element name="subNetworkId" nillable="true" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ReportAccessSettingsService.lowLevel.helios.webservices.adtech.de/" xmlns:ns1="http://ReportManagement.helios.adtech.de/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ReportAccessSettingsService.lowLevel.helios.webservices.adtech.de/">
+<xs:import namespace="http://ReportManagement.helios.adtech.de/"></xs:import>
+<xs:element name="getReportAccessSettings" type="tns:getReportAccessSettings"></xs:element>
+<xs:element name="getReportAccessSettingsByLogin" type="tns:getReportAccessSettingsByLogin"></xs:element>
+<xs:element name="getReportAccessSettingsByLoginResponse" type="tns:getReportAccessSettingsByLoginResponse"></xs:element>
+<xs:element name="getReportAccessSettingsResponse" type="tns:getReportAccessSettingsResponse"></xs:element>
+<xs:complexType name="getReportAccessSettingsByLogin">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg2" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg3" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getReportAccessSettingsByLoginResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:ReportAccessSettings"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getReportAccessSettings">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="arg1" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getReportAccessSettingsResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="ns1:ReportAccessSettings"></xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"></xs:element>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="getReportAccessSettings">
+    <wsdl:part element="tns:getReportAccessSettings" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReportAccessSettingsByLoginResponse">
+    <wsdl:part element="tns:getReportAccessSettingsByLoginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReportAccessSettingsResponse">
+    <wsdl:part element="tns:getReportAccessSettingsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReportAccessSettingsByLogin">
+    <wsdl:part element="tns:getReportAccessSettingsByLogin" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSReportAccessSettingsService">
+    <wsdl:operation name="getReportAccessSettingsByLogin">
+      <wsdl:input message="tns:getReportAccessSettingsByLogin" name="getReportAccessSettingsByLogin"></wsdl:input>
+      <wsdl:output message="tns:getReportAccessSettingsByLoginResponse" name="getReportAccessSettingsByLoginResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getReportAccessSettings">
+      <wsdl:input message="tns:getReportAccessSettings" name="getReportAccessSettings"></wsdl:input>
+      <wsdl:output message="tns:getReportAccessSettingsResponse" name="getReportAccessSettingsResponse"></wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSReportAccessSettingsServiceServiceSoapBinding" type="tns:WSReportAccessSettingsService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="getReportAccessSettingsByLogin">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getReportAccessSettingsByLogin">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getReportAccessSettingsByLoginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getReportAccessSettings">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="getReportAccessSettings">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="getReportAccessSettingsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSReportAccessSettingsServiceService">
+    <wsdl:port binding="tns:WSReportAccessSettingsServiceServiceSoapBinding" name="WSReportAccessSettingsServicePort">
+      <soap:address location="http://ws-api.adtech.de/WSReportAccessSettingsService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
