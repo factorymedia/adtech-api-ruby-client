@@ -20,4 +20,6 @@ end
 
 require 'lib/adtech/HeliosWSClientSystem/HeliosWSClientSystem'
 require 'adtech/client'
+require 'adtech/api/base'
+require 'adtech/api/admin'
 require 'adtech/api/report'

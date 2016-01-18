@@ -3,8 +3,7 @@ import 'java.util.GregorianCalendar'
 
 module ADTech
   module API
-    class Report
-
+    class Report < Base
       def get_report_url(report_type_id, start_date, end_date, entities)
         report = client.reportService.getReportById(report_type_id)
 
@@ -26,6 +25,8 @@ module ADTech
                                     59)
         ADTech.logger.info "Report end date set to: #{end_cal.getTime}";
 
+        entities = Admin.new(client).get_website_ids if entities.empty? || !entities
+
         report_queue_entry = client.reportService.requestReportByEntities(
           report_type_id,
           start_cal.getTime,
@@ -46,7 +47,8 @@ module ADTech
         report_url = ''
 
         while (true)
-          report_queue_entry = client.reportService.getReportQueueEntryById(report_queue_entry.getId())
+          report_queue_entry =
+            client.reportService.getReportQueueEntryById(report_queue_entry.getId())
 
           status = ''
           case report_queue_entry.getState()
@@ -82,10 +84,6 @@ module ADTech
       end
 
       private
-
-      def client
-        @client ||= ADTech::Client.new.helios
-      end
 
       def gregoian_calendar(year, month, day, hour, minute, second)
         cal = GregorianCalendar.getInstance()
