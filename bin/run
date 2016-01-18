@@ -5,6 +5,9 @@ $: << File.expand_path('../../lib', __FILE__)
 require 'bundler'; Bundler.setup(:default)
 require 'adtech'
 require 'date'
+require 'open-uri'
+require 'csv'
 
 report = ADTech::API::Report.new
-report.get_report(1293, Date.today, Date.today, [1185844, 1185854])
+url = report.get_report_url(1293, Date.today - 1, Date.today - 1, [1185844, 1185854])
+puts CSV.new(open(url), headers: :first_row).inspect

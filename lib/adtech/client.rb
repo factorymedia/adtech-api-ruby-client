@@ -12,6 +12,7 @@ import 'de.adtech.webservices.helios.lowLevel.constants.IReport'
 module ADTech
   class Client
     attr_reader :helios
+    attr_accessor :verbose
 
     def initialize
       @helios = HeliosWSClientSystem.new
