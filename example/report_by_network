@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path('../../lib', __FILE__)
+
+require 'bundler'; Bundler.setup(:default)
+require 'adtech'
+require 'date'
+require 'open-uri'
+require 'csv'
+
+ADTech::Client.region = ADTech::EU_SERVER
+ADTech::Client.user = 'platform.api.1690.1'
+ADTech::Client.password = 'test1234'
+
+report = ADTech::API::Report.new
+report_type_id = 1285 # Our test report type id by network
+reporting_day = Date.today - 1
+report_url = report.get_report_url(report_type_id,
+                                   reporting_day,
+                                   reporting_day,
+                                   nil)
+opts = {
+  encoding: "UTF-8",
+  col_sep:';',
+  headers: :first_row,
+  header_converters: [:symbol],
+  converters: [:numeric],
+}
+
+CSV.new(open(report_url) { |f| f.read }, opts).each do |r|
+  puts r.inspect
+end
