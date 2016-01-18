@@ -16,10 +16,10 @@ module ADTech
                                       0, 0, 0)
         ADTech.logger.info "Report start date set to: #{start_cal.getTime}";
 
-        end_cal = gregoian_calendar(end_date.year,
-                                    end_date.month - 1,
-                                    end_date.day,
-                                    23, 59, 59)
+        end_cal = gregorian_calendar(end_date.year,
+                                     end_date.month - 1,
+                                     end_date.day,
+                                     23, 59, 59)
         ADTech.logger.info "Report end date set to: #{end_cal.getTime}";
 
         entities = default_entities(report.getReportCategory) if !entities || entities.empty?
@@ -41,13 +41,12 @@ module ADTech
           )
         end
 
-        report_download_url('report',
-                            System.getProperty("line.separator"),
+        report_download_url(System.getProperty('line.separator'),
                             'csv',
                             report_queue_entry)
       end
 
-      def report_download_url(file_name, line_sep, extension, report_queue_entry)
+      def report_download_url(line_sep, extension, report_queue_entry)
         ADTech.logger.info 'Start polling for report...'
         report_url = ''
 
@@ -75,7 +74,7 @@ module ADTech
             ADTech.logger.info 'Exiting...'
             break
           elsif report_queue_entry.getState() == IReportQueueEntry::STATE_FINISHED
-            ADTech.logger.info "Report state: #{status}"
+            ADTech.logger.debug "Report state: #{status}"
             report_url = "#{report_queue_entry.getResultURL()}&format=#{extension}"
             ADTech.logger.info "ResultURL: '#{report_url}'"
             break
@@ -101,7 +100,7 @@ module ADTech
         end
       end
 
-      def gregoian_calendar(year, month, day, hour, minute, second)
+      def gregorian_calendar(year, month, day, hour, minute, second)
         cal = GregorianCalendar.getInstance()
         cal.set(Calendar::DAY_OF_MONTH, day)
 		    cal.set(Calendar::MONTH, month)
