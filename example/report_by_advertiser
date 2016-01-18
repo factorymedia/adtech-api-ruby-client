@@ -9,6 +9,9 @@ require 'open-uri'
 require 'csv'
 
 ADTech::Client.region = ADTech::EU_SERVER
+ADTech::Client.user = 'platform.api.1690.1'
+ADTech::Client.password = 'test1234'
+
 report = ADTech::API::Report.new
 report_type_id = 92982 # Our test report type id by advertiser
 # test_advertisers = [1, 2]

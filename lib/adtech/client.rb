@@ -20,20 +20,22 @@ module ADTech
 
     class << self
       attr_accessor :region
+      attr_accessor :user
+      attr_accessor :password
     end
 
     def initialize
       @helios = HeliosWSClientSystem.new
-      @helios.initServices(server_url,
-                           '.',
-                           'platform.api.1690.1',
-                           'test1234',
+      @helios.initServices(api_server_url,
+                           Dir::tmpdir(),
+                           Client.user,
+                           Client.password,
                            AuthenticationType::SSO);
     end
-
+    
     private
 
-    def server_url
+    def api_server_url
       return EU_SERVER unless Client.region
       Client.region
     end

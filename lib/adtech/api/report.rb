@@ -5,7 +5,7 @@ module ADTech
   module API
     class Report < Base
       def get_report_url(report_type_id, start_date, end_date, entities)
-        report = client.reportService.getReportById(report_type_id)
+        report = report_service.getReportById(report_type_id)
 
         ADTech.logger.info "Your report (#{report_type_id}) is of entity type: \
 #{report.getEntityType} and report category: #{report.getReportCategory}"
@@ -22,16 +22,24 @@ module ADTech
                                     23, 59, 59)
         ADTech.logger.info "Report end date set to: #{end_cal.getTime}";
 
-        entities = default_entities(report.getReportCategory) if entities.empty? || !entities
+        entities = default_entities(report.getReportCategory) if !entities || entities.empty?
 
-        report_queue_entry = client.reportService.requestReportByEntities(
-          report_type_id,
-          start_cal.getTime,
-          end_cal.getTime,
-          report_entity(report.getEntityType),
-          report_category(report.getReportCategory),
-          entities
-        )
+        if entities
+          report_queue_entry = report_service.requestReportByEntities(
+            report_type_id,
+            start_cal.getTime,
+            end_cal.getTime,
+            report_entity(report.getEntityType),
+            report_category(report.getReportCategory),
+            entities
+          )
+        else
+          report_queue_entry = report_service.requestReport(
+            report_type_id,
+            start_cal.getTime,
+            end_cal.getTime
+          )
+        end
 
         report_download_url('report',
                             System.getProperty("line.separator"),
@@ -45,7 +53,7 @@ module ADTech
 
         while (true)
           report_queue_entry =
-            client.reportService.getReportQueueEntryById(report_queue_entry.getId())
+            report_service.getReportQueueEntryById(report_queue_entry.getId())
 
           status = ''
           case report_queue_entry.getState()
