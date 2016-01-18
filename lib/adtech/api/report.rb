@@ -5,26 +5,10 @@ module ADTech
   module API
     class Report
 
-      def client
-        @client ||= ADTech::Client.new.helios
-      end
-
-      def gregoian_calendar(year, month, day, hour, minute, second)
-        cal = GregorianCalendar.getInstance()
-        cal.set(Calendar::DAY_OF_MONTH, day)
-		    cal.set(Calendar::MONTH, month)
-		    cal.set(Calendar::YEAR, year)
-		    cal.set(Calendar::HOUR, hour)
-		    cal.set(Calendar::MINUTE, minute)
-		    cal.set(Calendar::SECOND, second)
-        cal
-      end
-
       def get_report_url(report_type_id, start_date, end_date, entities)
         report = client.reportService.getReportById(report_type_id)
 
-        ADTech.logger.info "Your report (#{report_type_id}) is of entity type: #{report.getEntityType} "
-             "and report category: #{report.getReportCategory()}"
+        ADTech.logger.info "Your report (#{report_type_id}) is of entity type: #{report.getEntityType} and report category: #{report.getReportCategory()}"
 
         start_cal = gregoian_calendar(start_date.year,
                                       start_date.month - 1,
@@ -46,8 +30,8 @@ module ADTech
           report_type_id,
           start_cal.getTime,
           end_cal.getTime,
-          IReport::REPORT_ENTITY_TYPE_NETWORK,
-          IReport::REPORT_CATEGORY_WEBSITE,
+          report_entity(report.getEntityType),
+          report_category(report.getReportCategory),
           entities
         )
 
@@ -90,10 +74,63 @@ module ADTech
             break
           end
 
+          # ADTech API sample code recommends this sleep never set below 10s
           sleep(10)
         end
 
         report_url
+      end
+
+      private
+
+      def client
+        @client ||= ADTech::Client.new.helios
+      end
+
+      def gregoian_calendar(year, month, day, hour, minute, second)
+        cal = GregorianCalendar.getInstance()
+        cal.set(Calendar::DAY_OF_MONTH, day)
+		    cal.set(Calendar::MONTH, month)
+		    cal.set(Calendar::YEAR, year)
+		    cal.set(Calendar::HOUR, hour)
+		    cal.set(Calendar::MINUTE, minute)
+		    cal.set(Calendar::SECOND, second)
+        cal
+      end
+
+      def report_entity(entity)
+        case entity
+        when 'advertiser'
+          IReport::REPORT_ENTITY_TYPE_ADVERTISER
+        when 'customer'
+          IReport::REPORT_ENTITY_TYPE_CUSTOMER
+        when 'campaign'
+          IReport::REPORT_ENTITY_TYPE_CAMPAIGN
+        when 'mastercampaign'
+          IReport::REPORT_ENTITY_TYPE_MASTERCAMPAIGN
+        when 'network'
+          IReport::REPORT_ENTITY_TYPE_NETWORK
+        when 'website'
+          IReport::REPORT_ENTITY_TYPE_WEBSITE
+        end
+
+      end
+
+      def report_category(category)
+        case category
+        when 'campaign'
+          IReport::REPORT_CATEGORY_CAMPAIGN
+        when 'website'
+          IReport::REPORT_CATEGORY_WEBSITE
+        when 'page'
+          IReport::REPORT_CATEGORY_PAGE
+        when 'placement'
+          IReport::REPORT_CATEGORY_PLACEMENT
+        when 'advertiser'
+          IReport::REPORT_CATEGORY_ADVERTISER
+        when 'bannersize'
+          IReport::REPORT_CATEGORY_BANNERSIZE
+        end
       end
     end
   end
