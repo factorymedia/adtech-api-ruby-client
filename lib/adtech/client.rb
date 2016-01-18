@@ -10,17 +10,32 @@ import 'de.adtech.webservices.helios.lowLevel.constants.IReportQueueEntry'
 import 'de.adtech.webservices.helios.lowLevel.constants.IReport'
 
 module ADTech
+  EU_SERVER = 'https://ws-api.adtech.de'
+  US_SERVER = 'https://ws-api.adtechus.com'
+
   class Client
     attr_reader :helios
     attr_accessor :verbose
+    attr_accessor :region
+
+    class << self
+      attr_accessor :region
+    end
 
     def initialize
       @helios = HeliosWSClientSystem.new
-      @helios.initServices('https://ws-api.adtech.de',
+      @helios.initServices(server_url,
                            '.',
                            'platform.api.1690.1',
                            'test1234',
                            AuthenticationType::SSO);
+    end
+
+    private
+
+    def server_url
+      return EU_SERVER unless Client.region
+      Client.region
     end
   end
 end
