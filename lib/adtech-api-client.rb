@@ -4,8 +4,8 @@ require 'logger'
 java_import java.lang.System
 System.setProperty('http.nonProxyHosts', '')
 
-$CLASSPATH << "#{File.expand_path(File.dirname(__FILE__))}/adtech/HeliosWSClientSystem"
-$CLASSPATH << "#{File.expand_path(File.dirname(__FILE__))}/adtech/HeliosWSClientSystem/lib"
+$CLASSPATH << "adtech/HeliosWSClientSystem"
+$CLASSPATH << "adtech/HeliosWSClientSystem/lib"
 
 PROG_NAME = 'ADTechAPIClient'
 
@@ -19,7 +19,7 @@ module ADTech
   end
 end
 
-require 'lib/adtech/HeliosWSClientSystem/HeliosWSClientSystem'
+require "adtech/HeliosWSClientSystem/HeliosWSClientSystem"
 require 'adtech/client'
 require 'adtech/api/base'
 require 'adtech/api/admin'
