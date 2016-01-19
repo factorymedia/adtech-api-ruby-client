@@ -35,7 +35,7 @@ $ bundle install
 
 To use an API, we need to authenticate with the chosen region server with ADTech verified `username` / `password`
 ```
-require 'adtech'
+require 'adtech-api-client'
 
 ADTech::Client.region = ADTech::EU_SERVER # Set API server
 ADTech::Client.user = 'tester' # API username

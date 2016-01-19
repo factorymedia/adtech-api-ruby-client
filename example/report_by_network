@@ -3,7 +3,7 @@
 $: << File.expand_path('../../lib', __FILE__)
 
 require 'bundler'; Bundler.setup(:default)
-require 'adtech'
+require 'adtech-api-client'
 require 'date'
 require 'open-uri'
 require 'csv'

@@ -10,10 +10,10 @@ module ADTech
         ADTech.logger.info "Your report (#{report_type_id}) is of entity type: \
 #{report.getEntityType} and report category: #{report.getReportCategory}"
 
-        start_cal = gregoian_calendar(start_date.year,
-                                      start_date.month - 1,
-                                      start_date.day,
-                                      0, 0, 0)
+        start_cal = gregorian_calendar(start_date.year,
+                                       start_date.month - 1,
+                                       start_date.day,
+                                       0, 0, 0)
         ADTech.logger.info "Report start date set to: #{start_cal.getTime}";
 
         end_cal = gregorian_calendar(end_date.year,
