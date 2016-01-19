@@ -3,8 +3,9 @@ require 'logger'
 
 java_import java.lang.System
 System.setProperty('http.nonProxyHosts', '')
-$CLASSPATH << 'lib/adtech/HeliosWSClientSystem'
-$CLASSPATH << 'lib/adtech/HeliosWSClientSystem/lib'
+
+$CLASSPATH << "#{File.expand_path(File.dirname(__FILE__))}/adtech/HeliosWSClientSystem"
+$CLASSPATH << "#{File.expand_path(File.dirname(__FILE__))}/adtech/HeliosWSClientSystem/lib"
 
 PROG_NAME = 'ADTechAPIClient'
 
