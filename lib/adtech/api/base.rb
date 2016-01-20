@@ -2,7 +2,7 @@ module ADTech
   module API
     class Base
       extend Forwardable
-
+      
       def_delegators :client, :reportService
       def_delegators :client, :websiteService
       def_delegators :client, :customerService
