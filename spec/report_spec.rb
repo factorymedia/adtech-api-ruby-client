@@ -1,8 +1,8 @@
 describe ADTech::API::Report do
   before do
     ADTech::Client.region = ADTech::EU_SERVER
-    ADTech::Client.user = 'platform.api.1690.1'
-    ADTech::Client.password = 'test1234'
+    ADTech::Client.user = ''
+    ADTech::Client.password = ''
     @report = ADTech::API::Report.new
   end
 

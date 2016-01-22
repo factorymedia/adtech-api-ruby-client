@@ -111,9 +111,11 @@ Admin.new.advertiser_ids
 
 Examples can be found in the `example` directory.
 
-## ADTech API DOC
 
-https://adtech.fluidtopics.net/book#!book;uri=edbfe444535fba753f0c0244a635e57a;breadcrumb=de493d20fee82e7255e63f763f5cb56b-0739548449472e3ced90fe71c802b277-15417aea750eb03f06db5f112d2d02bd
+## Coding standard
+
+This project has been following [Factory Media Ruby Standard](https://github.com/factorymedia/standards/tree/master/coding-styles/ruby) and [Factory Media Rspec Standard](https://github.com/factorymedia/standards/tree/master/testing/rspec)
+
 
 ## License
 
