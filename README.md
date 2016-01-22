@@ -1,5 +1,7 @@
 # ADTech API Ruby Client
 
+[![Gem Version](https://badge.fury.io/rb/adtech-api-client.png)](https://badge.fury.io/rb/adtech-api-client)
+
 ## Getting Started
 
 Install Java (JDK 1.8 Above)
