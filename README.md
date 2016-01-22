@@ -20,7 +20,7 @@ $ rbenv install jruby-1.7.22
 Add this line to your application's Gemfile
 
 ```
-gem 'adtech-api-client', git: 'git@github.com:factorymedia/adtech-api-ruby-client.git'
+gem 'adtech-api-client'
 ```
 
 And then execute:
