@@ -29,6 +29,16 @@ And then execute:
 $ bundle install
 ```
 
+## Tests
+To run tests, please use:
+```
+env JRUBY_OPTS="--debug -Xcli.debug=true" bundle exec rspec -f d
+```
+You can see the coverate report with:
+```
+open coverage/index.html
+```
+
 ## Usage
 
 ### Basic Usage
