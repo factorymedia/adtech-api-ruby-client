@@ -2,7 +2,7 @@ $: << File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'adtech-api-client'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['minsikzzang', 'ericescalante']
   s.email       = ['min.kim@factorymedia.com', 'eric.escalante@factorymedia.com', 'developers@factorymedia.com']
