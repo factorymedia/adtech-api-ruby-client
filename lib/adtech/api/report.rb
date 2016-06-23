@@ -105,7 +105,7 @@ module ADTech
         cal.set(Calendar::DAY_OF_MONTH, day)
 		    cal.set(Calendar::MONTH, month)
 		    cal.set(Calendar::YEAR, year)
-		    cal.set(Calendar::HOUR, hour)
+		    cal.set(Calendar::HOUR_OF_DAY, hour)
 		    cal.set(Calendar::MINUTE, minute)
 		    cal.set(Calendar::SECOND, second)
         cal
