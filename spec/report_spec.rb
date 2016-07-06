@@ -147,16 +147,9 @@ describe ADTech::API::Report do
   end
 
   describe '.gregorian_calendar' do
-    context 'when given time is end of day' do
-      it 'should return relevant gregorian_calendar object' do
-        cal = @report.send(:gregorian_calendar, 2016, 5, 12, 23, 59, 59)
-        expect(cal.getTime.to_s). to eq('Sun Jun 12 23:59:59 BST 2016')
-      end
-    end
-
     context 'when given time is beginnig of day' do
       it 'should return relevant gregorian_calendar object' do
-        cal = @report.send(:gregorian_calendar, 2016, 5, 12, 0, 0, 0)
+        cal = @report.send(:gregorian_calendar, 2016, 5, 12)
         expect(cal.getTime.to_s). to eq('Sun Jun 12 00:00:00 BST 2016')
       end
     end
