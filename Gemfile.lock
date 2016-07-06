@@ -1,7 +1,6 @@
 PATH
   remote: .
   specs:
-    adtech-api-client (0.0.3)
 
 GEM
   remote: https://rubygems.org/
