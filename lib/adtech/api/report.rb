@@ -12,18 +12,15 @@ module ADTech
 
         start_cal = gregorian_calendar(start_date.year,
                                        start_date.month - 1,
-                                       start_date.day,
-                                       0, 0, 0)
+                                       start_date.day)
         ADTech.logger.info "Report start date set to: #{start_cal.getTime}";
 
         end_cal = gregorian_calendar(end_date.year,
                                      end_date.month - 1,
-                                     end_date.day,
-                                     23, 59, 59)
+                                     end_date.day)
         ADTech.logger.info "Report end date set to: #{end_cal.getTime}";
 
         entities = default_entities(report.getReportCategory) if !entities || entities.empty?
-
         if entities
           report_queue_entry = report_service.requestReportByEntities(
             report_type_id,
@@ -100,14 +97,14 @@ module ADTech
         end
       end
 
-      def gregorian_calendar(year, month, day, hour, minute, second)
+      def gregorian_calendar(year, month, day)
         cal = GregorianCalendar.getInstance()
         cal.set(Calendar::DAY_OF_MONTH, day)
 		    cal.set(Calendar::MONTH, month)
 		    cal.set(Calendar::YEAR, year)
-		    cal.set(Calendar::HOUR_OF_DAY, hour)
-		    cal.set(Calendar::MINUTE, minute)
-		    cal.set(Calendar::SECOND, second)
+		    cal.set(Calendar::HOUR_OF_DAY, 0)
+		    cal.set(Calendar::MINUTE, 0)
+		    cal.set(Calendar::SECOND, 0)
         cal
       end
 
