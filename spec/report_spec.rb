@@ -147,7 +147,7 @@ describe ADTech::API::Report do
   end
 
   describe '.gregorian_calendar' do
-    context 'when given time is beginnig of day' do
+    context 'when given time is beginning of day' do
       it 'should return relevant gregorian_calendar object' do
         cal = @report.send(:gregorian_calendar, 2016, 5, 12)
         expect(cal.getTime.to_s). to eq('Sun Jun 12 00:00:00 BST 2016')
